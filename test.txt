@@ -1,7 +1,1 @@
-<<<<<<< HEAD
-testtest
-=======
 test
-
-test
->>>>>>> 4e504de662b2a39a817c24b35667f6bf8dfd0685

@@ -1,0 +1,205 @@
+#body_bj {
+	background-color: #71b7d9;
+	background-image: url(../images/login_bottom.png);
+	_background-image: url(0);
+	background-repeat: no-repeat;
+	background-position: left 0px;
+}
+body {
+	margin: 0px;
+}
+.font_14 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #056b9a;
+}
+.font_12_wit {
+	font-size: 12px;
+	line-height: 30px;
+	color: #c5ecff;
+}
+.font_14_wit {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+}
+.font_12_red {
+	font-size: 12px;
+	line-height: 30px;
+	color: #C00;
+}
+
+/*input*/
+.input_on{
+	padding:2px 8px 0pt 3px;
+	height:20px;
+	border:1px solid #999;
+	background-color:#FFFFCC;
+	font-size: 12px;
+}
+.input_off{
+		font-size: 12px;
+  padding:2px 8px 0pt 3px;
+     height:20px;
+	color: #333;
+	background-color: #e9f6ff;
+	background-image: url(../images/inputlogin_bj.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border: 1px solid #b3cde0;
+}
+.input_move{
+		font-size: 12px;
+   padding:2px 8px 0pt 3px;
+height:20px;
+border:1px solid #999;
+background-color:#FFFFCC;
+}
+.input_out{
+		font-size: 12px;
+/*height:16px;默认高度*/
+     padding:2px 8px 0pt 3px;
+     height:20px;
+	color: #333;
+	background-color: #e9f6ff;
+	background-image: url(../images/inputlogin_bj.gif);
+	background-repeat: repeat-x;
+	background-position: left top;
+	border: 1px solid #b3cde0;
+}
+/*logoin*/
+#logoin_box {
+	background-image: url(../images/logoin_bj.jpg);
+	background-repeat: no-repeat;
+	height: 295px;
+	width: 600px;
+	padding-top: 105px;
+	padding-left: 40px;
+	margin-top: 8%;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+.logoin_btn_on {
+	width: 75px;
+	height: 25px;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+	background-image: url(../images/logoin_btn.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 14px;
+	font-weight: bold;
+	color: #056b9a;
+}
+.logoin_btn_on:hover {
+    	background-position: 0 -25px;
+		color: #8f7001;
+}
+.logoin_btn_on:active {
+ 	background-position: 0 -50px;
+	color: #056b9a;
+}
+.logoin_btn_on2 {
+	width: 75px;
+	height: 30px;
+	border: 0;
+	cursor: pointer;
+	cursor: hand;
+	background-image: url(../images/login_btn2.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+}
+.logoin_btn_on2:hover {
+    	background-position: 0 -30px;
+		color: #fff;
+}
+
+.logoin_input_on {
+	font-size: 12px;
+	background-image: url(../images/inputlogin_bj.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	height: 22px;
+	width: 145px;
+	border: 1px solid #b1c8d7;
+}
+.logoin_input_on_yz {
+	font-size: 12px;
+	background-image: url(../images/inputlogin_bj.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	height: 22px;
+	width: 60px;
+	border: 1px solid #b1c8d7;
+}
+.logoin_input_ma{
+	font-size: 12px;
+	background-image: url(../images/inputlogin_bj.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	height: 20px;
+	width: 60px;
+	border: 1px solid #b1c8d7;
+}
+.logoin_txt {
+	font-size: 12px;
+	line-height: 20px;
+	color: #999;
+}
+.logoin_txt2{
+	font-size: 12px;
+	color: #fff;
+}
+
+.logoin_txt2{
+	font-size: 12px;
+	line-height: 20px;
+	color: #fff;
+}
+.logoin_txt2 a:link, .logoin_txt2 a:active,.logoin_txt2 a:visited {
+	color: #fff;
+}
+.logoin_txt2 a:hover {
+	color: #c4f2ff;
+}
+.login_user{
+	font-size: 12px;
+	color: #c4f2ff;
+	line-height: 35px;
+	font-weight: bold;
+	background-image: url(../images/login_user.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 30px;
+	width: 120px;
+}
+.login_user{
+	font-size: 12px;
+	color: #c4f2ff;
+	line-height: 35px;
+	font-weight: bold;
+	background-image: url(../images/login_user.png);
+	_background-image: url(0);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 30px;
+	width: 120px;
+}
+.login_set{
+	font-size: 12px;
+	color: #c4f2ff;
+	line-height: 35px;
+	font-weight: bold;
+	background-image: url(../images/login_set.png);
+	_background-image: url(0);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 30px;
+	width: 120px;
+}
+/*logoin end*/

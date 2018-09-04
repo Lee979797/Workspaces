@@ -1,0 +1,9 @@
+package com.ninemax.jpa.code.action;
+
+public class Snippet {
+	<action name="code*" class="com.ninemax.jpa.code.action.CodePartAction"
+				method="{1}">
+				<result name="success">${currentPath}</result>
+			</action>
+}
+

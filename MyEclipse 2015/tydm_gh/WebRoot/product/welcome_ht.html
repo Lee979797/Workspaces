@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>全国组织机构代码管理系统</title>
+    <style type="text/css">
+        .welcome_ht {
+            width: 750px;
+            margin: 30px auto 0px;
+            font-family: "宋体";
+        }
+
+        .welcome_ht p {
+            width: 750px;
+            height: 230px;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .welcome_ht h3 {
+            width: 750px;
+            height: 30px;
+            line-height: 30px;
+            margin: 10px 0px;
+            padding: 0px;
+            font-size: 14px;
+        }
+
+        .welcome_ht ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .welcome_ht ul li {
+            float: left;
+            font-size: 12px;
+            margin: 0px 20px 0px 0px;
+            padding: 0px;
+            list-style: none;
+        }
+
+        .welcome_ht ul li a {
+            font-size: 12px;
+            color: #008ad2;
+            text-decoration: none;
+        }
+
+        .welcome_ht ul li a img {
+            border: none;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/js/highslide-4.1.8/highslide/highslide.css"/>
+    <script type="text/javascript" src="/js/highslide-4.1.8/highslide/highslide-with-html.js"></script>
+    <script>
+        hs.graphicsDir = '/js/highslide-4.1.8/highslide/graphics/';
+        hs.outlineType = 'rounded-white';
+        hs.showCredits = false;
+        hs.wrapperClassName = 'draggable-header';
+    </script>
+</head>
+
+<body onload="document.getElementById('btn').onclick();" style="background:#fff;">
+<span id="btn" onclick="return hs.htmlExpand(this, { headingText: '公告' })"></span>
+<div class="highslide-maincontent">
+    <p>标题</p>
+    <p>内容</p>
+</div>
+<div class="welcome_ht">
+    <p><img src="images/welcome_ht.jpg" width="750"/></p>
+
+    <h3>您可以通过下面链接来快速操作：</h3>
+    <ul>
+        <li><a href="/product/jsp/certificate/addinfomationEnter.jsp?formType=0" target="kunFrame"><img
+                src="../images/fazheng_btn.gif"/></a></li>
+        <li><a href="/bsweb/certificate_certOperList" target="kunFrame">
+            <img src="../images/huanzheng_btn.gif"/></a>
+        </li>
+        <li><a href="/bsweb/business_list?source=update" target="kunFrame"><img src="../images/biangeng_btn.gif"/></a>
+        </li>
+        <li><a href="/bsweb/business_list?source=check" target="kunFrame"><img src="../images/nianjian_btn.gif"/></a>
+        </li>
+        <li><a href="/bsweb/business_list?source=validate" target="kunFrame"><img src="../images/feizhi_btn.gif"/></a>
+        </li>
+        <li><a href="/bsweb/certificatePrint_list_no_print" target="kunFrame"><img
+                src="../images/dayin_btn.gif"/></a></li>
+    </ul>
+</div>
+</body>
+</html>

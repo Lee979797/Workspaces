@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chart palette='10' caption='北京市动漫企业认定情况统计' shownames='1' showvalues='0' decimals='0'  useRoundEdges='1' legendBorderAlpha='0'>
+	<categories>
+		<category label='2006' />
+		<category label='2007' />
+		<category label='2008' />
+		<category label='2009' />
+		<category label='2010' />
+	</categories>
+	<dataset seriesName="未通过" color='AFD8F8' showValues='0'>
+		<set value='15601.34'/>
+		<set value='20148.82'/>
+		<set value='17372.76'/>
+		<set value='35407.15'/>
+		<set value='38105.68'/>
+	</dataset>
+	<dataset seriesName="通过" color='F6BD0F' showValues='0'>
+		<set value='33401.85' />
+		<set value='41941.19' />
+		<set value='25263.37' />
+		<set value='57320.16' />
+		<set value='64845.27' />
+	</dataset>
+	<dataset seriesName="全部数量" color='8BBA00' showValues='0'>
+		<set value='55000.65' />
+		<set value='74835.76' />
+		<set value='58722.18' />
+		<set value='87557.31' />
+		<set value='92633.68' />
+	</dataset>
+</chart>

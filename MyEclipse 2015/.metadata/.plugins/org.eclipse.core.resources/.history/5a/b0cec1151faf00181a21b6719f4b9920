@@ -1,0 +1,18 @@
+package com.ninemax.jpa.code.action;
+
+import com.ninemax.jpa.util.ActionUtils;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class TestAction extends ActionSupport {
+	public String testA() {
+		return new ActionUtils() {
+
+			@Override
+			protected void excute() throws Exception {
+				// TODO Auto-generated method stub
+				System.out.println("======================dodododo====================");
+			}
+			
+		}.template();
+	}
+}

@@ -1,0 +1,26 @@
+body{ margin:0px; padding:0px; background:#3cb5dd url(/images/login_screenbg.jpg) repeat-x; font-family:Arial,"宋体";}
+*{ margin:0px; padding:0px;}
+img{ border:none;}
+a{ text-decoration:none; color:#000;}
+a:hover{ text-decoration:underline;}
+.screen{ width:1000px; height:690px; margin:0px auto; background:url(/images/login_midbg.jpg) no-repeat; position:relative;}
+.content{ width:684px; height:323px; margin:0px auto; background:url(/images/login_contentbg.jpg) no-repeat; position:absolute; top:172px; left:160px;}
+.login{ width:430px; height:280px; margin:20px 0px 0px 230px;}
+.login h3{ width:430px; height:40px; line-height:20px; text-align:right;}
+.login h3 a{ font-size:12px; font-weight:normal; margin-left:10px;}
+.login ul{ list-style:none;}
+.login ul li{ width:430px; height:32px; margin:10px 0px 20px 0px;}
+.login ul li label{ float:left; width:70px; height:32px; line-height:32px; text-align:right; font-size:14px; color:#fff; font-weight:bold;}
+.login ul li p{ float:left; width:360px; height:32px;}
+.login ul li p input{ border:none; background:none; float:left; margin-right:20px;}
+.wid1{ background:url(/images/login_input1.png) no-repeat;}
+.wid2{ background:url(/images/login_input2.png) no-repeat;}
+.inp1{ width:215px; height:22px; line-height:22px; margin:5px 0px 0px 10px;}
+.inp2{ width:65px; height:22px; line-height:22px; margin:5px 20px 0px 10px;}
+.login ul li p img{ float:left; margin:7px 10px 0px 0px;}
+.login ul li p a{ float:left; color:#fff; font-size:12px; line-height:32px;}
+.login ul li p em{ font-size:12px; color:#FFF; float:left; line-height:32px; font-style:normal;}
+.login ul li p span{ font-size:12px; color:#74c7ff;}
+.login ul li p input.login_btn,.login ul li p input.reset_btn{ display:block; width:91px; height:30px; text-indent:-10000px;}
+.login ul li p input.login_btn{ background:url(/images/login_btn.png) no-repeat;}
+.login ul li p input.reset_btn{ background:url(/images/reset_btn.png) no-repeat;}

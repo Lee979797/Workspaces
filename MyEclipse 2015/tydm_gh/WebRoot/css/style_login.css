@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* Email glumezeng@Tencent.com */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+p,
+blockquote,
+th,
+td { margin:0; padding:0; }
+fieldset,
+img { border:0; }
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var { font-style:normal; font-weight:normal; }
+ol,
+ul { list-style:none; }
+caption,
+th { text-align:left; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { font-size:100%; }
+q:before,
+q:after { content:''; }
+table { table-layout:fixed; }
+th,
+td { vertical-align:top; }
+i { overflow:hidden; display:inline-block; }
+iframe { background-color:white; }
+input[type="radio"],
+input[type="checkbox"] { margin-right:2px; #margin-right:0;
+}
+input { font-size:12px; font-family:Tahoma, Arial, Helvetica, sans-serif; -moz-background-clip:border; -moz-background-inline-policy:continuous; -moz-background-origin:padding; outline-color:-moz-use-text-color; outline-style:none; outline-width:medium; }
+label input { position:relative; top:2px; #top:1px;
+font-size:12px; }
+textarea { overflow:auto; padding:1px 0 0 1px; font-size:12px; }
+select { font-size:12px; }
+cite { line-height:33px; display:none; text-indent:-999px; }
+body { margin:0px; padding:0px; font-size:12px; color:#333; font-family:Tahoma, "宋体"; background:#eee; }
+/*====全局连接-link====*/
+a { color:#1573c5; text-decoration:none; font-size:12px; }
+a:hover { color:#c51515; text-decoration:underline; }
+dl{ clear:both; overflow:hidden; display:block;}
+dt { width:100px; float:left; text-align:right; padding-bottom:8px; line-height:20px; }
+dd { width:180px; float:left; padding-bottom:8px; }
+dd span { display:block; float:left; margin-left:5px; }
+dd input { border:#5391c8 1px solid; line-height:20px; height:20px; background:#FFFFFF; padding:0 5px; color:#666; }
+/*========================================框架================================*/
+#wrapper { margin:5px auto; width:689px; }
+.top strong { color:#2885d8; font-size:22px; font-family:"微软雅黑", "宋体"; line-height:32px; }
+/*Login*/
+.left { float:left; padding:20px; }
+.right { float:left; background:  url(../images/right_sh.gif) no-repeat; padding:20px; margin-left:30px; margin-top:20px; }
+#login { width:575px; overflow:hidden; }
+#login .top { height:40px; clear:both; background:url(../images/login_top.jpg) no-repeat; padding:20px 30px; line-height:22px ; overflow:hidden; }
+#login .bottom { height:40px; clear:both; background:url(../images/login_bottom.gif) bottom no-repeat #f3f3f3; padding:10px 30px; text-align:center; line-height:18px }
+#login .content { background:#FFFFFF; padding:10px 25px; overflow:hidden; clear:both; float:left; width:575px;}
+#login dl { width:300px; clear:both; overflow: hidden; }
+#login dd{ margin-bottom:3px;}
+#login dd input { width:179px; float:left; }
+#login input.btn_login { width:61px; height:23px; background:url(../images/btn_login.gif) no-repeat; color:#0b4b7e; margin-right:10px; border:0px; }
+
+#login .info{color:#ea0000; line-height:20px;  clear:both; float:left; width:179px;}
+
+/*Reg*/
+#reg { width:698px; overflow:hidden; }
+#reg .top { height:50px; clear:both; background:url(../images/reg_top.jpg) no-repeat; padding:15px 30px; line-height:22px; overflow:hidden; }
+#reg .bottom { height:40px; clear:both; background:url(../images/reg_bottom.gif) bottom no-repeat #f3f3f3; padding:10px 30px; text-align:center; line-height:18px }
+#reg .content { background:#FFFFFF; padding:25px; overflow:hidden; }
+#reg dl { width:650px; clear:both; overflow: hidden; }
+#reg dt{ width:177px;}
+#reg dd{ width:180px;}
+#reg dd.info{ margin-left:20px; color:#999; width:240px ;line-height:22px;}
+#reg dd input { width:179px; }
+#reg dd select {width:191px;height:22px;border:1px solid #5391c8; }
+#reg .info span, #reg .info h1{ display:block;  float:left; clear:both; width:240px; }
+#reg .info h1{color:#ea0000;}
+#reg input.btn_reg { width:105px; height:49px; background:url(../images/btn_ljzc.gif) no-repeat; color:#0b4b7e; margin-right:10px; border:0px; }
+#reg .title{ line-height:35px; border-bottom:#6c7c8a 1px dotted; padding-left:5px; margin:0 30px 15px 30px; color:#F00;}
+#reg .title strong{ font-weight:bold; color:#000; font-size:14px;}

@@ -1,0 +1,442 @@
+A:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #3333ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: rgb(158,180,214); FONT-SIZE: 10pt; SCROLLBAR-3DLIGHT-COLOR: rgb(158,180,214); SCROLLBAR-ARROW-COLOR: #ffffff; FONT-FAMILY: "Verdana", "Arial", "宋体"
+}
+.bodycolor {
+	BACKGROUND: #ffffff
+}
+.small {
+	FONT-SIZE: 9pt
+}
+
+.bigbak {
+	FONT-SIZE: 12pt
+}
+.big1 {
+	FONT-SIZE: 12pt; COLOR: #000000
+}
+.big2 {
+	FONT-SIZE: 18pt
+}
+.verybig {
+	FONT-SIZE: 24pt
+}
+.inputcolor {
+	BACKGROUND: #d6e7ef
+}
+INPUT.SmallButton {
+	BORDER-RIGHT: #104a7b 1px solid; BORDER-TOP: #afc4d5 1px solid; FONT-SIZE: 9pt; BACKGROUND: #d6e7ef; BORDER-LEFT: #afc4d5 1px solid; CURSOR: hand; COLOR: #000066; BORDER-BOTTOM: #104a7b 1px solid; HEIGHT: 19px; TEXT-DECORATION: none
+}
+INPUT.BigbakButton {
+	BORDER-RIGHT: #104a7b 1px solid; BORDER-TOP: #afc4d5 1px solid; FONT-SIZE: 12pt; BACKGROUND: #d6e7ef; BORDER-LEFT: #afc4d5 1px solid; CURSOR: hand; COLOR: #000066; BORDER-BOTTOM: #104a7b 1px solid; HEIGHT: 24px; TEXT-DECORATION: none
+}
+INPUT.BigButton {
+	BORDER-RIGHT: #104a7b 1px solid; BORDER-TOP: #afc4d5 1px solid; FONT-SIZE: 9pt; BACKGROUND: #d6e7ef; BORDER-LEFT: #afc4d5 1px solid; CURSOR: hand; COLOR: #000066; BORDER-BOTTOM: #104a7b 1px solid; HEIGHT: 19px; TEXT-DECORATION: none
+}
+INPUT.SmallInput {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+INPUT.SmallInput1 {
+	BORDER-RIGHT: 0px; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+INPUT.BigInput {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+INPUT.BigbakInput {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 12pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 22px
+}
+INPUT.BigInputMoney {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 12pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 22px; TEXT-ALIGN: right
+}
+INPUT.SmallStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+INPUT.BigbakStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 12pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 22px
+}
+INPUT.BigStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+SELECT.BigSelect {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 18px
+}
+SELECT.BigbakSelect {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 12pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 22px
+}
+SELECT.SmallSelect {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 18px
+}
+SELECT.BigbakStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 12pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double; HEIGHT: 22px
+}
+SELECT.BigStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+SELECT.SmallStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 9pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: black 1px solid; HEIGHT: 18px
+}
+TEXTAREA.BigInput {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #d6e7ef; FONT: 10pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double
+}
+TEXTAREA.BigStatic {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; BACKGROUND: #e0e0e0; FONT: 10pt ??ì?,MS SONG,SimSun,tahoma,sans-serif; BORDER-LEFT: black 1px solid; COLOR: #000066; BORDER-BOTTOM: 1px double
+}
+.Calender {
+	BACKGROUND: #00fcfc
+}
+.TableControl {
+	BACKGROUND: #eff7ff
+}
+.TableHeader {
+	BACKGROUND: #d3e5fa
+}
+.TableHeader1 {
+	BACKGROUND: url(/images/button_back.gif) #d3e5fa; CURSOR: hand; COLOR: #000066
+}
+.TableHeader2 {
+	FONT-WEIGHT: bold; BACKGROUND: url(/images/menubg.gif) #d3e5fa; CURSOR: hand; COLOR: #000066
+}
+.TableHeader_message {
+	BACKGROUND: #ebf2f9
+}
+.TableHeader_work {
+	BACKGROUND: #e8e8e0
+}
+.D3E5FA {
+	BACKGROUND: #d3e5fa
+}
+.ED1B23 {
+	BACKGROUND: #ed1b23
+}
+.7EC0EE {
+	BACKGROUND: #7ec0ee
+}
+.0088FF {
+	BACKGROUND: #0088ff
+}
+.0000FF {
+	BACKGROUND: #0000ff
+}
+.000088 {
+	BACKGROUND: #000088
+}
+.8800FF {
+	BACKGROUND: #8800ff
+}
+.AB82FF {
+	BACKGROUND: #ab82ff
+}
+.FF88FF {
+	BACKGROUND: #ff88ff
+}
+.FF00FF {
+	BACKGROUND: #ff00ff
+}
+.FF0088 {
+	BACKGROUND: #ff0088
+}
+.FF0000 {
+	BACKGROUND: #ff0000
+}
+.F4A460 {
+	BACKGROUND: #f4a460
+}
+.CC9999 {
+	BACKGROUND: #cc9999
+}
+.888800 {
+	BACKGROUND: #888800
+}
+.888888 {
+	BACKGROUND: #888888
+}
+.CCCCCC {
+	BACKGROUND: #cccccc
+}
+.90E090 {
+	BACKGROUND: #90e090
+}
+.008800 {
+	BACKGROUND: #008800
+}
+.008888 {
+	BACKGROUND: #008888
+}
+.TableContent {
+	BACKGROUND: #e2e8fa
+}
+.TableData {
+	BACKGROUND: #ffffff
+}
+.TableLine1 {
+	BACKGROUND: #f3f3f3
+}
+.TableLine2 {
+	BACKGROUND: #ffffff
+}
+.TableLine3 {
+	BACKGROUND: #ffffff
+}
+#write {
+	BACKGROUND: #d6e7ef
+}
+.pagenav {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Verdana", "Arial", "宋体"
+}
+.bgcolor2 {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Verdana", "Arial", "宋体"
+}
+.bgcolor3 {
+	FONT-SIZE: 10pt; FONT-FAMILY: "Verdana", "Arial", "宋体"
+}
+.bgcolor4 {
+	FONT-SIZE: 10pt; COLOR: green; FONT-FAMILY: "Verdana", "Arial", "宋体"
+}
+A.messagelink:link {
+	COLOR: #174b73
+}
+A.messagelink:visited {
+	COLOR: #174b73
+}
+A.messagelink:hover {
+	COLOR: #174b73; TEXT-DECORATION: underline
+}
+A.messagelink:active {
+	COLOR: #174b73
+}
+.left_part {
+	BORDER-RIGHT: #ddd9c0 1px solid; BORDER-TOP: #ddd9c0 1px solid; BORDER-LEFT: #ddd9c0 1px solid; BORDER-BOTTOM: #ddd9c0 1px solid; LETTER-SPACING: 1px; HEIGHT: 15px
+}
+.table_biankuang {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; HEIGHT: 35px
+}
+.big_title {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #cccccc 1px solid; WIDTH: 142px; COLOR: #ff0000; BORDER-BOTTOM: #cccccc 1px solid; LETTER-SPACING: 5px
+}
+.font_color {
+	FONT-SIZE: 12px; COLOR: #006600
+}
+.bold {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px
+}
+A.linkfont {
+	TEXT-DECORATION: none
+}
+.addbodycolor {
+	BACKGROUND: #efebde
+}
+.addTRcolor {
+	BACKGROUND: #7c9fe9
+}
+.add_textfield {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #6477d6 1px outset; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+.menulines {
+	
+}
+.inputbgcolor {
+	BACKGROUND: #d6e7ef
+}
+.biankuang {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+.htsp_table_four {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #ffffff 0px outset; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BACKGROUND-COLOR: #ffffff
+}
+.big_title_sum {
+	BORDER-RIGHT: #0000ff 2px solid; BORDER-TOP: #0000ff 2px solid; FONT-WEIGHT: bold; FONT-SIZE: 15px; BORDER-LEFT: #0000ff 2px solid; WIDTH: 280px; COLOR: #ffffff; BORDER-BOTTOM: #0000ff 2px solid; LETTER-SPACING: 3px; HEIGHT: 40px; BACKGROUND-COLOR: #7e91f5
+}
+.sum_font {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #000080
+}
+.body_SCROLLBAR {
+	SCROLLBAR-FACE-COLOR: #ece9d8; SCROLLBAR-HIGHLIGHT-COLOR: #000000; SCROLLBAR-SHADOW-COLOR: #000000; SCROLLBAR-3DLIGHT-COLOR: #f7f6ef; SCROLLBAR-ARROW-COLOR: #000000; SCROLLBAR-TRACK-COLOR: #f7f6ef; SCROLLBAR-DARKSHADOW-COLOR: #ece9d8; SCROLLBAR-BASE-COLOR: #ece9d8
+}
+.body_SCROLLBAR_01 {
+	SCROLLBAR-FACE-COLOR: #ece9d8; SCROLLBAR-HIGHLIGHT-COLOR: #d6e7ef; SCROLLBAR-SHADOW-COLOR: #d6e7ef; SCROLLBAR-3DLIGHT-COLOR: #f7f6ef; SCROLLBAR-ARROW-COLOR: #000000; SCROLLBAR-TRACK-COLOR: #f7f6ef; SCROLLBAR-DARKSHADOW-COLOR: #ece9d8; SCROLLBAR-BASE-COLOR: #ece9d8
+}
+.col_1_color {
+	BACKGROUND-COLOR: #e8e8e0
+}
+.big_title_pz {
+	BORDER-RIGHT: #cccccc 0px solid; BORDER-TOP: #cccccc 0px solid; FONT-WEIGHT: bold; BORDER-LEFT: #cccccc 0px solid; WIDTH: 180px; COLOR: #ffffff; BORDER-BOTTOM: #cccccc 0px solid; LETTER-SPACING: 3px; HEIGHT: 23px; BACKGROUND-COLOR: #7e91f5
+}
+.citation_custNews_style {
+	BORDER-TOP-STYLE: none; BORDER-BOTTOM: #cccccc 2px inset; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none
+}
+
+BODY {font-family: "宋体"; font-size: 9pt; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px;
+ SCROLLBAR-FACE-COLOR: #BDDCF4;
+ SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;
+ SCROLLBAR-SHADOW-COLOR: #70AFEF;
+ SCROLLBAR-3DLIGHT-COLOR: #70AFEF;
+ SCROLLBAR-ARROW-COLOR: #376CC7;
+ SCROLLBAR-TRACK-COLOR: #C7E5FD;
+ SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+ SCROLLBAR-BASE-COLOR: #376CC7
+}
+.box {
+	FONT-SIZE: 12px;
+	color: #000066;
+	HEIGHT: 20px;
+	border: 1px solid #59ACFF;
+	background-color: #E1F1FF;
+
+}
+.bgline {background-color: #0166CC}
+.green {font-family: "宋体";font-size: 12px;color: #003399;font-weight: bold;}
+.green a:link    { color: #003399; text-decoration: none}
+.green a:visited {  color: #003399; TEXT-DECORATION: none}
+.green a:hover   {  color: #000000; TEXT-DECORATION: underline}
+.green a:active  { color: #003399; text-decoration: none}
+.button {
+	BORDER-RIGHT: 1px solid #079CE4;
+	BORDER-TOP: 1px solid #E2F5FE;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: 1px solid #E2F5FE;
+	COLOR: #000000;
+	behavior: url("button.htc");
+	BORDER-BOTTOM: 1px solid #079CE4;
+	HEIGHT: 20px;
+	width: 80px;
+	background-repeat: repeat-x;
+
+}
+
+a:link    { font-size: 9pt; color: #000000; text-decoration: none}
+a:visited { font-size: 9pt; color: #000000; TEXT-DECORATION: none}
+a:hover   { font-size: 9pt; color: #0033CC; TEXT-DECORATION: none}
+a:active  { font-size: 9pt; color: #000000; text-decoration: none}
+
+.news   {
+	font-size: 12px;
+	color: #003399;
+	text-decoration: none;
+	font-weight: bold;
+}
+.news a:visited { font-size: 9pt; COLOR: #FF0000; TEXT-DECORATION: none}
+.news a:hover   { font-size: 9pt; COLOR: #006600; TEXT-DECORATION: none}
+.news a:active  { font-size: 9pt; color: #000000; text-decoration: none}
+
+.white { font-family: "宋体"; font-size: 12px;  color: #FFFFFF; }
+.gray{ font-family: "宋体"; font-size: 9pt;  color: #666666; }
+
+
+.newtxte {FONT-SIZE: 14px}
+.large {FONT-SIZE: 24px;color: #336600;	FONT-WEIGHT: normal}
+.big {	FONT-SIZE: 14px;color: #003399;	font-weight: bold;}
+.hand {	CURSOR: crosshair}
+
+.forumline {BACKGROUND-COLOR: #FFFFFF;	border: 1px solid #5EA330;}
+
+.white1 {font-size: 14px;color: #FFFFFF}
+.TDbg1 {BACKGROUND-COLOR: #ECFCE0}
+
+.TDbg2 {BACKGROUND-COLOR: #DBF2CE}
+
+.TDbg3 {BACKGROUND-COLOR: #ADD082}
+.TDbg4 {BACKGROUND-COLOR: #EDEDED}
+p {
+	font-size: 12px;
+	line-height: 18px;
+}
+td {
+	font-size: 12px;
+}
+.select {
+	width: 160px;
+}
+.bg01 {	background-color: #D9E8FF}
+.bg02 {	background-color: #CBE0FF}
+.bg03 {	background-color: #E4EDFE}
+.bg04 {	background-color: #F2F2F2}
+.bg05 {	background-color: #0066CC}
+.bg06 {	background-image: url(rightbg01.jpg);
+	background-repeat: no-repeat}
+.box1 {
+	FONT-SIZE: 12px;
+	BORDER-RIGHT: 1px solid #7FBCDC;
+	BORDER-TOP: 1px solid #FFFFFF;
+	BORDER-LEFT: 1px solid #FFFFFF;
+	BORDER-BOTTOM: 1px solid #7FBCDC;
+	background-color: D2E8F3;
+	line-height: 20px;
+
+}
+
+.box2 {
+	BORDER-RIGHT: 1px solid #B8DBED;
+	BORDER-TOP: 1px solid #FFFFFF;
+	BORDER-LEFT: 1px solid #FFFFFF;
+	BORDER-BOTTOM: 1px solid #B8DBED;
+	background-color: #FFFFFF;
+	line-height: 20px;
+
+}
+.bod1 {
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: 6DB0F5;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: 6DB0F5;
+	border-right-color: 6DB0F5;
+	border-bottom-color: 6DB0F5;
+	padding: 3px;
+
+}
+.bod-tb {
+	border-left-color: 6DB0F5;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: 6DB0F5;
+	border-right-color: 6DB0F5;
+	border-bottom-color: 6DB0F5;
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding: 3px;
+
+
+}
+.bod-b {
+	border-left-color: 6DB0F5;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: 6DB0F5;
+	border-right-color: 6DB0F5;
+	border-bottom-color: 6DB0F5;
+	padding: 3px;
+
+}
+.bod-tbl {
+	border-left-color: 6DB0F5;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-top-color: 6DB0F5;
+	border-right-color: 6DB0F5;
+	border-bottom-color: 6DB0F5;
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding: 3px;
+	border-left-width: 1px;
+	border-left-style: solid;
+
+}
+.background1 {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.input_search {BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #7f7f7f 1px solid; BORDER-LEFT: #7f7f7f 1px solid; BORDER-RIGHT: #7f7f7f 1px solid; BORDER-TOP: #7f7f7f 1px solid; COLOR: #595959; FONT-FAMILY: 宋体; FONT-SIZE: 12px; LINE-HEIGHT: 18px}
+

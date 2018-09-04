@@ -904,7 +904,7 @@ public class StatisticsAction extends ActionSupport implements SessionAware {
 			}
 		}.template();
 	}
-
+	
 	/*
 	 * ษจร่
 	 */

@@ -1,0 +1,55 @@
+<PUBLIC:ATTACH EVENT="onkeydown" ONEVENT="Htc_keydown()"/>
+<PUBLIC:ATTACH EVENT="oncontentready" ONEVENT="Load()"/>
+<SCRIPT LANGUAGE="JScript">
+var oduanyu_Popup;
+var objSource;
+function Load()
+{
+	oduanyu_Popup=window.createPopup();
+}
+function Htc_keydown()
+{
+	if(event.keyCode==113)
+	{
+		oSource=event.srcElement;
+		if(oSource.tagName=="TEXTAREA"||(oSource.tagName=="INPUT"&&oSource.type=="text"))
+		{
+			try{
+				objSource=oSource;
+				var xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				xmlhttp.Open("POST","../phrase/sp_phrase.asp", false);
+				xmlhttp.Send();
+				if(xmlhttp.status==200)
+				{
+					var strBody="<div height=25 style='background:#EFF5FF;font-size:12px;height:25;padding-top:5px;padding-left:3px'>"
+					strBody+="<img src=../images/ico_15.gif align=absmiddle>&nbsp;Œ“µƒ∂Ã”Ô</div>";
+					strBody+="<div style=\"scrollbar-3dlight-color : #F4F4F4; scrollbar-highlight-color : #C9C9C9; scrollbar-face-color : #F4F4F4; scrollbar-arrow-color : #C9C9C9; scrollbar-shadow-color : #C9C9C9; scrollbar-darkshadow-color : #F4F4F4; scrollbar-base-color : #F4F4F4; scrollbar-track-color : #F4F4F4;padding-left:4pt;border-top:solid 1 #dddddd;overflow-Y:scroll;height:275\">"
+					strBody+=xmlhttp.responseText+"</div>"
+					oduanyu_Popup.document.body.onclick = Htc_OnClick;
+					oduanyu_Popup.show(event.screenX,event.screenY,300,300)
+					oduanyu_Popup.document.body.style.border="solid 1 #000000";
+					oduanyu_Popup.document.body.innerHTML=strBody;
+				}
+			}
+			catch(e){}
+		}
+	}
+	if(event.keyCode==115)
+	{
+		if(top.BianQianLayer!=null)
+			top.BianQianLayer.style.display="";
+	}
+}
+function Htc_OnClick()
+{
+	var obj=this.document.parentWindow;
+	var e = obj.event.srcElement;
+	if(e.tagName=="DIV")
+	{
+		//var edit = document.selection.createRange();
+		//edit.text=e.innerText;
+		objSource.value+=e.innerText;
+		oduanyu_Popup.hide();
+	}
+}
+</SCRIPT>

@@ -1,0 +1,108 @@
+@charset "utf-8";
+.prompt {
+    margin: 50px auto 0px;
+    width: 703px;
+}
+
+.promptou {
+    background: url(../images/promptou.gif) no-repeat;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px;
+    text-indent: 20px;
+    width: 703px;
+}
+
+.prompti {
+    background: url(../images/prompti.gif) repeat-y;
+    font-size: 14px;
+    padding: 30px 20px;
+    width: 663px;
+}
+
+.prompt_left {
+    float: left;
+    width: 300px;
+    text-align: center;
+}
+
+.prompt_right {
+    float: left;
+    width: 330px;
+}
+
+.prompt_right ul {
+    list-style: none;
+    float: right;
+}
+
+.prompt_right ul li {
+    width: 330px;
+    line-height: 28px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.prompt_right ul li b {
+    font-size: 16px;
+}
+
+.prompt_right ul li span {
+    font-size: 12px;
+    line-height: 28px;
+    color: #3c9eca;
+}
+
+.prompt_right ul li input.btn1 {
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-decoration: none;
+    padding: 0px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    background: url(/images/btnn-1.gif) no-repeat;
+}
+
+.prompt_right ul li input.btn2 {
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-decoration: none;
+    padding: 0px;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    background: url(/images/btnn-1.gif) no-repeat;
+}
+
+.clear {
+    clear: both;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
+}
+
+.promptdi {
+    background: url(../images/promptdi.gif) no-repeat;
+    height: 15px;
+    width: 703px;
+}
+
+.likea :hover {
+    color: lightcoral;
+    text-decoration: underline;
+}
+
+.likea {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+.newBtn1{ height:24px; text-decoration:none; padding:0px 10px; border:none; color:#000; cursor:pointer; background:#35A7D5; border-radius:3px; color:#fff;}
+.newBtn1.green{ background:#79B515;}
+.newBtn1.red{ background:#E45757;}
+.newBtn1.white{ background:#fff; border:#CCC solid 1px; color:#333;}

@@ -1,0 +1,26 @@
+<chart palette='2' caption='County Comparison' shownames='1' showvalues='0' numberPrefix='$' useRoundEdges='1' legendBorderAlpha='0'>
+<categories>
+<category label='2006' />
+<category label='2007' />
+<category label='2008' />
+<category label='2009' />
+</categories>
+<dataset seriesName='未通过' color='AFD8F8' showValues='0'> 
+<set value='25601'/>
+<set value='20148'/>
+<set value='17372'/>
+<set value='35407'/>
+</dataset>
+<dataset seriesName='通过' color='F6BD0F' showValues='0'>
+<set value='57401'/>
+<set value='41941'/>
+<set value='45263'/>
+<set value='117320'/>
+</dataset>
+<dataset seriesName='全部' color='8BBA00' showValues='0'>
+<set value='45000'/>
+<set value='44835'/>
+<set value='18722'/>
+<set value='77557'/>
+</dataset>
+</chart>

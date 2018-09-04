@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<bean type="org.apache.struts2.dispatcher.multipart.MultiPartRequest"
+		name="multi" class="com.ninemax.jpa.code.service.MultiProgressRequest"
+		scope="default" optional="true" />
+
+	<constant name="struts.i18n.encoding" value="GBK" />
+	<constant name="struts.action.extension" value="action,html,ninemax,do," />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.multipart.parser" value="jakarta" />
+	<constant name="struts.multipart.handler" value="multi" />
+	<constant name="struts.multipart.maxSize" value="1024000000" />
+	<package name="basePackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"
+				class="com.ninemax.jpa.util.OnlineUserInterceptor" />
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="loginInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="baseStack" />
+		<global-results>
+			<result name="login">/common/noLogin.html</result>
+			<result name="error">/500.jsp</result>
+			<result name="input">/500.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception">
+			</exception-mapping>
+		</global-exception-mappings>
+	</package>
+	<package name="bsweb" extends="basePackage" namespace="/bsweb">
+		<!-- <interceptors> <interceptor name="ywlcInterceptor" class="com.ninemax.jpa.code.interceptor.YwlcInterceptor"> 
+			</interceptor> </interceptors> -->
+		<action name="testAction" class="com.ninemax.jpa.code.action.TestAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 码段管理 -->
+		<action name="code*" class="com.ninemax.jpa.code.action.CodePartAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 证书编号管理 -->
+		<action name="number*" class="com.ninemax.jpa.code.action.NumberAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 处罚管理 -->
+		<action name="punish_*" class="com.ninemax.jpa.code.action.PunishAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 审核管理 -->
+		<action name="auditing*" class="com.ninemax.jpa.code.action.AuditingAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 日常业务 -->
+		<action name="business_*" class="com.ninemax.jpa.code.action.DailyBusinessAction"
+			method="{1}">
+			<!-- <interceptor-ref name="ywlcInterceptor"> <param name="includeMethods">update_no,update,check,validateDM,delete,unValidate</param> 
+				</interceptor-ref> <interceptor-ref name="defaultStack"/> -->
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<!-- 导入数据 -->
+		<action name="improt_*"
+			class="com.ninemax.jpa.code.action.BusinessImportDataAction" method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 选择操作 -->
+		<action name="select_*" class="com.ninemax.jpa.code.action.BusinessSelectAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 迁址管理 -->
+		<action name="change_*"
+			class="com.ninemax.jpa.code.action.ChangeBZAddressAction" method="{1}">
+			<!-- <interceptor-ref name="ywlcInterceptor"> <param name="excludeMethods">index,search,auditInnerRedo,auditOuterRedo</param> 
+				</interceptor-ref> <interceptor-ref name="defaultStack"/> -->
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- IC卡管理 -->
+		<action name="icCardOpt_*" class="com.ninemax.jpa.code.action.ICCardOptAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--智能卡管理 -->
+		<action name="smartCardOpt_*" class="com.ninemax.jpa.code.action.SmartCardOptAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--审核参数设置 -->
+		<action name="auditSetting_*" class="com.ninemax.jpa.code.action.SystemAuditSetAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--证书编号 -->
+		<action name="certificateNumber_*"
+			class="com.ninemax.jpa.code.action.CertificateNumberAction" method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--证书打印 -->
+		<action name="certificatePrint_*"
+			class="com.ninemax.jpa.code.action.CertificatePrintAction" method="{1}">
+			<!-- <interceptor-ref name="ywlcInterceptor"> <param name="includeMethods">print_zb</param> 
+				</interceptor-ref> <interceptor-ref name="defaultStack"/> -->
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--查询统计 -->
+		<action name="statistics_*" class="com.ninemax.jpa.code.action.StatisticsAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--扫描任务管理 -->
+		<!-- <action name="scanTask_*" class="com.ninemax.jpa.code.action.ScanTaskAction" 
+			method="{1}"> <result name="success">${currentPath}</result> </action> -->
+		<!--行政区划准入管理 -->
+		<action name="xzqhManage_*" class="com.ninemax.jpa.code.action.XZQHManageAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!--前置扫描管理 -->
+		<!-- <action name="preScan_*" class="com.ninemax.jpa.code.action.PreScanSettiongsAction" 
+			method="{1}"> <result name="success">${currentPath}</result> </action> -->
+		<!-- 发证管理 -->
+		<action name="certificate_*"
+			class="com.ninemax.jpa.code.action.IssueCertificateAction" method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="repeat">${currentPath}</result>
+		</action>
+		<!-- 通知单打印 -->
+		<action name="requisition_*"
+			class="com.ninemax.jpa.code.action.PrintRequisitionAction" method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 质量管理 -->
+		<action name="qualityManager_*" class="com.ninemax.jpa.code.action.QualityManagerAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 日志管理 -->
+		<action name="log_*" class="com.ninemax.jpa.code.action.LogManagerAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 业务处理 -->
+		<action name="busHandle_*" class="com.ninemax.jpa.code.action.BusHandleAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 常用工具 -->
+		<action name="commonTools_*" class="com.ninemax.jpa.code.action.CommonToolsAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 首页列表 -->
+		<action name="pendApproval_*" class="com.ninemax.jpa.code.action.PendApprovalAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<action name="jglxBtx_*" class="com.ninemax.jpa.code.action.JglxBtxAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<!-- 集成云南审核 -->
+		<action name="onLine_*" class="com.ninemax.jpa.code.action.OnLinceAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<action name="onlineBus_*" class="com.ninemax.jpa.code.action.OnlineBusinessAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+
+		<!-- 集成工商数据 -->
+		<action name="gsAction_*" class="com.ninemax.jpa.code.action.GsAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<!-- 集成天津工商数据 -->
+		<action name="gsdata_*" class="com.ninemax.jpa.code.action.GSDataAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<action name="conAction_*" class="com.ninemax.jpa.code.action.ConsigneeAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+
+		<action name="cerAction_*" class="com.ninemax.jpa.code.action.CertificateAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+
+		<!-- 工商二维码 -->
+		<action name="gsUrlAction_*" class="com.ninemax.jpa.code.action.GsUrlAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+
+		<!-- webservice请求 -->
+		<action name="productWebserviceTest_*"
+			class="com.ninemax.producttest.ProductServiceClientAction" method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<!-- 证书编号统计 -->
+		<action name="mycertificate_*"
+			class="com.ninemax.producttest.CertificateNumberStatisticsAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<!-- 集成江西Usbkey -->
+		<action name="USBKey_*" class="com.ninemax.jpa.code.action.USBKeyAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<action name="tygs_*" class="com.ninemax.tygs.action.TyGsAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<action name="gsbusiness_*" class="com.ninemax.tygs.action.TyGsAction_hd"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+			<result name="error">${currentPath}</result>
+		</action>
+		<!-- 统一代码码段管理 -->
+		<action name="tycode_*" class="com.ninemax.jpa.code.action.TydmCodePartAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+		<action name="tydm_*" class="com.ninemax.jpa.code.action.TydmAction"
+			method="{1}">
+			<result name="success">${currentPath}</result>
+		</action>
+	</package>
+</struts>

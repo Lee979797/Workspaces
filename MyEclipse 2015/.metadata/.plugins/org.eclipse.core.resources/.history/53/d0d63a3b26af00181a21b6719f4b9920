@@ -1,0 +1,5 @@
+package com.ninemax.jpa.code.action;
+
+public class TestAction {
+
+}

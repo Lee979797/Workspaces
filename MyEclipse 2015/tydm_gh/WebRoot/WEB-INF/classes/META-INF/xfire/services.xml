@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <service xmlns="http://xfire.codehaus.org/config/1.0">
+        <name>HelloService</name>
+        <serviceClass>example.IHelloService</serviceClass>
+        <implementationClass>example.HelloService</implementationClass>
+    </service>
+</beans>

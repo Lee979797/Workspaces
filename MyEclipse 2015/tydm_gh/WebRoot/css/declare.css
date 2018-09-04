@@ -1,0 +1,11 @@
+body {
+     margin:0; /* 必须 */
+     border:0;
+     height:100%; /* 必须 */
+     overflow-y:auto;/* 必须 */
+    }
+#menu {display:block; top:10px; left:50px; width:145px; position:fixed; border:#CCC 1px solid; font-size:12px; background-color:#FFF;} 
+#menu ul{ margin:8px;} 
+#menu ul a{ color:#06C} 
+/* IE并不认识fixed，而FF认识 */
+* html #menu {position:absolute;} /* 这个只有IE认识 */

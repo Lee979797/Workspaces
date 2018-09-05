@@ -120,7 +120,7 @@ public class IssueCertificateAction extends ActionSupport implements
 	private String bzjgdm;
 	// 申请表修改或删除标示以及证书挂失模块
 	private String source;
-	// 标示返回按钮返回何处
+	// 标示返回按钮返回处
 	private String path;
 	private String checkCfjl;
 

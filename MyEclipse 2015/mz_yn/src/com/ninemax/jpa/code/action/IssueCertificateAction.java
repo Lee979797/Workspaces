@@ -124,7 +124,7 @@ public class IssueCertificateAction extends ActionSupport implements
 	private String path;
 	private String checkCfjl;
 
-	// 申请表删除信提示
+	// 申请表删除信息提示
 	private String delMessage;
 	// 需要审核标记
 	private Boolean needAudit;

@@ -1,14 +1,14 @@
-<%@ page contentType="text/html; charset=gb2312" %>
-<%@ page import="com.ninemax.jdbc.business.system.clsUserRightKeyBus" %>
-<%@ page import="com.ninemax.jpa.system.model.User" %>
-<%@ page import="com.ninemax.jpa.system.bo.UserBo" %>
-<%@ page import="com.ninemax.jpa.global.InitSysParams" %>
-<%@ page import="com.ninemax.jpa.system.model.Rightkey" %>
-<%@ page import="com.ninemax.jdbc.business.system.clsRightKeyBus" %>
-<%@ page import="java.util.*" %>
-<%@ page import="com.ninemax.jpa.util.CommonPropertiesUtil" %>
+<%@ page contentType="text/html; charset=gb2312"%>
+<%@ page import="com.ninemax.jdbc.business.system.clsUserRightKeyBus"%>
+<%@ page import="com.ninemax.jpa.system.model.User"%>
+<%@ page import="com.ninemax.jpa.system.bo.UserBo"%>
+<%@ page import="com.ninemax.jpa.global.InitSysParams"%>
+<%@ page import="com.ninemax.jpa.system.model.Rightkey"%>
+<%@ page import="com.ninemax.jdbc.business.system.clsRightKeyBus"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.ninemax.jpa.util.CommonPropertiesUtil"%>
 <%
-    User ses_user = (User) session.getAttribute("sysUser");
+	User ses_user = (User) session.getAttribute("sysUser");
     int user_id = ses_user.getUserId();
     UserBo userBo = new UserBo();
     User user = userBo.findById(user_id);
@@ -35,19 +35,18 @@
     	
         xtmc= xtmc.substring(0,15);
         }
-
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
-    <title>全国组织机构代码管理系统</title>
-    <link href="../css/css.css" rel="stylesheet" type="text/css"/>
-    <script type='text/javascript' src="/js/tools.js"></script>
-        <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>全国组织机构代码管理系统</title>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script type='text/javascript' src="/js/tools.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript">
         <!--
         function MM_swapImgRestore() { //v3.0
             var i, x, a = document.MM_sr;
@@ -92,7 +91,7 @@
         }
         //-->
     </script>
-    <script type="text/javascript">
+<script type="text/javascript">
 
         var topSize = null;
         function changeStyle(topnum) {
@@ -170,28 +169,30 @@
 </head>
 
 <body>
-<!-- 头部 -->
-<div id="head-top" style="width: auto">
-    <div class="top_left">
+	<!-- 头部 -->
+	<div id="head-top" style="width: auto">
+		<div class="top_left">
 
-         <h1>
-        	<a href="javascript:void(0);"><%=xtmc %></a>
-        </h1>
+			<h1>
+				<a href="javascript:void(0);"><%=xtmc%></a>
+			</h1>
 
 
-    </div>
+		</div>
 
-    <div class="top_right">
-        <!-- 右侧退出 -->
-        <div class="top_quit">
-            <ul>
-             	<li><a href="#" onclick="changePwd();"><img src="../images/zhuxiao.png"/><br/>密码修改</a></li>
-                <li><a href="#" onclick="logOut();"><img src="../images/zhuxiao.png" alt="退出"/><br/>退出</a></li>
-            </ul>
-        </div>
-        <div class="top_menu">
-            <ul>
-                <%--<!-- <li><a href="../jsp/frame/right.jsp" target="kunFrame"><img src="../images/zsds_r5_c38.png" width="30" height="31" alt="首页" /><br />首页</a></li> -->
+		<div class="top_right">
+			<!-- 右侧退出 -->
+			<div class="top_quit">
+				<ul>
+					<li><a href="#" onclick="changePwd();"><img
+							src="../images/zhuxiao.png" /><br />密码修改</a></li>
+					<li><a href="#" onclick="logOut();"><img
+							src="../images/zhuxiao.png" alt="退出" /><br />退出</a></li>
+				</ul>
+			</div>
+			<div class="top_menu">
+				<ul>
+					<%--<!-- <li><a href="../jsp/frame/right.jsp" target="kunFrame"><img src="../images/zsds_r5_c38.png" width="30" height="31" alt="首页" /><br />首页</a></li> -->
                 <%if(canCj){%>
                 <li><a href="../jsp/enterpriseinfomation/addinfomationcollection.jsp" target="kunFrame"><img src="../images/fazheng.png" alt="发证" /> 发证</a></li>
                 <%}%>
@@ -208,131 +209,157 @@
                 <li><a href="../jsp/user/userList.jsp" target="kunFrame"><img src="../images/yonghu.png" alt="用户" /> 用户</a></li>
                 <%}%>--%>
 
-                <!-- <li><a href="../jsp/frame/right.jsp" target="kunFrame"><img src="../images/zsds_r5_c38.png" width="30" height="31" alt="首页" /><br />首页</a></li> -->
-                
-                <%if (canFz) {%>
-                <li>
-                    <a href="/product/jsp/certificate/addinfomationEnter.jsp?formType=0<%=InitSysParams.system.getIsGs()?"&isGs=1":""%>"
-                       target="kunFrame">
-                        <img src="../images/report_add.png" alt="新办"/><br/>新办</a></li>
-                <%}%>
-				<%if (canDy) {%>
-                <li style="width:55px;"><a href="/bsweb/certificatePrint_apply_info" target="kunFrame"><img
-                        src="../images/printer.png"
-                        alt="申请"/><br/>申报表打印</a></li>
-                <%}%>
-                <%if (canHz) {%>
-                <li><a href="/bsweb/certificate_certOperList" target="kunFrame"><img
-                        src="../images/report_edit.png" alt="换证"/><br/>换证</a></li>
-                <%}%>
+					<!-- <li><a href="../jsp/frame/right.jsp" target="kunFrame"><img src="../images/zsds_r5_c38.png" width="30" height="31" alt="首页" /><br />首页</a></li> -->
 
-                <%if (canBg) {%>
-                <li><a href="/bsweb/business_list?source=update_no" target="kunFrame"><img
-                        src="../images/application_edit.png" alt="变更"/><br/>变更</a></li>
-                <%}%>
+					<%
+						if (canFz) {
+					%>
+					<li><a
+						href="/product/jsp/certificate/addinfomationEnter.jsp?formType=0<%=InitSysParams.system.getIsGs() ? "&isGs=1" : ""%>"
+						target="kunFrame"> <img src="../images/report_add.png"
+							alt="新办" /><br />新办
+					</a></li>
+					<%
+						}
+					%>
+					<%
+						if (canDy) {
+					%>
+					<li style="width:55px;"><a
+						href="/bsweb/certificatePrint_apply_info" target="kunFrame"><img
+							src="../images/printer.png" alt="申请" /><br />申报表打印</a></li>
+					<%
+						}
+					%>
+					<%
+						if (canHz) {
+					%>
+					<li><a href="/bsweb/certificate_certOperList"
+						target="kunFrame"><img src="../images/report_edit.png"
+							alt="换证" /><br />换证</a></li>
+					<%
+						}
+					%>
 
-                <%if (canNj) {%>
-                <li><a href="/bsweb/business_list?source=check" target="kunFrame"><img
-                        src="../images/report_magnify.png" alt="年检"/><br/>年检</a></li>
-                <%}%>
-                <%if (canVz) {%>
-                <li><a href="/bsweb/business_list?source=validate" target="kunFrame"><img src="../images/trash.png"
-                                                                                          alt="注销"/><br/>注销</a></li>
-                <%}%>
+					<%
+						if (canBg) {
+					%>
+					<li><a href="/bsweb/business_list?source=update_no"
+						target="kunFrame"><img src="../images/application_edit.png"
+							alt="变更" /><br />变更</a></li>
+					<%
+						}
+					%>
 
-
-
-                <%if (canDy) {%>
-                <li><a href="/bsweb/certificatePrint_list_no_print" target="kunFrame"><img
-                        src="../images/printer.png"
-                        alt="打印"/><br/>打印</a></li>
-                <%}%>
-                
-            </ul>
-        </div>
-        <!-- 菜单 -->
-    </div>
-    
-        <!--用户信息-->
-    <div class="top_user">
-   
-        <ul>
-            <li><p>用户名：${sysUser.userName }</p></li>
-            <li><p>赋码行政区划:${sysUser.zrxzqu }</p></li>
-        </ul>
-        <ul>
-            <li><p>用户姓名：${sysUser.userChinesename }</p></li>
-            <li><p>发证机关：${sysUser.printName }</p></li>
-        </ul>
-    </div>
-    <!--用户信息 over-->
-    　
-
-</div>
+					<%
+						if (canNj) {
+					%>
+					<li><a href="/bsweb/business_list?source=check"
+						target="kunFrame"><img src="../images/report_magnify.png"
+							alt="年检" /><br />年检</a></li>
+					<%
+						}
+					%>
+					<%
+						if (canVz) {
+					%>
+					<li><a href="/bsweb/business_list?source=validate"
+						target="kunFrame"><img src="../images/trash.png" alt="注销" /><br />注销</a></li>
+					<%
+						}
+					%>
 
 
-<div class="head_menu">
-                <ul >
-                <li><a href="javascript:setTab('','1','<%=String.valueOf(user.getUserId()) %>','0');" id="a1" class="active">首页</a></li>
-                    <%
-                        if(rightKeys!=null && rightKeys.size()>0){
-                            int topNum = 1;
-                            for (Rightkey rightKeyTO : rightKeys) {
-                              String rightKeyId = rightKeyTO.getRightkeyId();
-                                String level = rightKeyTO.getRightkeyDepth();
-                                String title = rightKeyTO.getRightkeyName();
-                                /*
-                                if (!isYwlc) {
-                                    if ("12".equals(rightKeyId)) {
-                                        continue;
-                                    }
-                                }
-                                */
-                               int fKeyId = 0;
-                                if ("1".equals(level)) {
-                                    if (userRightKeyBus.HasRight(String.valueOf(user.getUserId()), rightKeyId)) { //如果有权限才显示
-                                        fKeyId = Integer.parseInt(rightKeyId);
-                                        if (fKeyId < 20 || fKeyId == 30) {
 
-                    %>
-                    <li id="one<%=topNum%>" style="cursor:pointer"
-                           
-                        onclick="setTab('one',<%=topNum%>,'<%=String.valueOf(user.getUserId()) %>','0');"     >
-                        <a id="one_id<%=topNum%>"
-                                <%
-                                    if (title.length() > 2) {
-                                        out.print("class='tabs_linheight'");
-                                    }
-                                %>
-                                 <%
-                                if (topNum == 1) {
-                                    out.print("class=''");
-                                }
-                            %>
-                                href="#" >
-                            <%=title %>
-                    </a>
-                    </li>
+					<%
+						if (canDy) {
+					%>
+					<li><a href="/bsweb/certificatePrint_list_no_print"
+						target="kunFrame"><img src="../images/printer.png" alt="打印" /><br />打印</a></li>
+					<%
+						}
+					%>
 
-                    <%
-                                        topNum++;
-                                    }
+				</ul>
+			</div>
+			<!-- 菜单 -->
+		</div>
 
-                                }
+		<!--用户信息-->
+		<div class="top_user">
 
-                            }
+			<ul>
+				<li><p>用户名：${sysUser.userName }</p></li>
+				<li><p>赋码行政区划:${sysUser.zrxzqu }</p></li>
+			</ul>
+			<ul>
+				<li><p>用户姓名：${sysUser.userChinesename }</p></li>
+				<li><p>发证机关：${sysUser.printName }</p></li>
+			</ul>
+		</div>
+		<!--用户信息 over-->
 
 
-                        }
-                    %>
+	</div>
 
-                    <%
-                        }
-                    %>
-                </ul>
 
-</div>
-<!-- 头部结束 -->
+	<div class="head_menu">
+		<ul>
+			<li><a
+				href="javascript:setTab('','1','<%=String.valueOf(user.getUserId())%>','0');"
+				id="a1" class="active">首页</a></li>
+			<%
+				if (rightKeys != null && rightKeys.size() > 0) {
+					int topNum = 1;
+					for (Rightkey rightKeyTO : rightKeys) {
+						String rightKeyId = rightKeyTO.getRightkeyId();
+						String level = rightKeyTO.getRightkeyDepth();
+						String title = rightKeyTO.getRightkeyName();
+						/*
+						if (!isYwlc) {
+						    if ("12".equals(rightKeyId)) {
+						        continue;
+						    }
+						}
+						 */
+						int fKeyId = 0;
+						if ("1".equals(level)) {
+							if (userRightKeyBus.HasRight(
+									String.valueOf(user.getUserId()), rightKeyId)) { //如果有权限才显示
+								fKeyId = Integer.parseInt(rightKeyId);
+								if (fKeyId < 20 || fKeyId == 30) {
+			%>
+			<li id="one<%=topNum%>" style="cursor:pointer"
+				onclick="setTab('one',<%=topNum%>,'<%=String.valueOf(user.getUserId())%>','0');">
+				<a id="one_id<%=topNum%>"
+				<%if (title.length() > 2) {
+									out.print("class='tabs_linheight'");
+								}%>
+				<%if (topNum == 1) {
+									out.print("class=''");
+								}%>
+				href="#"> <%=title%>
+			</a>
+			</li>
+
+			<%
+				topNum++;
+								}
+
+							}
+
+						}
+
+					}
+			%>
+
+			<%
+				}
+			%>
+		</ul>
+
+	</div>
+	<!-- 头部结束 -->
 
 </body>
 </html>

@@ -39,7 +39,6 @@ INDEX VERSION 1.127+D:\Workspaces\MyEclipse 2015 example\.metadata\.plugins\org.
 686293372.index
 1484057742.index
 2794844777.index
-84782064.index
 610292209.index
 4017637267.index
 278745895.index

@@ -4631,3 +4631,26 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.ui.views.properties.tabbed 4 4 2018-09-10 09:07:38.910
 !MESSAGE Contributor org.eclipse.wst.server.ui.ServersView cannot be created.
+
+!ENTRY org.springframework.ide.eclipse.beans.core 1 0 2018-09-10 09:55:56.914
+!MESSAGE Error occured processing '/web_demo/src/applicationContext.xml'
+!STACK 0
+org.xml.sax.SAXParseException; lineNumber: 1; columnNumber: 55; White spaces are required between publicId and systemId.
+	at org.apache.xerces.parsers.DOMParser.parse(Unknown Source)
+	at org.springframework.ide.eclipse.core.io.xml.XercesDocumentLoader.loadDocument(XercesDocumentLoader.java:48)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadDocument(XmlBeanDefinitionReader.java:428)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.doLoadBeanDefinitions(XmlBeanDefinitionReader.java:390)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:335)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$2.loadBeanDefinitions(BeansConfig.java:388)
+	at org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:303)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:447)
+	at org.springframework.ide.eclipse.beans.core.internal.model.BeansConfig$3.call(BeansConfig.java:1)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:744)
+
+!ENTRY org.eclipse.wst.server.core 4 0 2018-09-10 09:57:27.852
+!MESSAGE Server Tomcat v6.0 Server at localhost failed to start.

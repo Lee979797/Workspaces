@@ -2,7 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a121611-fccc-436f-8277-0991df404945" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015/mz_yn/WebRoot/WEB-INF/classes/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/com.genuitec.eclipse.monitor/myeclipse-usage.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/com.genuitec.eclipse.monitor/myeclipse-usage.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.markers.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.markers.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.syncinfo.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/Servers/.syncinfo.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.indexes/ca/a8/26/history.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.indexes/ca/a8/26/history.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.indexes/e4/history.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.indexes/e4/history.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.markers.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.markers.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.syncinfo.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.projects/web_demo/.syncinfo.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/0.snap" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.core.resources/0.snap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jdt.core/84782064.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jdt.core/84782064.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1663685140.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1663685140.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/web_demo/2018/9/37/refactorings.history" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/web_demo/2018/9/37/refactorings.history" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/web_demo/2018/9/37/refactorings.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.ltk.core.refactoring/.refactorings/web_demo/2018/9/37/refactorings.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/publish/publish0.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/servers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/servers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/publish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/publish.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.validation/dep.index" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/.metadata/.plugins/org.eclipse.wst.validation/dep.index" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../MyEclipse 2015 example/web_demo/src/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../MyEclipse 2015 example/web_demo/src/applicationContext.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,13 +36,14 @@
     <session id="-757908161">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
+          <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -79,12 +101,12 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/struts.xml">
-          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
               <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
+          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
         </entry>
       </file>
     </leaf>
@@ -119,9 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -155,12 +174,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536305269331" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536544770993" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -242,6 +264,7 @@
       <workItem from="1536191945008" duration="13000" />
       <workItem from="1536191987715" duration="18000" />
       <workItem from="1536305195289" duration="82000" />
+      <workItem from="1536544719427" duration="177000" />
     </task>
     <task id="LOCAL-00001" summary="q">
       <created>1536112100456</created>
@@ -254,12 +277,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="867000" />
+    <option name="totallyTimeSpent" value="1044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -332,12 +355,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/struts.xml">
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -5,11 +5,11 @@
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           destroy-method="close" init-method="init" lazy-init="true">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
         <property name="url"
-                  value="jdbc:mysql://localhost:3306/sshdemo?useUnicode=true&amp;characterEncoding=UTF-8"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
+                  value="jdbc:jtds:sqlserver://127.0.0.1:1433;databaseName=sshdemo"/>
+        <property name="username" value="sa"/>
+        <property name="password" value="sa"/>
     </bean>
 
     <bean id="sessionFactory"
@@ -28,7 +28,7 @@
                 <prop key="hibernate.current_session_context_class">
                     org.springframework.orm.hibernate3.SpringSessionContext
                 </prop>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.dialect">com.jpa.UserDialect</prop>
             </props>
         </property>
     </bean>

@@ -1,2 +1,5 @@
 */.metadata/*
 */Servers/*
+*/*/.idea/*
+*/*/out/*
+*/*/*.iml

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bzjgall">
+	<typeAlias alias="bzjgall" type="com.lhq.prj.bms.po.Bzjgall" />
+	<insert id="save" parameterClass="bzjgall">
+		<![CDATA[
+			INSERT INTO z_bzjg_all (bzjgdm,bzjgmc,superdm,note) VALUES (#bzjgdm:VARCHAR#,#bzjgmc:VARCHAR#,#superdm:VARCHAR#,#note:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_bzjg_all WHERE bzjgid = #bzjgid:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="bzjgall">
+		<![CDATA[
+			UPDATE z_bzjg_all 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgmc" prepend=",">
+				<![CDATA[
+					bzjgmc = #bzjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="superdm" prepend=",">
+				<![CDATA[
+					superdm = #superdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE bzjgid = #bzjgid:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="bzjgall">
+		<![CDATA[
+			SELECT * FROM z_bzjg_all
+		]]>
+	</select>
+	
+	<sql id="findBzjgallByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(bzjgmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(bzjgdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(superdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'     
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="bzjgall">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_bzjg_all 
+					WHERE (bzjgid >= (SELECT MAX(bzjgid) FROM (SELECT TOP $start$ bzjgid FROM z_bzjg_all 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findBzjgallByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY bzjgid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findBzjgallByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY bzjgid
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_bzjg_all 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findBzjgallByPageCondition"/>
+		</dynamic>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Ywset">
+
+	<typeAlias alias="center" type="com.lhq.prj.bms.po.Center" />
+	<typeAlias alias="ywset" type="com.lhq.prj.bms.po.Ywset" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="ywset" id="pm_ywset_without_id">
+		<parameter property="ywlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywlxdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="flag" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="note" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<sql id="byYwsetIdCondition">
+		<![CDATA[
+		   ywsetId = #ywsetId:NUMBER#
+	    ]]>
+	</sql>
+
+	
+	<insert id="save" parameterMap="pm_ywset_without_id">
+		<![CDATA[
+			INSERT INTO z_ywset 
+						(ywlx,ywlxdm,bzjgmc,bzjgdm,flag,note) 
+				 VALUES (?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_ywset
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byYwsetIdCondition" />
+		</dynamic>
+	</delete>
+
+	<select id="findAll" parameterClass="ywset" resultClass="ywset">
+		<![CDATA[
+			SELECT * FROM z_ywset where  flag = #flag:VARCHAR#
+			and bzjgdm = #bzjgdm:VARCHAR#
+		]]>
+	</select>
+
+	<update id="update" parameterClass="ywset">
+		<![CDATA[
+			UPDATE z_ywset
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="ywlx" prepend=",">
+				<![CDATA[
+					ywlx = #ywlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ywlxdm" prepend=",">
+				<![CDATA[
+					ywlxdm = #ywlxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgmc" prepend=",">
+				<![CDATA[
+					bzjgmc = #bzjgmc:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="flag" prepend=",">
+				<![CDATA[
+					flag = #flag:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byYwsetIdCondition" />
+		</dynamic>
+	</update>
+
+
+	<sql id="findYwsetByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(ywlx) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(bzjgmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(bzjgdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="ywset">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_ywset 
+					WHERE (ywsetId >= (SELECT MAX(ywsetId) FROM (SELECT TOP $start$ ywsetId FROM z_ywset where  flag=$flag$
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findYwsetByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			 ORDER BY ywsetId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findYwsetByPageCondition" />
+		</dynamic>
+		<![CDATA[
+		  and flag=$flag$	ORDER BY ywsetId
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_ywset  where  flag=$flag$ 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findYwsetByPageCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findYwsetByBzjg" parameterClass="string" resultClass="ywset">
+		<![CDATA[
+			SELECT ywlx FROM z_ywset WHERE bzjgdm = #bzjgdm:VARCHAR#   and flag='0' ORDER BY ywsetId
+		]]>
+	</select>
+	
+	<select id="findYwsetByNotBzjg" parameterClass="string" resultClass="ywset">
+		<![CDATA[
+			SELECT ywlx FROM z_ywset WHERE not (bzjgdm = #bzjgdm:VARCHAR#) and flag='0' ORDER BY ywsetId
+		]]>
+	</select>
+</sqlMap>

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text ml; charset=gbk">
+        <title>中国加油</title>
+        <link rel="stylesheet" type="text/css" href="resources/css/ext-all.css" />
+        <script type="text/javascript" src="adapter/ext/ext-base.js"></script>
+        <script type="text/javascript" src="ext-all.js"></script>
+        <script type="text/javascript">
+Ext.onReady(function(){
+
+  Ext.ExtendPanel= Ext.extend(Ext.Panel,{
+	initComponent:function(){
+		Ext.ExtendPanel.superclass.initComponent.call(this);
+		 this.addEvents("click");
+	},
+	onRender: function(ct, position){
+		  Ext.ExtendPanel.superclass.onRender.apply(this, arguments);
+		   var c = this.body;
+		  c.on("click", this.onClick, this);
+	},
+	onClick:function(e){
+		 this.fireEvent("click", e);
+	}
+   });
+
+	var ep=new Ext.ExtendPanel({
+			renderTo:'panel',
+			width:500,
+			height:500,
+			html:'点击试试',
+			listeners:{
+				click:function(e){
+					alert("被点击了!"+e.getTarget());
+				}
+			}
+	});
+});
+        </script>
+    </head>
+    <body>
+        <div id="panel"></div>
+    </body>
+</html>

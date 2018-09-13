@@ -1,0 +1,13 @@
+/META-INF/
+/SqlMapConfig.xml
+/applicationContext-actions.xml
+/applicationContext-common.xml
+/applicationContext-daos.xml
+/applicationContext-mail.xml
+/applicationContext-services.xml
+/com/
+/log4j.properties
+/struts.properties
+/struts.xml
+/test/
+/武汉版本.txt

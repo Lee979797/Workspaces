@@ -1,0 +1,210 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #ffffff
+}
+.listtable {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; MARGIN: 5px 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc
+}
+.listtable TH {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/newindex/listtr_bg.gif); VERTICAL-ALIGN: middle; BORDER-LEFT: #ffffff 1px solid; COLOR: #ffffff; BORDER-BOTTOM: #666666 0px solid; BACKGROUND-REPEAT: repeat-x; HEIGHT: 29px; BACKGROUND-COLOR: #7a9cca
+}
+.listtable TD {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; PADDING-BOTTOM: 2px; MARGIN: 1px; COLOR: #333333; PADDING-TOP: 2px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+.bluetext14 {
+	FONT-SIZE: 12px; COLOR: #000099; TEXT-ALIGN: left
+}
+HR {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 2px 5px; PADDING-TOP: 0px
+}
+.listtable TD.list_td {
+	BACKGROUND-POSITION: 50% bottom; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/tr_bottomborder.gif); MARGIN-BOTTOM: 1px; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #efefef; TEXT-ALIGN: center
+}
+.vlright {
+	TEXT-ALIGN: right
+}
+.redtext14 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #e10c20; TEXT-ALIGN: left
+}
+.addtable TH {
+	BORDER-RIGHT: #ffffff 3px solid; PADDING-RIGHT: 25px; BACKGROUND-POSITION: 10px 50%; BORDER-TOP: #ffffff 3px solid; PADDING-LEFT: 25px; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(../images/newindex/myindex_arrow.gif); PADDING-BOTTOM: 5px; MARGIN: 15px; BORDER-LEFT: #ffffff 3px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #ffffff 3px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #84a2d6; TEXT-ALIGN: left
+}
+.addtable {
+	BORDER-RIGHT: #eeeeee 1px solid; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; BACKGROUND-COLOR: #cccccc
+}
+.addtable TD {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; BACKGROUND-COLOR: #ffffff
+}
+.addtable .add_tdl {
+	BACKGROUND-COLOR: #eeeeee; TEXT-ALIGN: right
+}
+.listtable .add_tdl2 {
+	BACKGROUND-COLOR: #eeeeee; TEXT-ALIGN: left
+}
+.addtable .add_tdr {
+	TEXT-ALIGN: left
+}
+TD {
+	FONT-SIZE: 12px
+}
+.helparticle P {
+	MARGIN: 5px; TEXT-INDENT: 2em; LINE-HEIGHT: 18px
+}
+P {
+	MARGIN: 5px; TEXT-INDENT: 2em; LINE-HEIGHT: 18px; TEXT-ALIGN: left
+}
+H2 {
+	COLOR: #0066cc
+}
+.helparticle {
+	BACKGROUND-IMAGE: url(../images/newindex/notice_bg.jpg); BACKGROUND-REPEAT: repeat-x; BACKGROUND-COLOR: #d4e7f8
+}
+.noticedot {
+	PADDING-TOP: 10px
+}
+.notice_tdr {
+	BACKGROUND-POSITION: 50% bottom; BACKGROUND-IMAGE: url(../images/newindex/addtd_bg.gif); BACKGROUND-REPEAT: repeat-x; TEXT-ALIGN: left
+}
+.article {
+	LINE-HEIGHT: 22px
+}
+A.article:link {
+	COLOR: #2255ae; TEXT-DECORATION: none
+}
+A.article:visited {
+	COLOR: #2255ae; TEXT-DECORATION: none
+}
+A.article:hover {
+	COLOR: #ff0000
+}
+.indexinput {
+	BORDER-RIGHT: #a7a6aa 1px solid; BORDER-TOP: #a7a6aa 1px solid; BORDER-LEFT: #a7a6aa 1px solid; BORDER-BOTTOM: #a7a6aa 1px solid; BACKGROUND-COLOR: #cadaf4
+}
+.whitefont {
+	COLOR: #ffffff
+}
+.arial {
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.asdc {
+	FILTER: DropShadow(Color=#1E71EC, OffX=1, OffY=1, Positive=0); COLOR: #333333; FONT-FAMILY: "ËÎÌו"; TEXT-DECORATION: none
+}
+A {
+	COLOR: #333333
+}
+A:hover {
+	COLOR: #ff9900
+}
+.STYLE1 {
+	COLOR: #ff0000
+}
+.loginokimg {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; MARGIN-TOP: 2px; MARGIN-BOTTOM: 2px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+FORM {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+.logintable {
+	BORDER-RIGHT: #cccccc 1px solid; MARGIN-BOTTOM: 5px; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+.logintable TD {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 0px; PADDING-BOTTOM: 2px; PADDING-TOP: 3px
+}
+IMG {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px
+}
+.addtable TD.preview_left {
+	PADDING-RIGHT: 5px; BACKGROUND-POSITION: 5px 5px; PADDING-LEFT: 30px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND-IMAGE: url(../images/mainframe/arrow_add_tr.gif); PADDING-BOTTOM: 5px; VERTICAL-ALIGN: top; COLOR: #003366; PADDING-TOP: 5px; BORDER-BOTTOM: #bebebe 1px solid; BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #efefef
+}
+.noborder {
+	BORDER-RIGHT: #ffffff 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ffffff 0px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #ffffff 0px solid; WIDTH: 14px; PADDING-TOP: 0px; BORDER-BOTTOM: #ffffff 0px solid; HEIGHT: 14px
+}
+UL.downloaddoc {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+UL.downloaddoc LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 50%; PADDING-TOP: 0px; LIST-STYLE-TYPE: none; HEIGHT: 35px; TEXT-ALIGN: left
+}
+.ButtonCss_s {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(../images/graybuttonbg.gif); BORDER-LEFT: #999999 1px solid; CURSOR: hand; COLOR: #4b341f; PADDING-TOP: 2px; BORDER-BOTTOM: #999999 1px solid; FONT-STYLE: normal; HEIGHT: 20px; BACKGROUND-COLOR: #e8f4ff
+}
+#prewiewlist IMG {
+	MARGIN: 5px 2px; WIDTH: 70px; HEIGHT: 100px
+}
+#prewiewlist {
+	OVERFLOW-Y: auto; FLOAT: left; OVERFLOW-X: hidden; MARGIN: 10px 5px 0px; WIDTH: 120px; HEIGHT: 592px; BACKGROUND-COLOR: #ffffff
+}
+#prewiewlist .bggreen {
+	BACKGROUND-COLOR: #d9ffd9
+}
+#prewiewlist .bggreen-pass {
+	BACKGROUND-POSITION: right bottom; BACKGROUND-IMAGE: url(../images/mainframe/standard_msg_ok.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #99ff66
+}
+#prewiewlist TABLE {
+	BACKGROUND-COLOR: #cccccc
+}
+#previewpic {
+	FLOAT: left; MARGIN: 10px 2px; OVERFLOW: auto; WIDTH: 630px; BACKGROUND-COLOR: #ffffff
+}
+#previewpic IMG {
+	
+}
+#viewlist IMG {
+	MARGIN: 5px 2px; WIDTH: 70px; HEIGHT: 100px
+}
+#viewlist .havepass LI {
+	BACKGROUND-COLOR: #cccccc
+}
+#viewlist LI {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FLOAT: left; PADDING-BOTTOM: 4px; MARGIN: 5px 2px; PADDING-TOP: 4px; LIST-STYLE-TYPE: none; TEXT-ALIGN: center
+}
+#viewlist .picfail {
+	BACKGROUND-COLOR: #ff9999
+}
+#viewlist .picnew {
+	BACKGROUND-COLOR: #cefdd1
+}
+#viewlist UL {
+	DISPLAY: block; MARGIN: 0px
+}
+#prewiewlist .page IMG {
+	VERTICAL-ALIGN: middle; WIDTH: 16px; HEIGHT: 16px
+}
+#prewiewlist .page {
+	FONT-SIZE: 12px
+}
+.picbad {
+	BACKGROUND-POSITION: 95% 95%; BACKGROUND-IMAGE: url(../images/mainframe/fail_1.png); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #e9e9e9
+}
+.picok {
+	BACKGROUND-POSITION: 95% 95%; BACKGROUND-IMAGE: url(../images/mainframe/standard_msg_ok.gif); BACKGROUND-REPEAT: no-repeat; BACKGROUND-COLOR: #e9e9e9
+}
+.moretext P {
+	DISPLAY: block; FONT-SIZE: 14px; MARGIN: 15px 0px; LINE-HEIGHT: 28px
+}
+.moretext .inputtext {
+	BORDER-RIGHT: #ffffff 1px solid; BORDER-TOP: #ffffff 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #ffffff 1px solid; BORDER-BOTTOM: #333333 1px solid
+}
+.moretext SPAN {
+	FONT-WEIGHT: bold; LETTER-SPACING: 3px; TEXT-DECORATION: underline
+}
+.moretext .feiyong {
+	COLOR: #ff0000
+}
+.moretext DIV {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; PADDING-TOP: 5px; TEXT-ALIGN: center
+}
+.moretext DIV.note {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; BACKGROUND-COLOR: #eeeeee
+}
+.moretext DIV.note P {
+	DISPLAY: block; FONT-SIZE: 12px; MARGIN: 10px 20px; LINE-HEIGHT: 22px
+}
+.moretext {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid
+}
+#yzylb {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #cccccc 1px solid; BACKGROUND-COLOR: #cccccc
+}
+#yzylb TD {
+	BACKGROUND-COLOR: #ffffff
+}

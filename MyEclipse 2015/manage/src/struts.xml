@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<include file="struts-default.xml" />
+	<package name="json" extends="json-default">
+	
+		<!-- 图书借还管理 -->
+		<action name="findAllLoanLog" class="loanLogAction" method="findLoanLogByBook">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="saveLoanLog" class="loanLogAction" method="saveLoanLog">
+			<result type="json">
+				<param name="includeProperties">success,logId</param>
+			</result>
+		</action>
+		<action name="updateLoanLog" class="loanLogAction" method="updateLoanLog">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<!-- 机构管理 （业务库） -->
+		<action name="findAllOrgnew" class="orgnewAction" method="findAllOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllYwqxOrgnew" class="orgnewAction" method="findAllYwqxOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findQxAllOrgnew" class="orgnewAction" method="findQxAllOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllExcpOrgnew" class="orgnewAction" method="findAllExcpOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>  
+		
+		<action name="returnExceptionOrgnew" class="orgnewAction" method="returnExceptionOrgnew">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="validateJgmc" class="orgnewAction" method="validateJgmc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="delExceptionOrgnew" class="orgnewAction" method="delExceptionOrgnew">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="findNetAllOrgnew" class="orgnewAction" method="findNetAllOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findCountAllOrgnew" class="orgnewAction" method="findCountAllOrgnew">
+			<result type="json">
+				<param name="root">msgCountList</param>
+			</result>
+		</action> 
+		
+		<action name="verifyOrgnew" class="orgnewAction" method="verifyOrgnew">
+			<result type="json">
+				<param name="root">fieldList</param>
+			</result>
+		</action>
+		
+		<!-- 机构管理 （业务库） -->
+		<action name="findShenheXcAllOrgnew" class="orgnewAction" method="findShenheXcAllOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 机构管理 （业务库） -->
+		<action name="findShenheNetAllOrgnew" class="orgnewAction" method="findShenheNetAllOrgnew">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllOrgnewOrTjgdm" class="orgnewAction" method="findAllOrgnewOrTjgdm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="saveOrgnew" class="orgnewAction" method="saveOrgnew">
+			<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+			<param name="savePath">uploads/cover/</param>
+			<param name="maxWidthSize">1240</param>
+			<param name="maxHeightSize">1754</param>
+			<result name="success">main/out.jsp</result>
+			<result name="input">main/out.jsp</result>
+		</action>
+		
+		<action name="updateOrgnew" class="orgnewAction" method="updateOrgnew">
+			<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+			<param name="savePath">uploads/cover/</param>
+			<param name="maxWidthSize">1240</param>
+			<param name="maxHeightSize">1754</param>
+			<result name="success">main/out.jsp</result>
+			<result name="input">main/out.jsp</result>
+		</action>
+		<action name="deleteOrgnew" class="orgnewAction" method="deleteOrgnew">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnew" class="orgnewAction" method="returnOrgnew">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<!-- 保存图像  -->
+		<action name="saveImageOrgnew" class="orgnewAction" method="saveImageOrgnew">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<!-- 读取ZZ下图像 -->
+		<action name="orgnewViewImg" class="orgnewAction" method="orgnewViewImg">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findOrgnewByOrgid" class="orgnewAction" method="findOrgnewByOrgid">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+
+		<action name="orgnewViewImg2" class="orgnewAction" method="orgnewViewImg2">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="returnOrgnewOk" class="orgnewAction" method="returnOrgnewOk">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnewNo" class="orgnewAction" method="returnOrgnewNo">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="shenheOrgnewOk" class="orgnewAction" method="shenheOrgnewOk">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="shenheOrgnewNo" class="orgnewAction" method="shenheOrgnewNo">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="returnOrgnewCreate" class="orgnewAction" method="returnOrgnewCreate">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnewCreateOne" class="orgnewAction" method="returnOrgnewCreateOne">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnewCode" class="orgnewAction" method="returnOrgnewCode">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="returnOrgnewPrint" class="orgnewAction" method="returnOrgnewPrint">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnewDo" class="orgnewAction" method="returnOrgnewDo">
+			<result type="json">
+				<param name="includeProperties">success,state</param>
+			</result>
+		</action>
+		<action name="saveOrgnewModify" class="orgnewAction" method="saveOrgnewModify">
+			<param name="allowedTypes">image/png,image/gif,image/jpeg,image/pjpeg</param>
+			<param name="savePath">uploads/cover/</param>
+			<param name="maxWidthSize">1240</param>
+			<param name="maxHeightSize">1754</param>
+			<result name="success">main/out.jsp</result>
+			<result name="input">main/out.jsp</result>
+		</action>
+		<action name="returnOrgnewModify" class="orgnewAction" method="returnOrgnewModify">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnOrgnewGo" class="orgnewAction" method="returnOrgnewGo">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="saveOrgnewCode" class="orgnewAction" method="saveOrgnewCode">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="updateDybzByOrgid" class="orgnewAction" method="updateDybzByOrgid">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<!-- 机构代码正式库 -->
+		<action name="findAllTjgdm" class="tjgdmAction" method="findAllTjgdm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllTjgdmByJgdm" class="tjgdmAction" method="findAllTjgdmByJgdm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllPrintTjgdm" class="tjgdmAction" method="findAllPrintTjgdm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findPrintCount" class="tjgdmAction" method="findPrintCount">
+			<result type="json">
+				<param name="includeProperties">success,prtCount</param>
+			</result>
+		</action>
+		<action name="returnTjgdmPrint" class="tjgdmAction" method="returnTjgdmPrint">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnTjgdmPrintSH" class="tjgdmAction" method="returnTjgdmPrintSH">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnTjgdmSnqc" class="tjgdmAction" method="returnTjgdmSnqc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="tjgdmViewImg" class="tjgdmAction" method="tjgdmViewImg">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="returnTjgdmGzsq" class="tjgdmAction" method="returnTjgdmGzsq">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="returnTjgdmNo" class="tjgdmAction" method="returnTjgdmNo">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnTjgdmOk" class="tjgdmAction" method="returnTjgdmOk">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="returnTjgdmFeizhiHuifuSq" class="tjgdmAction" method="returnTjgdmFeizhiHuifuSq">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="returnTjgdmFeizhiHuifu" class="tjgdmAction" method="returnTjgdmFeizhiHuifu">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="findTjgdmByCode" class="tjgdmAction" method="findTjgdmByCode">
+			<result type="json">
+				<param name="root">tjgdm</param>
+			</result>
+		</action>
+		
+		<action name="findTjgdmByDmmd" class="tjgdmAction" method="findTjgdmByDmmd">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+			
+		<!-- 档案库 -->
+		<action name="findDfile" class="dfileAction" method="findDfile">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findQxDfile" class="dfileAction" method="findQxDfile">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findDfileCount" class="dfileAction" method="findDfileCount">
+			<result type="json">
+				<param name="includeProperties">success,dfileCount</param>
+			</result>
+		</action>
+		
+		<action name="findDfileGjQuery" class="dfileAction" method="findDfileGjQuery">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findArchive" class="dfileAction" method="findArchive">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findArchiveGjQuery" class="dfileAction" method="findArchiveGjQuery">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllDfile" class="dfileAction" method="findAllDfile">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllDfileGjQuery" class="dfileAction" method="findAllDfileGjQuery">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findAllDfileZuheQuery" class="dfileAction" method="findAllDfileZuheQuery">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,userid,stateConditions,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="saveDfile" class="dfileAction" method="saveDfile">
+			<result type="json">
+				<param name="includeProperties">success,orgid</param>
+			</result>
+		</action>
+		
+		
+		<action name="saveArchive" class="dfileAction" method="saveArchive">
+			<result type="json">
+				<param name="includeProperties">success,orgid</param>
+			</result>
+		</action>
+		
+		<action name="deleteDfile" class="dfileAction" method="deleteDfile">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		
+		<action name="updateDfile" class="dfileAction" method="updateDfile">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="updateDfileOk" class="dfileAction" method="updateDfileOk">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="updateArchiveNO" class="dfileAction" method="updateArchiveNO">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		
+		<!-- 保存图像 为文件 -->
+		<action name="saveImageDfile" class="dfileAction" method="saveImageDfile">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<!-- 读取图像 -->
+		<action name="dfileViewImg" class="dfileAction" method="dfileViewImg">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 读取图像 -->
+		<action name="dfileViewImg2" class="dfileAction" method="dfileViewImg2">
+			<param name="savePath">D:/FTPServer/</param>
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,orgid,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 系统用户管理 -->
+		<action name="saveUser" class="userAction" method="saveUser">
+			<result type="json">
+				<param name="includeProperties">success,userId</param>
+			</result>
+		</action>
+		
+		<action name="deleteUser" class="userAction" method="deleteUser">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateUser" class="userAction" method="updateUser">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="midifyUser" class="userAction" method="midifyUser">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllUser" class="userAction" method="findAllUser">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findUserByExample" class="userAction" method="findUserByExample">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="login" class="userAction" method="login">
+			<result>main/manager_index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+		
+		<action name="logout" class="userAction" method="logout">
+			<result type="redirect">index.jsp</result>
+		</action>
+		
+		<action name="regUser" class="userAction" method="regUser">
+			<result>index.jsp</result>
+			<result name="input">userRegister.jsp</result>
+		</action>
+		<action name="updateUserPwd" class="userAction" method="updateUserPwd">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<!-- 机构普通用户管理 -->
+		<action name="saveZuser" class="zuserAction" method="saveZuser">
+			<result>userRegisterOk.jsp</result>
+			<result name="input">index.jsp</result>
+			
+			<result type="json">
+				<param name="includeProperties">success,userId</param>
+			</result>
+		</action>
+		<action name="deleteZuser" class="zuserAction" method="deleteZuser">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateZuser" class="zuserAction" method="updateZuser">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllZuser" class="zuserAction" method="findAllZuser">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findZuserByExample" class="zuserAction" method="findZuserByExample">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="zlogin" class="zuserAction" method="zlogin">
+			<result>main/manager_index.jsp</result>
+			<result name="input">index.jsp</result>
+		</action>
+		<action name="zlogout" class="zuserAction" method="zlogout">
+			<result type="redirect">index.jsp</result>
+		</action>
+		<action name="regZuser" class="zuserAction" method="regZuser">
+			<result>index.jsp</result>
+			<result name="input">userRegister.jsp</result>
+		</action>
+		<action name="returnZuserOk" class="zuserAction" method="returnZuserOk">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+
+		<!-- 职务管理 -->
+		<action name="saveDuty" class="dutyAction" method="saveDuty">
+			<result type="json">
+				<param name="includeProperties">success,dutyId</param>
+			</result>
+		</action>
+		<action name="deleteDuty" class="dutyAction" method="deleteDuty">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateDuty" class="dutyAction" method="updateDuty">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="qxDuty" class="dutyAction" method="qxDuty">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllDuty" class="dutyAction" method="findAllDuty">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 职务管理 -->
+		<action name="saveFunc" class="funcAction" method="saveFunc">
+			<result type="json">
+				<param name="includeProperties">success,funcId</param>
+			</result>
+		</action>
+		<action name="deleteFunc" class="funcAction" method="deleteFunc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateFunc" class="funcAction" method="updateFunc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllFunc" class="funcAction" method="findAllFunc">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 行政区划管理 -->
+		<action name="saveXzqh" class="xzqhAction" method="saveXzqh">
+			<result type="json">
+				<param name="includeProperties">success,xzqhId</param>
+			</result>
+		</action>
+		<action name="deleteXzqh" class="xzqhAction" method="deleteXzqh">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateXzqh" class="xzqhAction" method="updateXzqh">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+
+		<action name="findAllXzqh" class="xzqhAction" method="findAllXzqh">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionXzqh" class="xzqhAction" method="findAllByConditionXzqh">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findXzqhNameByXzqhCode" class="xzqhAction" method="findXzqhNameByXzqhCode">
+			<result type="json">
+				<param name="includeProperties">xzqhName</param>
+			</result>
+		</action>		
+		
+		<!-- 字典主题  管理 -->
+		<action name="saveDictIndex" class="dictIndexAction" method="saveDictIndex">
+			<result type="json">
+				<param name="includeProperties">success,dutyId</param>
+			</result>
+		</action>
+		<action name="deleteDictIndex" class="dictIndexAction" method="deleteDictIndex">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateDictIndex" class="dictIndexAction" method="updateDictIndex">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllDictIndex" class="dictIndexAction" method="findAllDictIndex">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+
+		<!-- 字典 分类管理 -->
+		<action name="saveDictDetail" class="dictDetailAction" method="saveDictDetail">
+			<result type="json">
+				<param name="includeProperties">success,deptId</param>
+			</result>
+		</action>
+		<action name="deleteDictDetail" class="dictDetailAction" method="deleteDictDetail">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateDictDetail" class="dictDetailAction" method="updateDictDetail">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllDictDetail" class="dictDetailAction" method="findAllDictDetail">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllDictDetailName" class="dictDetailAction" method="findAll">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllBySubjectid" class="dictDetailAction" method="findAllBySubjectid">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findByCategoryid" class="dictDetailAction" method="findByCategoryid">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findDictDetailByDictIndex" class="dictDetailAction" method="findDictDetailByDictIndex">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,totalProperty,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findDictCodeByName" class="dictDetailAction" method="findDictCodeByName">
+			<result type="json">
+				<param name="root">dictDetail</param>
+			</result>
+		</action>	
+			
+       <!-- 全部办证机构维护 -->
+		<action name="saveBzjgall" class="bzjgallAction" method="saveBzjgall">
+			<result type="json">
+				<param name="includeProperties">success,bzjgid</param>
+			</result>
+		</action>
+		<action name="deleteBzjgall" class="bzjgallAction" method="deleteBzjgall">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateBzjgall" class="bzjgallAction" method="updateBzjgall">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+
+		<action name="findAllBzjgall" class="bzjgallAction" method="findAllBzjgall">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionBzjgall" class="bzjgallAction" method="findAllByConditionBzjgall">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 批准机构管理 -->
+		<action name="savePzjg" class="pzjgAction" method="savePzjg">
+			<result type="json">
+				<param name="includeProperties">success,bzjgid</param>
+			</result>
+		</action>
+		<action name="deletePzjg" class="pzjgAction" method="deletePzjg">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updatePzjg" class="pzjgAction" method="updatePzjg">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllPzjg" class="pzjgAction" method="findAllPzjg">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionPzjg" class="pzjgAction" method="findAllByConditionPzjg">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findPzjgNameByCode" class="pzjgAction" method="findPzjgNameByCode">
+			<result type="json">
+				<param name="root">pzjg</param>
+			</result>
+		</action>	
+		
+		<!-- 系统参数设置 -->
+		<action name="saveSysConfig" class="sysConfigAction" method="saveSysConfig">
+			<result type="json">
+				<param name="includeProperties">success,configId</param>
+			</result>
+		</action>
+		<action name="deleteSysConfig" class="sysConfigAction" method="deleteSysConfig">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateSysConfig" class="sysConfigAction" method="updateSysConfig">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllSysConfig" class="sysConfigAction" method="findAllSysConfig">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionSysConfig" class="sysConfigAction" method="findAllByConditionSysConfig">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findConfigValueByCode" class="sysConfigAction" method="findConfigValueByCode">
+			<result type="json">
+				<param name="includeProperties">configValue</param>
+			</result>
+		</action>
+		
+		<!-- 办证机构管理 -->
+		<action name="saveBzjg" class="bzjgAction" method="saveBzjg">
+			<result type="json">
+				<param name="includeProperties">success,bzjgId</param>
+			</result>
+		</action>
+		<action name="deleteBzjg" class="bzjgAction" method="deleteBzjg">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateBzjg" class="bzjgAction" method="updateBzjg">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllBzjg" class="bzjgAction" method="findAllBzjg">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findBzjgByCenter" class="bzjgAction" method="findBzjgByCenter">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,totalProperty,objCondition</param>
+			</result>
+		</action>
+
+
+		<!-- 分中心管理 -->
+		<action name="saveCenter" class="centerAction" method="saveCenter">
+			<result type="json">
+				<param name="includeProperties">success,centerId</param>
+			</result>
+		</action>
+		<action name="deleteCenter" class="centerAction" method="deleteCenter">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateCenter" class="centerAction" method="updateCenter">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllCenter" class="centerAction" method="findAllCenter">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllCenterName" class="centerAction" method="findAll">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<!-- 主管部门管理 -->
+		<action name="findAllZgbm" class="zgbmAction" method="findAllZgbm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionZgbm" class="zgbmAction" method="findAllByConditionZgbm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findZgjgNameByCode" class="zgbmAction" method="findZgjgNameByCode">
+			<result type="json">
+				<param name="includeProperties">zgjgmc</param>
+			</result>
+		</action>
+		
+		
+		<!-- 机构类型管理 -->
+		<action name="saveJglx" class="jglxAction" method="saveJglx">
+			<result type="json">
+				<param name="includeProperties">success,jglxid</param>
+			</result>
+		</action>
+		<action name="deleteJglx" class="jglxAction" method="deleteJglx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateJglx" class="jglxAction" method="updateJglx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+
+		<action name="findAllJglx" class="jglxAction" method="findAllJglx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionJglx" class="jglxAction" method="findAllByConditionJglx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findJglxNameByCode" class="jglxAction" method="findJglxNameByCode">
+			<result type="json">
+				<param name="root">jglx</param>
+			</result>
+		</action>
+		
+		
+		<!-- 经济类型管理 -->
+		<action name="saveJjlx" class="jjlxAction" method="saveJjlx">
+			<result type="json">
+				<param name="includeProperties">success,jjlxid</param>
+			</result>
+		</action>
+		<action name="deleteJjlx" class="jjlxAction" method="deleteJjlx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateJjlx" class="jjlxAction" method="updateJjlx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllJjlx" class="jjlxAction" method="findAllJjlx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionJjlx" class="jjlxAction" method="findAllByConditionJjlx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findJjlxNameByCode" class="jjlxAction" method="findJjlxNameByCode">
+			<result type="json">
+				<param name="root">jjlx</param>
+			</result>
+		</action>
+		
+		<!-- 行业类型管理 -->
+		<action name="saveHylx" class="hylxAction" method="saveHylx">
+			<result type="json">
+				<param name="includeProperties">success,hylxid</param>
+			</result>
+		</action>
+		<action name="deleteJjlx" class="hylxAction" method="deleteHylx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateHylx" class="hylxAction" method="updateHylx">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+
+		<action name="findAllHylx" class="hylxAction" method="findAllHylx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">totalProperty,conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findAllByConditionHylx" class="hylxAction" method="findAllByConditionHylx">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findHylxNameByCode" class="hylxAction" method="findHylxNameByCode">
+			<result type="json">
+				<param name="root">hylx</param>
+			</result>
+		</action>	
+	
+		
+		<!-- 业务权限的色设置 -->
+		<action name="saveYwset" class="ywsetAction" method="saveYwset">
+			<result type="json">
+				<param name="includeProperties">success,ywsetId</param>
+			</result>
+		</action>
+		<action name="deleteYwset" class="ywsetAction" method="deleteYwset">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateYwset" class="ywsetAction" method="updateYwset">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllYwset" class="ywsetAction" method="findAllYwset">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		
+		
+		<action name="findAllPrintLog" class="printLogAction" method="findAllPrintLog">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="savePrintLog" class="printLogAction" method="savePrintLog">
+			<result type="json">
+				<param name="includeProperties">success,logId</param>
+			</result>
+		</action>
+		<action name="updatePrintLog" class="printLogAction" method="updatePrintLog">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		
+		<action name="findZslyByZsbh" class="zslyAction" method="findZslyByZsbh">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="saveZsly" class="zslyAction" method="saveZsly">
+			<result name="success">zsbhInputPage.jsp?succes=true</result>
+			<result name="input">zsbhInputPage.jsp?succes=false</result>
+		</action>
+		<action name="updateZsly" class="zslyAction" method="updateZsly">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		
+		<action name="saveZssc" class="zsscAction" method="saveZssc">
+			<result type="json">
+				<param name="includeProperties">success,id</param>
+			</result>
+		</action>
+		<action name="deleteZssc" class="zsscAction" method="deleteZssc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateZssc" class="zsscAction" method="updateZssc">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllZssc" class="zsscAction" method="findAllZssc">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findZsscByCenter" class="zsscAction" method="findZsscByCenter">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,totalProperty,objCondition</param>
+			</result>
+		</action>
+		
+		
+		<action name="saveTsfm" class="tsfmAction" method="saveTsfm">
+			<result type="json">
+				<param name="includeProperties">success,id,errMsg</param>
+			</result>
+		</action>
+		<action name="deleteTsfm" class="tsfmAction" method="deleteTsfm">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateTsfm" class="tsfmAction" method="updateTsfm">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllTsfm" class="tsfmAction" method="findAllTsfm">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findTsfmByCenter" class="tsfmAction" method="findTsfmByCenter">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,totalProperty,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findCardPrintSet" class="printSetAction" method="findCardPrintSet">
+			<result type="json">
+				<param name="root">printset</param>
+			</result>
+		</action>
+		<action name="saveCardPrintSet" class="printSetAction" method="saveCardPrintSet">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="saveICKxlh" class="icPrintLogAction" method="saveICKxlh">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllIcPrintLog" class="icPrintLogAction" method="findAllIcPrintLog">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="lossOrRecoverIC" class="icPrintLogAction" method="lossOrRecoverIC">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="getSign" class="signAction" method="getSign">
+			<result type="json">
+				<param name="includeProperties">re,errorMessage</param>
+			</result>
+		</action>
+		
+		<action name="saveBzjgYwSet" class="qxAction" method="saveBzjgYwSet">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="delBzjgYwSet" class="qxAction" method="delBzjgYwSet">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findByBzjgCode" class="qxAction" method="findByBzjgCode">
+			<result type="json">
+				<param name="root">ywCodes</param>
+			</result>
+		</action>
+		
+		<action name="saveCodeManage" class="codeManageAction" method="saveCodeManage">
+			<result type="json">
+				<param name="includeProperties">success,id</param>
+			</result>
+		</action>
+		<action name="deleteCodeManage" class="codeManageAction" method="deleteCodeManage">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="updateCodeManage" class="codeManageAction" method="updateCodeManage">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		<action name="findAllCodeManage" class="codeManageAction" method="findAllCodeManage">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="findCodeManageByCenter" class="codeManageAction" method="findCodeManageByCenter">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,totalProperty,objCondition</param>
+			</result>
+		</action>
+		
+		<action name="findCodeByDmmd" class="codeDetailAction" method="findCodeByDmmd">
+			<result type="json">
+				<param name="root">page</param>
+				<param name="excludeProperties">conditions,limit,start,success,objCondition</param>
+			</result>
+		</action>
+		<action name="saveCodeDetail" class="codeDetailAction" method="saveCodeDetail">
+			<result name="success">zsbhInputPage.jsp?succes=true</result>
+			<result name="input">zsbhInputPage.jsp?succes=false</result>
+		</action>
+		<action name="updateCodeDetail" class="codeDetailAction" method="updateCodeDetail">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="findByHandleDate" class="reportAction" method="findByHandleDate">
+			<result type="json">
+				<param name="root">con</param>
+			</result>
+		</action>
+		
+		<action name="findXzqhYwReport" class="reportAction" method="findXzqhYwReport">
+			<result type="json">
+				<param name="root">con</param>
+			</result>
+		</action>
+		
+		<action name="UploadImg" class="leafHelpAction" method="uploadImg">
+			<param name="allowedTypes">image/png,image/gif,image/jpeg,image/tif,image/pjpeg</param>
+		</action>
+		<action name="saveLeafHelp" class="leafHelpAction" method="saveLeafHelp">
+			<result type="json">
+				<param name="includeProperties">success</param>
+			</result>
+		</action>
+		
+		<action name="checkArchive" class="checkArchiveAction" method="checkArchive">
+			<result type="json">
+				<param name="root">ca</param>
+			</result>
+		</action>
+		
+	</package>
+</struts>

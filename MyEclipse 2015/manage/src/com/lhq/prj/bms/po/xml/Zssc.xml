@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Zssc">
+
+	<typeAlias alias="center" type="com.lhq.prj.bms.po.Center" />
+	<typeAlias alias="zssc" type="com.lhq.prj.bms.po.Zssc" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="zssc" id="pm_zssc_without_id">
+		<parameter property="qsbh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jzbh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zssl" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="zstype" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fpbzjg" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="flag" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="lrsj" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="note" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byZsscIdCondition">
+		<![CDATA[
+		   id = #id:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_zssc_without_id">
+		<![CDATA[
+			INSERT INTO z_zssc 
+						(qsbh,jzbh,zssl,zstype,fpbzjg,flag,lrsj,note) 
+				 VALUES (?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_zssc
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byZsscIdCondition" />
+		</dynamic>
+	</delete>
+
+	<select id="findAll" resultClass="zssc">
+		<![CDATA[
+			SELECT * FROM z_zssc
+		]]>
+	</select>
+
+	<update id="update" parameterClass="zssc">
+		<![CDATA[
+			UPDATE z_zssc
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="qsbh" prepend=",">
+				<![CDATA[
+					qsbh = #qsbh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jzbh" prepend=",">
+				<![CDATA[
+					jzbh = #jzbh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zssl" prepend=",">
+				<![CDATA[
+					zssl = #zssl:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="zstype" prepend=",">
+				<![CDATA[
+					zstype = #zstype:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fpbzjg" prepend=",">
+				<![CDATA[
+					fpbzjg = #fpbzjg:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="flag" prepend=",">
+				<![CDATA[
+					flag = #flag:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="lrsj" prepend=",">
+				<![CDATA[
+					lrsj = #lrsj:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byZsscIdCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findZsscByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(qsbh)<=upper(#conditions[]:VARCHAR#)
+					and upper(jzbh)>=upper(#conditions[]:VARCHAR#)
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<sql id="findZsscByBzjgdm">
+		<isNotNull property="bzjgdm" prepend="and">
+			<![CDATA[
+				fpbzjg = #bzjgdm:VARCHAR#
+			]]>
+		</isNotNull>
+	</sql>
+	
+	<sql id="findByWherestring">
+		<![CDATA[
+			1=1
+		]]>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="zssc">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_zssc 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_zssc 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByBzjgdm" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByBzjgdm" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_zssc 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findZsscByBzjgdm" />
+		</dynamic>
+	</select>
+
+	<select id="findZsscByCenter" parameterClass="center" resultClass="zssc">
+		<![CDATA[
+			SELECT * FROM z_zssc 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="fpbzjg" prepend="OR">
+				<![CDATA[
+					fpbzjg = #fpbzjg:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+	</select>
+</sqlMap>

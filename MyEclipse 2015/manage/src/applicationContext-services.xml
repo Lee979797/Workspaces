@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean id="dutyService" class="com.lhq.prj.bms.service.impl.DutyService">
+		<property name="dutyDao" ref="dutyDao" />
+	</bean>
+	<bean id="funcService" class="com.lhq.prj.bms.service.impl.FuncService">
+		<property name="funcDao" ref="funcDao" />
+	</bean>
+	<bean id="userService" class="com.lhq.prj.bms.service.impl.UserService">
+		<property name="userDao" ref="userDao" />
+		<property name="sysConfigDao" ref="sysConfigDao" />
+		<property name="ywsetDao" ref="ywsetDao" />
+		<property name="jglxDao" ref="jglxDao" />
+	</bean>
+	<bean id="zuserService" class="com.lhq.prj.bms.service.impl.ZuserService">
+		<property name="zuserDao" ref="zuserDao" />
+		<property name="orgnewDao" ref="orgnewDao"/>
+		<property name="tjgdmDao" ref="tjgdmDao"/>
+		<property name="pzjgDao" ref="pzjgDao" />
+	</bean>
+	<bean id="xzqhService" class="com.lhq.prj.bms.service.impl.XzqhService">
+		<property name="xzqhDao" ref="xzqhDao" />
+	</bean>
+	<bean id="tjgdmService" class="com.lhq.prj.bms.service.impl.TjgdmService">
+		<property name="tjgdmDao" ref="tjgdmDao" />
+		<property name="printLogDao" ref="printLogDao" />
+	</bean>
+	<bean id="orgnewService" class="com.lhq.prj.bms.service.impl.OrgnewService">
+		<property name="orgnewDao" ref="orgnewDao" />
+		<property name="dfileDao" ref="dfileDao"/>
+		<property name="zuserDao" ref="zuserDao" />
+		<property name="pzjgDao" ref="pzjgDao" />
+		<property name="ywsetDao" ref="ywsetDao" />
+		<property name="printLogDao" ref="printLogDao" />
+		<property name="tjgdmDao" ref="tjgdmDao" />
+	</bean>
+	<bean id="loanLogService" class="com.lhq.prj.bms.service.impl.LoanLogService">
+		<property name="loanLogDao" ref="loanLogDao" />
+		<property name="orgnewDao" ref="orgnewDao"/>
+	</bean>
+	<bean id="dfileService" class="com.lhq.prj.bms.service.impl.DfileService">
+		<property name="dfileDao" ref="dfileDao" />
+		<property name="zuserDao" ref="zuserDao" />
+		<property name="bzjgDao" ref="bzjgDao" />
+		<property name="tjgdmDao" ref="tjgdmDao"/>
+	</bean>
+	
+	<bean id="dictIndexService" class="com.lhq.prj.bms.service.impl.DictIndexService">
+		<property name="dictIndexDao" ref="dictIndexDao" />
+	</bean>
+	<bean id="dictDetailService" class="com.lhq.prj.bms.service.impl.DictDetailService">
+		<property name="dictDetailDao" ref="dictDetailDao" />
+	</bean>
+	<bean id="bzjgallService" class="com.lhq.prj.bms.service.impl.BzjgallService">
+		<property name="bzjgallDao" ref="bzjgallDao" />
+	</bean>
+	
+	<bean id="pzjgService" class="com.lhq.prj.bms.service.impl.PzjgService">
+		<property name="pzjgDao" ref="pzjgDao" />
+	</bean>
+	<bean id="sysConfigService" class="com.lhq.prj.bms.service.impl.SysConfigService">
+		<property name="sysConfigDao" ref="sysConfigDao" />
+	</bean>
+	<bean id="centerService" class="com.lhq.prj.bms.service.impl.CenterService">
+		<property name="centerDao" ref="centerDao" />
+	</bean>
+	<bean id="bzjgService" class="com.lhq.prj.bms.service.impl.BzjgService">
+		<property name="bzjgDao" ref="bzjgDao" />
+	</bean>
+	<bean id="jglxService" class="com.lhq.prj.bms.service.impl.JglxService">
+		<property name="jglxDao" ref="jglxDao" />
+	</bean>
+	<bean id="jjlxService" class="com.lhq.prj.bms.service.impl.JjlxService">
+		<property name="jjlxDao" ref="jjlxDao" />
+	</bean>
+	<bean id="hylxService" class="com.lhq.prj.bms.service.impl.HylxService">
+		<property name="hylxDao" ref="hylxDao" />
+	</bean>
+	<bean id="ywsetService" class="com.lhq.prj.bms.service.impl.YwsetService">
+		<property name="ywsetDao" ref="ywsetDao" />
+		<property name="sysConfigDao" ref="sysConfigDao" />
+	</bean>
+	<bean id="printLogService" class="com.lhq.prj.bms.service.impl.PrintLogService">
+		<property name="printLogDao" ref="printLogDao" />
+		<property name="orgnewDao" ref="orgnewDao"/>
+	</bean>
+	
+	<bean id="zgbmService" class="com.lhq.prj.bms.service.impl.ZgbmService">
+		<property name="zgbmDao" ref="zgbmDao" />
+	</bean>
+	<bean id="zslyService" class="com.lhq.prj.bms.service.impl.ZslyService">
+		<property name="zslyDao" ref="zslyDao" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="zsscService" class="com.lhq.prj.bms.service.impl.ZsscService">
+		<property name="zsscDao" ref="zsscDao" />
+		<property name="zslyDao" ref="zslyDao" />
+	</bean>
+	<bean id="tsfmService" class="com.lhq.prj.bms.service.impl.TsfmService">
+		<property name="tsfmDao" ref="tsfmDao" />
+		<property name="tjgdmDao" ref="tjgdmDao" />
+	</bean>
+	<bean id="printSetService" class="com.lhq.prj.bms.service.impl.PrintSetService">
+		<property name="printSetDao" ref="printSetDao" />
+	</bean>
+	<bean id="icPrintLogService" class="com.lhq.prj.bms.service.impl.IcPrintLogService">
+		<property name="icPrintLogDao" ref="icPrintLogDao" />
+	</bean>
+	<bean id="signService" class="com.lhq.prj.bms.service.impl.SignService"></bean>
+	<bean id="qxService" class="com.lhq.prj.bms.service.impl.QxService">
+		<property name="qxDao" ref="qxDao" />
+	</bean>
+	<bean id="codeDetailService" class="com.lhq.prj.bms.service.impl.CodeDetailService">
+		<property name="codeDetailDao" ref="codeDetailDao" />
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="codeManageService" class="com.lhq.prj.bms.service.impl.CodeManageService">
+		<property name="codeManageDao" ref="codeManageDao" />
+		<property name="codeDetailDao" ref="codeDetailDao" />
+	</bean>
+	<bean id="reportService" class="com.lhq.prj.bms.service.impl.ReportService">
+		<property name="reportDao" ref="reportDao" />
+		<property name="bzjgDao" ref="bzjgDao" />
+	</bean>
+	<bean id="leafHelpService" class="com.lhq.prj.bms.service.impl.LeafHelpService">
+		<property name="leafHelpDao" ref="leafHelpDao" />
+	</bean>
+	<bean id="checkArchiveService" class="com.lhq.prj.bms.service.impl.CheckArchiveService">
+		<property name="orgnewDao" ref="orgnewDao"/>
+		<property name="tjgdmDao" ref="tjgdmDao"/>
+	</bean>
+</beans>

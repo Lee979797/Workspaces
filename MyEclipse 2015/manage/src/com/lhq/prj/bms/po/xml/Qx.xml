@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Qx">
+
+	<typeAlias alias="qx" type="com.lhq.prj.bms.po.Qx" />
+
+	<parameterMap class="qx" id="pm_qx_without_id">
+		<parameter property="bzjgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywlxCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="shbz" javaType="integer" jdbcType="NUMBER" />
+	</parameterMap>
+	<sql id="byBzjgCodeCondition">
+		<![CDATA[
+		   bzjgCode = #bzjgCode:VARCHAR#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_qx_without_id">
+		<![CDATA[
+			INSERT INTO z_bzjg_yw 
+						(bzjgCode,ywlxCode,ywlx,shbz) 
+				 VALUES (?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteByBzjgCode" parameterClass="qx">
+		<![CDATA[
+			delete z_bzjg_yw
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byBzjgCodeCondition" />
+		</dynamic>
+	</delete>
+	
+	<select id="findByBzjgCode" parameterClass="qx" resultClass="qx">
+		<![CDATA[
+			SELECT * from z_bzjg_yw  WHERE bzjgCode = #bzjgCode:VARCHAR#
+		]]>
+	</select>
+
+</sqlMap>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Func">
+	<typeAlias alias="func" type="com.lhq.prj.bms.po.Func" />
+	<insert id="save" parameterClass="func">
+		<![CDATA[
+			INSERT INTO z_func (funcName,remark) VALUES (#funcName:VARCHAR#,#remark:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_func WHERE funcId = #funcId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="func">
+		<![CDATA[
+			UPDATE z_func 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="funcName" prepend=",">
+					funcName = #funcName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE funcId = #funcId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="func">
+		<![CDATA[
+			SELECT * FROM z_func where flag=1
+		]]>
+	</select>
+	
+	<sql id="findFuncCodeByCondition">
+		<isNotEmpty property="funcConditions">
+			<iterate property="funcConditions" open="(" close=")" conjunction="OR">
+				<![CDATA[ funcCode=#funcConditions[]:VARCHAR# ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	 <select id="findByFuncCode" parameterClass="page" resultClass="func">
+		<![CDATA[
+			SELECT * FROM z_func where flag=1 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findFuncCodeByCondition" />
+		</dynamic>
+		<![CDATA[
+			order by parentOrderid  
+		]]>
+	</select>
+</sqlMap>

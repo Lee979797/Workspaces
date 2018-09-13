@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xmlns:aop="http://www.springframework.org/schema/aop"   xmlns:tx="http://www.springframework.org/schema/tx"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-2.0.xsd  
+       http://www.springframework.org/schema/aop  http://www.springframework.org/schema/aop/spring-aop-2.0.xsd  
+       http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean name="dutyAction" class="com.lhq.prj.bms.action.DutyAction" scope="prototype">
+		<property name="dutyService" ref="dutyService" />
+	</bean>
+	<bean name="funcAction" class="com.lhq.prj.bms.action.FuncAction" scope="prototype">
+		<property name="funcService" ref="funcService" />
+	</bean>
+	<bean name="userAction" class="com.lhq.prj.bms.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="qxDao" ref="qxDao" />
+		<property name="dutyDao" ref="dutyDao" />
+		<property name="funcDao" ref="funcDao" />
+	</bean>
+	<bean name="zuserAction" class="com.lhq.prj.bms.action.ZuserAction" scope="prototype">
+		<property name="zuserService" ref="zuserService" />
+	</bean>
+	<bean name="xzqhAction" class="com.lhq.prj.bms.action.XzqhAction" scope="prototype">
+		<property name="xzqhService" ref="xzqhService" />
+	</bean>
+	<bean name="orgnewAction" class="com.lhq.prj.bms.action.OrgnewAction" scope="prototype">
+		<property name="orgnewService" ref="orgnewService" />
+		<property name="tjgdmService" ref="tjgdmService" />
+		<property name="codeDetailService" ref="codeDetailService" />
+	</bean>
+    <bean name="tjgdmAction" class="com.lhq.prj.bms.action.TjgdmAction" scope="prototype">
+		<property name="tjgdmService" ref="tjgdmService" />
+	</bean>
+	<bean name="loanLogAction" class="com.lhq.prj.bms.action.LoanLogAction" scope="prototype">
+		<property name="loanLogService" ref="loanLogService" />
+	</bean>
+	<bean name="dfileAction" class="com.lhq.prj.bms.action.DfileAction" scope="prototype">
+		<property name="dfileService" ref="dfileService" />
+	</bean>
+	<bean name="dictIndexAction" class="com.lhq.prj.bms.action.DictIndexAction" scope="prototype">
+		<property name="dictIndexService" ref="dictIndexService" />
+	</bean>
+	<bean name="dictDetailAction" class="com.lhq.prj.bms.action.DictDetailAction" scope="prototype">
+		<property name="dictDetailService" ref="dictDetailService" />
+	</bean>
+	<bean name="bzjgallAction" class="com.lhq.prj.bms.action.BzjgallAction" scope="prototype">
+		<property name="bzjgallService" ref="bzjgallService" />
+	</bean>
+	<bean name="pzjgAction" class="com.lhq.prj.bms.action.PzjgAction" scope="prototype">
+		<property name="pzjgService" ref="pzjgService" />
+	</bean>
+	<bean name="sysConfigAction" class="com.lhq.prj.bms.action.SysConfigAction" scope="prototype">
+		<property name="sysConfigService" ref="sysConfigService" />
+	</bean>
+	<bean name="centerAction" class="com.lhq.prj.bms.action.CenterAction" scope="prototype">
+		<property name="centerService" ref="centerService" />
+	</bean>
+	<bean name="bzjgAction" class="com.lhq.prj.bms.action.BzjgAction" scope="prototype">
+		<property name="bzjgService" ref="bzjgService" />
+	</bean>
+	
+	<bean name="jglxAction" class="com.lhq.prj.bms.action.JglxAction" scope="prototype">
+		<property name="jglxService" ref="jglxService" />
+	</bean>
+	<bean name="jjlxAction" class="com.lhq.prj.bms.action.JjlxAction" scope="prototype">
+		<property name="jjlxService" ref="jjlxService" />
+	</bean>
+	<bean name="hylxAction" class="com.lhq.prj.bms.action.HylxAction" scope="prototype">
+		<property name="hylxService" ref="hylxService" />
+	</bean>
+	<bean name="ywsetAction" class="com.lhq.prj.bms.action.YwsetAction" scope="prototype">
+		<property name="ywsetService" ref="ywsetService" />
+	</bean>
+	<bean name="printLogAction" class="com.lhq.prj.bms.action.PrintLogAction" scope="prototype">
+		<property name="printLogService" ref="printLogService" />
+	</bean>
+	<bean name="zgbmAction" class="com.lhq.prj.bms.action.ZgbmAction" scope="prototype">
+		<property name="zgbmService" ref="zgbmService" />
+	</bean>
+	<bean name="zslyAction" class="com.lhq.prj.bms.action.ZslyAction" scope="prototype">
+		<property name="zslyService" ref="zslyService" />
+		<property name="orgnewService" ref="orgnewService" />
+	</bean>
+	<bean name="zsscAction" class="com.lhq.prj.bms.action.ZsscAction" scope="prototype">
+		<property name="zsscService" ref="zsscService" />
+	</bean>
+	<bean name="tsfmAction" class="com.lhq.prj.bms.action.TsfmAction" scope="prototype">
+		<property name="tsfmService" ref="tsfmService" />
+	</bean>
+	<bean name="printSetAction" class="com.lhq.prj.bms.action.PrintSetAction" scope="prototype">
+		<property name="printSetService" ref="printSetService" />
+	</bean>
+	<bean name="icPrintLogAction" class="com.lhq.prj.bms.action.IcPrintLogAction" scope="prototype">
+		<property name="icPrintLogService" ref="icPrintLogService" />
+		<property name="orgnewDao" ref="orgnewDao" />
+	</bean>
+	<bean name="signAction" class="com.lhq.prj.bms.action.SignAction" scope="prototype">
+		<property name="signService" ref="signService" />
+	</bean>
+	<bean name="qxAction" class="com.lhq.prj.bms.action.QxAction" scope="prototype">
+		<property name="qxService" ref="qxService" />
+	</bean>
+	<bean name="codeDetailAction" class="com.lhq.prj.bms.action.CodeDetailAction" scope="prototype">
+		<property name="codeDetailService" ref="codeDetailService" />
+		<property name="orgnewService" ref="orgnewService" />
+	</bean>
+	<bean name="codeManageAction" class="com.lhq.prj.bms.action.CodeManageAction" scope="prototype">
+		<property name="codeManageService" ref="codeManageService" />
+	</bean>
+	<bean name="reportAction" class="com.lhq.prj.bms.action.ReportAction" scope="prototype">
+		<property name="reportService" ref="reportService" />
+	</bean>
+	<bean name="leafHelpAction" class="com.lhq.prj.bms.action.LeafHelpAction" scope="prototype">
+		<property name="leafHelpService" ref="leafHelpService" />
+	</bean>
+	<bean name="checkArchiveAction" class="com.lhq.prj.bms.action.CheckArchiveAction" scope="prototype">
+		<property name="checkArchiveService" ref="checkArchiveService" />
+	</bean>
+</beans>

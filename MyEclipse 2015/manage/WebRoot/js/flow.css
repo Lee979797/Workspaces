@@ -1,0 +1,18 @@
+.flow_back {
+	BACKGROUND-POSITION: center 50%; BACKGROUND-IMAGE: url(../images/mainframe/flow_bgpic.gif); BACKGROUND-REPEAT: repeat-x; TEXT-ALIGN: center
+}
+TD {
+	FONT-SIZE: 10pt
+}
+.flow_gray {
+	FONT-SIZE: 9pt; COLOR: #000066; TEXT-DECORATION: none
+}
+A.flow_gray:hover {
+	FONT-SIZE: 9pt; COLOR: #ff0000; TEXT-DECORATION: none
+}
+.flow_hot {
+	FONT-WEIGHT: bold; FONT-SIZE: 9pt; COLOR: #ff0000; TEXT-DECORATION: none
+}
+BODY {
+	SCROLLBAR-FACE-COLOR: #a6d7f5; MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; OVERFLOW: auto; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #d1d7dc; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #efefef; SCROLLBAR-DARKSHADOW-COLOR: #98aab1; BACKGROUND-COLOR: #ffffff
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true" lazyLoadingEnabled="true"
+		maxRequests="32" maxSessions="10" maxTransactions="5" useStatementNamespaces="true" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Duty.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Func.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/User.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Zuser.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/LoanLog.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Xzqh.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Orgnew.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Tjgdm.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Dfile.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Sfwqpz.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/DictIndex.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/DictDetail.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Bzjgall.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Pzjg.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/SysConfig.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Center.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Bzjg.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Jglx.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Jjlx.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Hylx.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Ywset.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/PrintLog.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Zgbm.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Zsly.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Zssc.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Tsfm.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/PrintSet.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/IcPrintLog.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Qx.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/CodeDetail.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/CodeManage.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/Report.xml" />
+	<sqlMap resource="com/lhq/prj/bms/po/xml/LeafHelp.xml" />
+</sqlMapConfig>

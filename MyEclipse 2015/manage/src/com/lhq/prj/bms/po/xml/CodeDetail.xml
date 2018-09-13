@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CodeDetail">
+
+	<typeAlias alias="codeDetail" type="com.lhq.prj.bms.po.CodeDetail" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="codeDetail" id="pm_codeDetail_without_id">
+		<parameter property="jgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zch" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dmlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fumaUsername" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fumaName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fumaDate" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="isFuma" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<insert id="save" parameterMap="pm_codeDetail_without_id">
+		<![CDATA[
+			INSERT INTO z_codeDetail (jgdm,jgmc,zch,dmlx,bzjgdm,fumaUsername,fumaName,fumaDate) VALUES (?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+	
+	<!--存储过程  -->
+	<parameterMap id="CreateCodeOutProcedureMap" class="java.util.Map">
+    	<parameter property="jgmc" mode="IN" />
+    	<parameter property="zch" mode="IN" />
+    	<parameter property="dmlx" mode="IN" />
+    	<parameter property="bzjgdm" mode="IN" />
+    	<parameter property="fumaUsername" mode="IN" />
+    	<parameter property="fumaName" mode="IN" />
+    	<parameter property="isFuma" mode="IN" />
+   	 	<parameter property="code" jdbcType="VARCHAR" mode="OUT" />
+   	 	<parameter property="flag" jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="CreateCodeProcedure" parameterMap="CreateCodeOutProcedureMap">
+       {call z_CreateCode(?,?,?,?,?,?,?,?,?)}
+	</procedure>
+	
+	<delete id="deleteByJgdm" parameterClass="string">
+		<![CDATA[
+			delete z_codeDetail where  jgdm = #jgdm:VARCHAR#
+		]]>
+	</delete>
+	
+	<update id="update" parameterClass="codeDetail">
+		<![CDATA[
+			UPDATE z_codeDetail
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="jgdm" prepend=",">
+				<![CDATA[
+					jgdm = #jgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgmc" prepend=",">
+				<![CDATA[
+					jgmc = #jgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zch" prepend=",">
+				<![CDATA[
+					zch = #zch:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dmlx" prepend=",">
+				<![CDATA[
+					dmlx = #dmlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fumaUsername" prepend=",">
+				<![CDATA[
+					fumaUsername = #fumaUsername:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fumaName" prepend=",">
+				<![CDATA[
+					fumaName = #fumaName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fumaDate" prepend=",">
+				<![CDATA[
+					fumaDate = #fumaDate:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="isFuma" prepend=",">
+				<![CDATA[
+					isFuma = #isFuma:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<![CDATA[
+				jgdm = #jgdm:VARCHAR# and isFuma=0 
+			]]>
+		</dynamic>
+	</update>
+	
+	
+	<sql id="findCodeDetailByPageCondition">
+		<isNotNull property="qsbh" prepend="AND">
+			<![CDATA[
+			  	jgdm >= #qsdm:VARCHAR#
+			]]>
+		</isNotNull>
+		<isNotNull property="jzbh" prepend="AND">
+			<![CDATA[
+			  	jgdm <= #jzdm:VARCHAR# 
+			]]>
+		</isNotNull>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="codeDetail">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_codeDetail 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_codeDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCodeDetailByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findCodeDetailByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_codeDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCodeDetailByPageCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findByJgdm" parameterClass="codeDetail" resultClass="int">
+		<![CDATA[
+			SELECT count(*) FROM z_codeDetail where jgdm = #jgdm:VARCHAR# and isFuma=0
+		]]>
+	</select>
+	
+	 <sql id="findCodeByDmmdPage">
+		<isNotNull property="qsdm" prepend="AND">
+			<![CDATA[
+			  	jgdm >= #qsdm:VARCHAR#
+			]]>
+		</isNotNull>
+		<isNotNull property="jzdm" prepend="AND">
+			<![CDATA[
+			  	jgdm <= #jzdm:VARCHAR# 
+			]]>
+		</isNotNull>
+	</sql>
+	
+	<select id="findByDmmdPage" parameterClass="page" resultClass="codeDetail">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_codeDetail 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_codeDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCodeByDmmdPage" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findCodeByDmmdPage" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByDmmdCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_codeDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCodeByDmmdPage" />
+		</dynamic>
+	</select>
+	
+	<sql id="fingCodeByCodeDetail">
+		<isNotNull property="zch" prepend="OR">
+			<![CDATA[
+			  	zch = #zch:VARCHAR#
+			]]>
+		</isNotNull>
+		<isNotNull property="jgmc" prepend="OR">
+			<![CDATA[
+			  	jgmc = #jgmc:VARCHAR# 
+			]]>
+		</isNotNull>
+	</sql>
+	
+	<select id="createCode" parameterClass="codeDetail" resultClass="codeDetail">
+		<![CDATA[
+			SELECT * FROM z_codeDetail   
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="fingCodeByCodeDetail" />
+		</dynamic>
+	</select>
+	
+
+</sqlMap>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DictDetail">
+
+	<typeAlias alias="dictIndex" type="com.lhq.prj.bms.po.DictIndex" />
+	<typeAlias alias="dictDetail" type="com.lhq.prj.bms.po.DictDetail" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="dictDetail" id="pm_dictDetail_without_id">
+		<parameter property="categoryName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="categoryCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="subjectId" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="subjectName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="remark" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byCategoryIdCondition">
+		<![CDATA[
+		   categoryId = #categoryId:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_dictDetail_without_id">
+		<![CDATA[
+			INSERT INTO z_dictDetail 
+						(categoryName,categoryCode,subjectId,subjectName,remark) 
+				 VALUES (?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_dictDetail
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byCategoryIdCondition" />
+		</dynamic>
+	</delete>
+
+	<select id="findAll" resultClass="dictDetail">
+		<![CDATA[
+			SELECT * FROM z_dictDetail
+		]]>
+	</select>
+
+	<select id="findAllBySubjectid" parameterClass="integer" resultClass="dictDetail">
+		<![CDATA[
+			SELECT * FROM z_dictDetail where subjectId = #subjectId:NUMBER#
+		]]>
+	</select>
+
+	<select id="findByCategoryid" parameterClass="integer" resultClass="dictDetail">
+		<![CDATA[
+			SELECT * FROM z_dictDetail where categoryId = #categoryId:NUMBER#
+		]]>
+	</select>
+	
+	<update id="update" parameterClass="dictDetail">
+		<![CDATA[
+			UPDATE z_dictDetail
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="categoryName" prepend=",">
+				<![CDATA[
+					categoryName = #categoryName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="categoryCode" prepend=",">
+				<![CDATA[
+					categoryCode = #categoryCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="subjectId" prepend=",">
+				<![CDATA[
+					subjectId = #subjectId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="subjectName" prepend=",">
+				<![CDATA[
+					subjectName = #subjectName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byCategoryIdCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findDictDetailByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(categoryName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(subjectName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(remark) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="dictDetail">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_dictDetail 
+					WHERE (categoryId >= (SELECT MAX(categoryId) FROM (SELECT TOP $start$ categoryId FROM z_dictDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findDictDetailByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY categoryId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findDictDetailByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY categoryId
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_dictDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findDictDetailByPageCondition" />
+		</dynamic>
+	</select>
+
+	<select id="findDictDetailByDictIndex" parameterClass="dictIndex" resultClass="dictDetail">
+		<![CDATA[
+			SELECT * FROM z_dictDetail 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="subjectId" prepend="OR">
+				<![CDATA[
+					subjectId = #subjectId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="subjectName" prepend="OR">
+				<![CDATA[
+					subjectName like '%' +  #subjectName:VARCHAR# + '%'
+				]]>
+			</isNotNull>
+		</dynamic>
+	</select>
+</sqlMap>

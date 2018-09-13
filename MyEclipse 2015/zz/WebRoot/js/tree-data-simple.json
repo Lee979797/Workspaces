@@ -1,0 +1,29 @@
+/*[{
+	text : '业务办理',
+	expanded: true,
+	children : [{
+		text:'信息查询',
+		id:'useLicenseAudit-manage',
+		leaf:true
+	}]
+},{
+	text:'用户信息',
+	children:[{
+	  	text:'资料维护',
+	  	id:'useInfoSet-manage',
+	  	leaf:true
+	},{
+	  	text:'密码修改',
+	  	id:'usePwdSet-manage',
+	  	leaf:true
+	}]
+}]*/
+[{
+	text : '业务办理',
+	expanded: true,
+	children : [{
+		text:'信息查询',
+		id:'useLicenseAudit-manage',
+		leaf:true
+	}]
+}]

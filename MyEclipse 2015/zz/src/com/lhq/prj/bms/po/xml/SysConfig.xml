@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SysConfig">
+	<typeAlias alias="sysConfig" type="com.lhq.prj.bms.po.SysConfig" />
+	<insert id="save" parameterClass="sysConfig">
+		<![CDATA[
+			INSERT INTO z_sysconfig (configCode,configName,configValue,note) VALUES (#configCode:VARCHAR#,#configName:VARCHAR#,#configValue:VARCHAR#,#note:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_sysconfig WHERE configId = #configId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="sysConfig">
+		<![CDATA[
+			UPDATE z_sysconfig 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="configCode" prepend=",">
+				<![CDATA[
+					configCode = #configCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="configName" prepend=",">
+				<![CDATA[
+					configName = #configName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="configValue" prepend=",">
+				<![CDATA[
+					configValue = #configValue:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE configId = #configId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="sysConfig">
+		<![CDATA[
+			SELECT * FROM z_sysconfig
+		]]>
+	</select>
+	
+	<sql id="findSysConfigByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(configName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(configCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(configValue) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="sysConfig">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_sysconfig 
+					WHERE (configId >= (SELECT MAX(configId) FROM (SELECT TOP $start$ configId FROM z_sysconfig 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findSysConfigByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY configId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findSysConfigByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY configId
+		]]>
+	</select>
+	
+	<select id="findById" parameterClass="int" resultClass="sysConfig">
+		<![CDATA[
+			SELECT * from z_sysconfig  WHERE configId = #configId:NUMBER#
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_sysconfig 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findSysConfigByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	<select id="findMcByDm" parameterClass="string" resultClass="string">
+		<![CDATA[
+			SELECT pzjgmc from z_sysconfig  WHERE pzjgdm = #pzjgdm:VARCHAR#
+		]]>
+	</select>
+	
+</sqlMap>

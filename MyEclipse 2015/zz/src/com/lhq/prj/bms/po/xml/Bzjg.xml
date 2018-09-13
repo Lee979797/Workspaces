@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bzjg">
+	<typeAlias alias="bzjg" type="com.lhq.prj.bms.po.Bzjg" />
+	<parameterMap class="bzjg" id="pm_bzjg_without_id">
+		<parameter property="bzjgName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgJcName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="centerId" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="centerName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="centerCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="address" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tellPhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="leader" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="mobilePhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="remark" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byBzjgIdCondition">
+		<![CDATA[
+		   bzjgId = #bzjgId:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_bzjg_without_id">
+		<![CDATA[
+			INSERT INTO z_bzjg 
+						(bzjgName,bzjgCode,bzjgJcName,centerId,centerName,centerCode,address,tellPhone,leader,mobilePhone,remark) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_bzjg WHERE bzjgId = #bzjgId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="bzjg">
+		<![CDATA[
+			UPDATE z_bzjg 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="bzjgName" prepend=",">
+				<![CDATA[
+					bzjgName = #bzjgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgCode" prepend=",">
+				<![CDATA[
+					bzjgCode = #bzjgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgJcName" prepend=",">
+				<![CDATA[
+					bzjgJcName = #bzjgJcName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerId" prepend=",">
+				<![CDATA[
+					centerId = #centerId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerName" prepend=",">
+				<![CDATA[
+					centerName = #centerName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerCode" prepend=",">
+				<![CDATA[
+					centerCode = #centerCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="address" prepend=",">
+				<![CDATA[
+					address = #address:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tellPhone" prepend=",">
+				<![CDATA[
+					tellPhone = #tellPhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="leader" prepend=",">
+				<![CDATA[
+					leader = #leader:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mobilePhone" prepend=",">
+				<![CDATA[
+					mobilePhone = #mobilePhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE bzjgId = #bzjgId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="bzjg">
+		<![CDATA[
+			SELECT * FROM z_bzjg
+		]]>
+	</select>
+	
+	<sql id="findBzjgByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(bzjgName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(bzjgCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(centerCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'     
+				]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="bzjg">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_bzjg 
+					WHERE (bzjgid >= (SELECT MAX(bzjgId) FROM (SELECT TOP $start$ bzjgId FROM z_bzjg 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findBzjgByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY bzjgId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findBzjgByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY bzjgId
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_bzjg 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findBzjgByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	<select id="findByBzjgdm" parameterClass="bzjg" resultClass="bzjg">
+		<![CDATA[
+			SELECT * FROM z_bzjg where bzjgCode = #bzjgCode:VARCHAR#
+		]]>
+	</select>
+</sqlMap>

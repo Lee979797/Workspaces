@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	<bean id="companyService" class="com.lhq.prj.bms.service.impl.CompanyService">
+		<property name="companyDao" ref="companyDao" />
+	</bean>
+	<bean id="deptService" class="com.lhq.prj.bms.service.impl.DeptService">
+		<property name="deptDao" ref="deptDao" />
+	</bean>
+	<bean id="dutyService" class="com.lhq.prj.bms.service.impl.DutyService">
+		<property name="dutyDao" ref="dutyDao" />
+	</bean>
+	<bean id="userService" class="com.lhq.prj.bms.service.impl.UserService">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="subjectService" class="com.lhq.prj.bms.service.impl.SubjectService">
+		<property name="subjectDao" ref="subjectDao" />
+	</bean>
+	<bean id="categoryService" class="com.lhq.prj.bms.service.impl.CategoryService">
+		<property name="categoryDao" ref="categoryDao" />
+	</bean>
+	<bean id="bookService" class="com.lhq.prj.bms.service.impl.BookService">
+		<property name="bookDao" ref="bookDao" />
+		<property name="loanLogDao" ref="loanLogDao" />
+	</bean>
+	<bean id="zuserService" class="com.lhq.prj.bms.service.impl.ZuserService">
+		<property name="zuserDao" ref="zuserDao" />
+		<property name="sysConfigDao" ref="sysConfigDao" />
+		<property name="ywsetDao" ref="ywsetDao" />
+	</bean>
+	<bean id="xzqhService" class="com.lhq.prj.bms.service.impl.XzqhService">
+		<property name="xzqhDao" ref="xzqhDao" />
+	</bean>
+	<bean id="orgService" class="com.lhq.prj.bms.service.impl.OrgService">
+		<property name="orgDao" ref="orgDao" />
+		<property name="zuserDao" ref="zuserDao" />
+	</bean>
+	<bean id="orgnewService" class="com.lhq.prj.bms.service.impl.OrgnewService">
+		<property name="orgnewDao" ref="orgnewDao" />
+		<property name="zuserDao" ref="zuserDao" />
+		<property name="tjgdmDao" ref="tjgdmDao" />
+	</bean>
+	<bean id="tjgdmService" class="com.lhq.prj.bms.service.impl.TjgdmService">
+		<property name="tjgdmDao" ref="tjgdmDao" />
+	</bean>
+	<bean id="keylogService" class="com.lhq.prj.bms.service.impl.KeylogService">
+		<property name="keylogDao" ref="keylogDao" />
+	</bean>
+
+	<bean id="loanLogService" class="com.lhq.prj.bms.service.impl.LoanLogService">
+		<property name="loanLogDao" ref="loanLogDao" />
+		<property name="bookDao" ref="bookDao"/>
+	</bean>
+	
+	<bean id="dictIndexService" class="com.lhq.prj.bms.service.impl.DictIndexService">
+		<property name="dictIndexDao" ref="dictIndexDao" />
+	</bean>
+	<bean id="dictDetailService" class="com.lhq.prj.bms.service.impl.DictDetailService">
+		<property name="dictDetailDao" ref="dictDetailDao" />
+	</bean>
+	
+	<bean id="bzjgService" class="com.lhq.prj.bms.service.impl.BzjgService">
+		<property name="bzjgDao" ref="bzjgDao" />
+	</bean>
+	<bean id="pzjgService" class="com.lhq.prj.bms.service.impl.PzjgService">
+		<property name="pzjgDao" ref="pzjgDao" />
+	</bean>
+	
+	<bean id="jglxService" class="com.lhq.prj.bms.service.impl.JglxService">
+		<property name="jglxDao" ref="jglxDao" />
+	</bean>
+	<bean id="jjlxService" class="com.lhq.prj.bms.service.impl.JjlxService">
+		<property name="jjlxDao" ref="jjlxDao" />
+	</bean>
+	
+	<bean id="zgbmService" class="com.lhq.prj.bms.service.impl.ZgbmService">
+		<property name="zgbmDao" ref="zgbmDao" />
+	</bean>
+	<bean id="hylxService" class="com.lhq.prj.bms.service.impl.HylxService">
+		<property name="hylxDao" ref="hylxDao" />
+	</bean>
+	<bean id="sysConfigService" class="com.lhq.prj.bms.service.impl.SysConfigService">
+		<property name="sysConfigDao" ref="sysConfigDao" />
+	</bean>
+	<bean id="ywsetService" class="com.lhq.prj.bms.service.impl.YwsetService">
+		<property name="ywsetDao" ref="ywsetDao" />
+		<property name="sysConfigDao" ref="sysConfigDao" />
+	</bean>
+	<bean id="jgberthService" class="com.lhq.prj.bms.service.impl.JgBerthService">
+		<property name="jgberthDao" ref="jgberthDao" />
+	</bean>
+	<bean id="orgwsrzService" class="com.lhq.prj.bms.service.impl.OrgwsrzService">
+		<property name="orgwsrzDao" ref="orgwsrzDao" />
+	</bean>
+</beans>

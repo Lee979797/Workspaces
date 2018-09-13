@@ -1,0 +1,192 @@
+﻿<HTML>
+<HEAD><TITLE></TITLE>
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<SCRIPT language=javascript src="header_files/constants.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/strUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/pubUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/eventUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/xHttp.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/tableUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/selectUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/divWin.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/divSelect.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/calendar.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/calendar-setup.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/calendar-zh.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/appUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/validate.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/tabUtil.js"></SCRIPT>
+<LINK href="header_files/calendar.css" type=text/css rel=stylesheet><LINK 
+href="header_files/public.css" type=text/css rel=stylesheet><LINK 
+href="header_files/webui.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript>
+  function showMsg()
+  {
+    var obj=PubUtil.findObj("hasShownMsg");
+    if(!obj || obj.value!="0")
+      return;
+    
+    var msg="";
+    if(msg!=null && msg!="" && msg!="&nbsp;" && msg!="null")
+      alert(PubUtil.antiHtmlFilter(msg));
+    obj.value="1";
+  }
+</SCRIPT>
+<LINK href="header_files/system.css" type=text/css rel=stylesheet>
+<SCRIPT language=javascript src="header_files/webtree.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/header.js"></SCRIPT>
+
+<SCRIPT language=javascript src="header_files/sysUtil.js"></SCRIPT>
+
+<SCRIPT language=javascript>
+    function showMsg()
+    {
+      var isBlk=false;
+      if(isBlk)
+        alert("您的密码为空，为安全起见，请及早设置密码!");
+    }
+	//初始化顶部模块组信息
+	function initTopCats()
+	{
+	  topCats[0]=new Category(8,'系统控制中心','');
+
+topCats[1]=new Category(20,'简单学习示例','sysmng.report.do&#63;subSys&#61;demo&amp;repID&#61;1');
+
+topCats[2]=new Category(23,'行业报表示例','');
+
+topCats[3]=new Category(622,'津补贴财务报备系统','');
+
+topCats[4]=new Category(601,'医疗器械注册许可系统','');
+
+topCats[5]=new Category(603,'医疗机构制剂许可系统','');
+
+
+	}
+  </SCRIPT>
+
+<META content="MSHTML 6.00.6000.17112" name=GENERATOR></HEAD>
+<BODY 
+onload="javascript:SysUtil.showDateTime('clock');showMsg();initTopCats();">
+<FORM name=switchUser action=sysmng.switchUser.do method=post target=_parent>
+<DIV>
+<TABLE style="BACKGROUND-POSITION: 50% top; BACKGROUND-REPEAT: repeat-x" 
+height=60 cellSpacing=0 cellPadding=0 width="100%" 
+background=header_files/bg.gif border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE 
+      style="BACKGROUND-POSITION: right top; BACKGROUND-REPEAT: no-repeat" 
+      height=60 cellSpacing=0 cellPadding=0 width="100%" 
+      background=header_files/bg_main.gif border=0>
+        <TBODY>
+        <TR>
+          <TD rowSpan=2><IMG height=50 src="header_files/logo.gif"></TD>
+          <TD><IMG src="header_files/title.gif"></TD>
+          <TD vAlign=top align=right width="100%">
+            <TABLE height=21 cellSpacing=0 cellPadding=0 width=169 
+            bgColor=#000000 border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=bottom align=left width=8><IMG height=4 
+                  src="header_files/left_bottom.gif" width=4></TD>
+                <TD><IMG class=pointer 
+                  onclick="javascript:top.workspace.location='workspace.jsp';" 
+                  height=21 src="header_files/home.gif" width=54 border=0></TD>
+                <TD><A href="http://work.jsfda.cn/manual/manual.zip"><IMG 
+                  class=pointer height=21 src="header_files/help.gif" width=54 
+                  border=0></A></TD>
+                <TD><A onfocus=this.blur(); 
+                  onclick="javascript:if(!confirm('您真的要退出吗？')){return false;}" 
+                  href="http://work.jsfda.cn/sysmng.logout.do" target=_top><IMG 
+                  height=21 src="header_files/exit.gif" width=54 
+border=0></A></TD>
+                <TD vAlign=bottom align=right width=16><IMG height=4 
+                  src="header_files/right_bottom.gif" 
+            width=4></TD></TR></TBODY></TABLE></TD></TR>
+        <TR height=24>
+          <TD vAlign=bottom>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR height=24>
+                <TD><IMG id=catTab_0_1 height=24 
+                  src="header_files/firstLeftSel.gif" width=27></TD>
+                <TD class=modTabSel id=catTab_1 
+                onclick=javascript:clickCatTab(0,1); noWrap 
+align=middle>主菜单</TD>
+                <TD><IMG id=catTab_1_2 height=24 
+                  src="header_files/rightSel.gif" width=22></TD>
+                <TD class=modTab id=catTab_2 
+                onclick=javascript:clickCatTab(8,2); noWrap 
+                align=middle>系统控制中心</TD>
+                <TD><IMG id=catTab_2_3 height=24 src="header_files/right.gif" 
+                  width=22></TD>
+                <TD class=modTab id=catTab_3 
+                onclick=javascript:clickCatTab(20,3); noWrap 
+                  align=middle>简单学习示例</TD>
+                <TD><IMG id=catTab_3_4 height=24 src="header_files/right.gif" 
+                  width=22></TD>
+                <TD class=modTab id=catTab_4 
+                onclick=javascript:clickCatTab(23,4); noWrap 
+                  align=middle>行业报表示例</TD>
+                <TD><IMG id=catTab_4_5 height=24 src="header_files/right.gif" 
+                  width=22></TD>
+                <TD class=modTab id=catTab_5 
+                onclick=javascript:clickCatTab(622,5); noWrap 
+                  align=middle>津补贴财务报备系统</TD>
+                <TD><IMG id=catTab_5_6 height=24 src="header_files/right.gif" 
+                  width=22></TD>
+                <TD class=modTab id=catTab_6 
+                onclick=javascript:clickCatTab(601,6); noWrap 
+                  align=middle>医疗器械注册许可系统</TD>
+                <TD><IMG id=catTab_6_7 height=24 src="header_files/right.gif" 
+                  width=22></TD>
+                <TD class=modTab id=catTab_7 
+                onclick=javascript:clickCatTab(603,7); noWrap 
+                  align=middle>医疗机构制剂许可系统</TD>
+                <TD><IMG id=catTab_7_ height=24 
+                  src="header_files/lastRight.gif" width=22></TD>
+                <TD 
+    width="100%">&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" 
+background=header_files/toolbarBg.gif border=0>
+  <TBODY>
+  <TR height=21>
+    <TD class=hdMsg noWrap>&nbsp;&nbsp;江苏省局：超级管理员 </TD>
+    <TD class=hdMsg noWrap align=middle width="100%">&nbsp;今天是：<SPAN 
+      id=clock>&nbsp;</SPAN></TD>
+    <TD align=right>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR><!--<td><img class="pointer" src="/charisma/images/header/cacheAdmin.gif" width="46" height="21"  onclick="javascript:void(0);" /></td>
+          <td>&nbsp;</td>
+          <td><img src="/charisma/images/public/vSeperator.gif" width="2" height="18" /></td>
+          <td>&nbsp;</td>
+          -->
+          <TD><IMG class=pointer 
+            onclick=javascript:top.workspace.history.go(-1); height=21 
+            src="header_files/back.gif" width=45></TD>
+          <TD>&nbsp;</TD><!--<td><img class="pointer" src="/charisma/images/header/stop.gif" width="49" height="21"  onclick="javascript:top.workspace.stop();" /></td>
+          <td>&nbsp;</td>
+          -->
+          <TD><IMG class=pointer 
+            onclick=javascript:top.workspace.history.go(1); height=21 
+            src="header_files/forward.gif" width=45></TD>
+          <TD 
+  noWrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></FORM></DIV></BODY></HTML>

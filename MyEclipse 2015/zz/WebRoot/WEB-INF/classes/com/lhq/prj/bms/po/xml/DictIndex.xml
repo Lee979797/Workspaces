@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DictIndex">
+	<typeAlias alias="dictIndex" type="com.lhq.prj.bms.po.DictIndex" />
+	<insert id="save" parameterClass="dictIndex">
+		<![CDATA[
+			INSERT INTO z_dictIndex (subjectName,remark) VALUES (#subjectName:VARCHAR#,#remark:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_dictIndex WHERE subjectId = #subjectId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="dictIndex">
+		<![CDATA[
+			UPDATE z_dictIndex 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="subjectName" prepend=",">
+					subjectName = #subjectName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE subjectId = #subjectId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="dictIndex">
+		<![CDATA[
+			SELECT * FROM z_dictIndex
+		]]>
+	</select>
+</sqlMap>

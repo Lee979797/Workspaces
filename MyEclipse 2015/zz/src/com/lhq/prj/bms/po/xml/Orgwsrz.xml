@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Orgwsrz">
+
+	<typeAlias alias="orgwsrz" type="com.lhq.prj.bms.po.Orgwsrz" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="orgwsrz" id="pm_orgwsrz_id">
+		<parameter property="orderid" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="handleDate" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="handleUsername" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="auditDate" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="auditUsername" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="auditNote" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="lrDate" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="lry" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<sql id="byRzidCondition">
+		<![CDATA[
+		   rzid = #rzid:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_orgwsrz_id">
+		<![CDATA[
+			INSERT INTO z_org_wsrz
+						(orderid,jgdm,jgmc,ywlx,handleDate,handleUsername,auditDate,auditUsername,auditNote,lrDate,lry) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+	
+	<sql id="findByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					jgdm = #conditions[]:VARCHAR#
+					or jgmc = #conditions[]:VARCHAR#
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	<sql id="findByWherestring">
+		<![CDATA[
+			1=1
+		]]>
+	</sql>
+	<select id="findByPage" parameterClass="page" resultClass="orgwsrz">
+		<![CDATA[
+			SELECT TOP $limit$  *  FROM z_org_wsrz 
+					WHERE (rzid >= (SELECT MAX(rzid) FROM (SELECT TOP $start$ rzid FROM z_org_wsrz 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findByPageCondition" />
+		</dynamic>
+		
+		<![CDATA[
+			ORDER BY rzid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY rzid
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_org_wsrz 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findByPageCondition" />
+		</dynamic>
+	</select>
+</sqlMap>

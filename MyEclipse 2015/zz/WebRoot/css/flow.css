@@ -1,0 +1,39 @@
+@charset "utf-8";
+.flow_back {
+	background-image:  url("../images/mainframe/flow_bgpic.gif");
+	background-repeat: repeat-x;
+	background-position: center;
+	text-align: center;
+}
+td {
+	font-size: 10pt;
+}
+.flow_gray {
+	font-size: 9pt;
+	color: #000066;
+	text-decoration: none;
+}
+a.flow_gray:hover {
+	font-size: 9pt;
+	color: #FF0000;
+	text-decoration: none;
+}
+.flow_hot {
+	font-size: 9pt;
+	color: #FF0000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+body {
+	background-color: #FFFFFF;
+	margin: 0px;
+	SCROLLBAR-FACE-COLOR: #A6D7F5;
+	SCROLLBAR-HIGHLIGHT-COLOR: #ffffff;
+	SCROLLBAR-SHADOW-COLOR: #ffffff;
+	SCROLLBAR-3DLIGHT-COLOR: #d1d7dc;
+	SCROLLBAR-ARROW-COLOR: #ffffff;
+	SCROLLBAR-TRACK-COLOR: #efefef;
+	SCROLLBAR-DARKSHADOW-COLOR: #98aab1;
+	overflow: auto;
+}

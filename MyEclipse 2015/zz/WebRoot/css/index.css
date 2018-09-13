@@ -1,0 +1,110 @@
+a {
+	color: #15428B;
+}
+
+a:link,a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#header {
+	background: #7F99BE url(/zz/images/layout-browser-hd-bg.gif) repeat-x
+		center;
+	visibility: hidden;
+}
+
+#header h1 {
+	font-size: 26px;
+	font-weight: bold;
+	color: #fff;
+	padding: 5px 10px;
+}
+
+.start-bg {
+	background-image: url(/zz/images/bg.jpg);
+}
+
+.icon-nav {
+	background-image: url(/zz/images/folder_go.png) !important;
+}
+
+.icon-settings {
+	background-image: url(/zz/images/folder_wrench.png) !important;
+}
+.icon-scan {
+	background-image: url(/zz/images/scan.gif) !important;
+}
+.icon-add {
+	background-image: url(/zz/images/add.gif) !important;
+}
+
+.icon-edit {
+	background-image: url(/zz/images/edit.gif) !important;
+}
+
+.icon-del {
+	background-image: url(/zz/images/del.gif) !important;
+}
+
+.icon-print {
+	background-image: url(/zz/images/printer.gif) !important;
+}
+
+.icon-yes {
+	background-image:url(/zz/images/report_yes.gif) !important;
+}
+
+.icon-save {
+	background-image:url(/zz/images/save.gif) !important;
+}
+.icon-report {
+	background-image:url(/zz/images/report.gif) !important;
+}
+.icon-store {
+	background-image:url(/zz/images/store.gif) !important;
+}
+.icon-refresh {
+	background-image:url(/zz/images/refresh.gif) !important;
+}
+.icon-del-gray {
+	background-image: url(/zz/images/del_gray.gif) !important;
+}
+
+.icon-search {
+	background-image: url(/zz/images/search.gif) !important;
+}
+
+.icon-grid {
+	background-image: url(/zz/images/grid.png) !important;
+}
+
+.icon-plugin {
+	background-image: url(/zz/images/plugin.gif) !important;
+}
+
+.icon-delete {
+	background-image: url(/zz/images/delete.gif) !important;
+}
+
+.icon-info {
+	background-image: url(/zz/images/info.gif) !important;
+}
+
+.upload-icon {
+	background: url('/zz/image_add.png') no-repeat 0 0 !important;
+}
+
+/*-----------*/
+.x-grid3-row-body p {
+	margin: 5px 5px 10px 5px !important;
+}
+
+body,td,th {
+	font-family:
+		'Geneva, Arial, Helvetica, sans-serif,lucida grande, tahoma, arial, sans-serif'
+		;
+	font-size: 12px;
+}

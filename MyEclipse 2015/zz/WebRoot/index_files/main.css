@@ -1,0 +1,45 @@
+BODY {
+	FONT-SIZE: 12px; COLOR: #1a7cbd; LINE-HEIGHT: 20px
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #1a7cbd; LINE-HEIGHT: 20px
+}
+TH {
+	FONT-SIZE: 12px; COLOR: #1a7cbd; LINE-HEIGHT: 20px
+}
+A {
+	FONT-SIZE: 12px; COLOR: #1a7cbd
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #1a7cbd; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #006699; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #1a7cbd; TEXT-DECORATION: none
+}
+.t A {
+	FONT-SIZE: 15px; FONT-FAMILY: "ºÚÌå"
+}
+.t A:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.t A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.t A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.t A:active {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.ttt {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #1a7cbd
+}
+.tttt1 {
+	BACKGROUND-IMAGE: url(images/index_13.gif); BACKGROUND-REPEAT: no-repeat
+}

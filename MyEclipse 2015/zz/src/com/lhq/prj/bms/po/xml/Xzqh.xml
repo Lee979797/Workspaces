@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Xzqh">
+	<typeAlias alias="xzqh" type="com.lhq.prj.bms.po.Xzqh" />
+	<insert id="save" parameterClass="xzqh">
+		<![CDATA[
+			INSERT INTO z_xzqh (xzqhCode,xzqhName,xzqhNote) VALUES (#xzqhCode:VARCHAR#,#xzqhName:VARCHAR#,#xzqhNote:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_xzqh WHERE xzqhId = #xzqhId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="xzqh">
+		<![CDATA[
+			UPDATE z_xzqh 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="xzqhCode" prepend=",">
+					xzqhCode = #xzqhCode:VARCHAR#
+			</isNotNull>
+			<isNotNull property="xzqhName" prepend=",">
+				<![CDATA[
+					xzqhName = #xzqhName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="xzqhNote" prepend=",">
+				<![CDATA[
+					xzqhNote = #xzqhNote:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE xzqhId = #xzqhId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="xzqh">
+		<![CDATA[
+			SELECT * FROM z_xzqh
+		]]>
+	</select>
+	
+	<sql id="findXzqhByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(xzqhName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(xzqhCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="xzqh">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_xzqh 
+					WHERE (xzqhId >= (SELECT MAX(xzqhId) FROM (SELECT TOP $start$ xzqhId FROM z_xzqh  
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findXzqhByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY xzqhId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findXzqhByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY xzqhId
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_xzqh 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findXzqhByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	
+</sqlMap>

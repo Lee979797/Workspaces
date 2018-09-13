@@ -1,0 +1,232 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
+<%@ page import="java.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.lhq.prj.bms.po.Ywset" %>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>组织机构代码中心网上办证系统</title>
+		<link rel="shortcut icon" href="/zz/images/favicon.ico"/>
+		<style type="text/css">
+			#loading{
+		        position:absolute;
+		        left:40%;
+		        top:40%;
+		        padding:2px;
+		        z-index:20001;
+		        height:auto;
+		    }
+		    #loading a {
+		        color:#225588;
+		    }
+		    #loading .loading-indicator{
+		        background:white;
+		        color:#444;
+		        font:bold 13px tahoma,arial,helvetica;
+		        padding:10px;
+		        margin:0;
+		        height:auto;
+		    }
+		    #loading-msg {
+		        font: normal 10px arial,tahoma,sans-serif;
+		    }
+		</style>
+		<script type="text/javascript">
+			var currentUserMsg = '当前用户:<s:property value="#session.jgdm"/>';
+			var currentUsername = '<s:property value="#session.jgdm"/>';
+			var currentUser='<s:property value="#session.zuser.userName"/>';
+			var currentJgmc='<s:property value="#session.zuser.orgName"/>';
+			var currentJgdm='<s:property value="#session.jgdm"/>';
+			var currentBzjgdm='<s:property value="#session.bzjgdm"/>';
+			var bfdw='<s:property value="#session.bfdw"/>';
+			//var currentOrgid='<s:property value="#session.currentOrgid"/>';
+			//var currentDocid='<s:property value="#session.currentDocid"/>';
+			//var currentUserid='<s:property value="#session.zuser.getZuserId()"/>';
+			//var userstate= '<s:property value="#session.zuser.state"/>';
+			var sysNjqxDate='<%=application.getAttribute("sysNjqxDate") %>';
+			var sysCaSwitch='<%=application.getAttribute("sysCaSwitch") %>';
+			
+			var sysNetWorkMode='<%=application.getAttribute("sysNetWorkMode") %>';
+			var sysStrYwnetSet='';
+			//sysXcWorkMode,sysStrYwnetSet,sysNetWorkMode,sysStrYwnetSet
+			
+			<%
+			if("1".equals(application.getAttribute("sysNetWorkMode"))){
+				String strYwnet="";
+				List ywnetList = new ArrayList();
+				ywnetList=(List)application.getAttribute("ywnetList");
+				for (int j = 0; j < ywnetList.size(); j++) {
+					Ywset ywset=new Ywset();
+					ywset=(Ywset)ywnetList.get(j);
+					String strYwlx=ywset.getYwlx();
+					String strBzjgdm=ywset.getBzjgdm();	
+					strYwnet=strYwnet+"|"+strYwlx+"|"+strBzjgdm+"|";
+				}
+			%>
+				sysStrYwnetSet='<%=strYwnet %>';
+			<%}%>
+			
+			var nav = '<s:property value="tip"/>';
+			if(nav == '' || nav.length <= 0){
+				location = '/zz/index.jsp';
+			}
+		
+			function LocationReloadPage()
+			{		
+				//返回首页
+				//window.location.reload();http://www.dmedu.org.cn/User/OnlineBusiness/wsywbl.aspx
+				 window.open("http://localhost:8080/zz/index.jsp","_self","",false);
+			}
+			
+			function ReLogin()
+			{		
+				Ext.Msg.confirm('操作提示', '您确定要退出本系统?', function(btn) {
+					if ('yes' == btn) {
+						Ext.Ajax.request({
+							url : 'zlogout.action',
+							success : function() {
+								location = 'http://localhost:8080/zz/index.jsp';
+							},
+							failure : function() {
+								Ext.Msg.show({
+									title : '错误提示',
+									msg : '退出系统失败!',
+									icon : Ext.Msg.ERROR,
+									buttons : Ext.Msg.OK
+								});
+							}
+						});
+					}
+				});
+			}				
+		</script>
+	</head>
+	<body>
+		<div id="loading">
+			<div class="loading-indicator">
+				<img src="/zz/images/loading.gif" width="39" height="39" style="margin-right:8px;float:left;vertical-align:top;" />
+				组织机构代码中心网上办证系统 V1.0
+				<br />
+				<span id="loading-msg">加载样式和图片...</span>
+			</div>
+		</div>
+		<div id="bd">
+			<link rel="stylesheet" type="text/css" media="all" href="/zz/resources/css/ext-all.css" />
+			<link rel="stylesheet" type="text/css" media="all" href="/zz/css/index.css" />
+			<link rel="stylesheet" type="text/css" media="all" href="/zz/css/global.css" />
+			<script type="text/javascript">document.getElementById('loading-msg').innerHTML = '加载核心...';</script>
+			<script type="text/javascript" src="/zz/adapter/ext/ext-base.js"></script>
+			<script type="text/javascript">document.getElementById('loading-msg').innerHTML = '加载UI组件...';</script>
+			<script type="text/javascript" src="/zz/ext-all.js"></script>
+			<script type="text/javascript">document.getElementById('loading-msg').innerHTML = '模块初始化...';</script>
+			<script type="text/javascript" src="/zz/js/RowExpander.js"></script>
+			<script type="text/javascript" src="/zz/js/main.js"></script>
+			
+			<script type="text/javascript" src="js/DateField.js"></script>
+			<script type="text/javascript" src="js/NumberField.js"></script>
+			<script type="text/javascript" src="js/GroupGrid.js"></script>
+			<script type="text/javascript" src="js/TriggerField.js"></script>
+
+			<script type="text/javascript" src="/zz/locale/ext-lang-zh_CN.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseNew.js"></script>
+			<script type="text/javascript" src="/zz/js/useCardWizard.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseAudit.js"></script>
+			<!-- <script type="text/javascript" src="/zz/js/usePwdSet.js"></script>
+			<script type="text/javascript" src="/zz/js/useInfoSet.js"></script>
+			<script type="text/javascript" src="/zz/js/useJgBerthSet.js"></script>
+			<script type="text/javascript" src="/zz/js/useJgBerthYw.js"></script>
+			 -->
+			<script type="text/javascript" src="/zz/validate/validate.js"></script>
+			<!-- 
+			
+			<script type="text/javascript" src="/zz/js/useLicenseInfoModify.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseAgain.js"></script>
+			<script type="text/javascript" src="/zz/js/useDefaultYw.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseReplace.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseMoveto.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseMoveout.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseOff.js"></script>
+			<script type="text/javascript" src="/zz/js/useLicenseLog.js"></script>
+			 -->
+		</div>
+		<div id="header">
+			<!--<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+				    <td height=60>dadad</td>
+				</tr>
+			</table>		    	
+		-->	
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+				  <tr>
+				    <td width="263" background="images/yida_main_05.gif"><div align="left"><img src="images/yida_main_04.gif" alt="logo" width="263" height="30" border="0"></div></td>
+				    <td height="30" background="images/yida_main_05.gif"><img src="images/fgf.gif" alt="1"></td>
+				    <td width="400" height="30" background="images/yida_main_05.gif">
+					<table width="100%" height="23" border="0" cellpadding="0" cellspacing="0">
+				      <tr>
+				        <td height="4" colspan="10"></td>
+				      </tr>
+				      <tr>
+				        <td width="" height="15" align="right"  ><img src="images/tools_ico.gif" alt="线" width="15" height="13" border=0></td>
+				       <td width="50" align="center" valign="middle"  style="cursor:hand"  onclick="javascript:LocationReloadPage();"  onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><img src="images/th_home.gif" alt="首页" width="12" height="13" align="middle"> <span class="STYLE7">首页</span></td>
+				        <!--
+				       	<td width="5"  align="center"><img src="images/th_line.gif" alt="line" width="1" height="13"></td>
+				       	<td width="50" align="center"  style="cursor:hand" onclick="javascript:LocationReloadPage();" onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><img src="images/th_refish.gif" alt="refish" width="12" height="13" align="middle"> <span class="STYLE7">刷新</span></td>
+				       	<td width="5" align="center"><img src="images/th_line.gif" alt="line" width="1" height="13"></td>
+				       	<td width="90" align="center"  onclick="javascript:ds_page('arc/yuyueframe.jsp');"  style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><img src="images/th_lyd.gif" alt="lyd" width="14" height="13" align="middle"> <span class="STYLE7">我的利用单</span></td>
+							-->
+				       <td width="5" align="center"><img src="images/th_line.gif" alt="line" width="1" height="13"></td>
+				       <!--<td width="75"  align="center" onclick="javascript:ds_page('../documentadmin/login.do?action=login1&FileType=00&pagetab=4110');"  style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><img src="images/th_info.gif" alt="info" width="13" height="13" align="middle"> <span class="STYLE7">站内信息</span></td>
+								-->
+				       <td width="5"><div align="center"><img src="images/th_line.gif" alt="line" width="1" height="13"></div></td>
+				       <!--<td width="50" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center"><img src="images/th_help.gif" alt="help" width="12" height="13" align="middle"> <span class="STYLE7">帮助</span></div></td>-->
+				       <td width="5"><div align="center"><img src="images/th_line.gif" alt="line" width="1" height="13"></div></td>
+				       <td width="50" style="cursor:hand"  onclick="javascript:ReLogin();" onMouseOver="this.style.backgroundImage='url(images/button_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><div align="center"><img src="images/th_exit.gif" alt="退出" align="middle"> <span class="STYLE7">退出</span></div></td>
+				     </tr>
+				     <tr>
+				       <td colspan="10" height="4"></td>
+				     </tr>
+				   </table></td>
+				 </tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			 	<tr>
+				    <td height="29" background="images/yida_main_10.gif">
+				    	<table width="100%" height="29" border="0" cellpadding="0" cellspacing="0">
+				      		<tr>
+				    			<TD height="29" vAlign=center align=middle width=25><NOBR>&nbsp;<img src="images/yida_main2_11.gif" alt="d" width="16" height="13"></NOBR></TD>
+				        		<td height="29" align="left" id=tclMenu>&nbsp;<span class="STYLE5"><span class="STYLE9">请选择单位</span>&gt;&gt;<span class="STYLE9">&nbsp;</span></span></td>
+				      		</tr>
+				    	</table>
+				    </td>
+				    <td height="29" background="images/yida_main_10.gif"><img src="images/fgf.gif" alt="1"></td>
+				    <td height="29" background="images/yida_main_10.gif">
+				    	<table width="100%" height="29" border="0" cellpadding="0" cellspacing="0">
+					      	<tr>
+					        	<td height="29" align="right"><span class="STYLE4"><span class="STYLE5"><img src=images/yida_main2_24.gif alt="ss"  width=10height=10> <span class="STYLE8"></font></span>&nbsp;新通知<font id="count">(0)</font>&nbsp;&nbsp;待审批<font id="count">(0)</font></span></span></div></td>
+					      	</tr>
+					    </table>
+					</td>
+				</tr>
+			</table>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <tr bgcolor="#b9d0eb">
+			    <td height="1"></td>
+			  </tr>
+			  <tr bgcolor="#347ec3">
+			    <td height="4"></td>
+			  </tr>
+			</table>
+		</div>
+
+	</body>
+</html>
+<script type="text/javascript">
+//	var currentCcode='<s:property value="#session.ccode1"/>';
+//	if(currentCcode==null ||currentCcode == '' || currentCcode.length <= 0){
+//		alert("系统长时间没使用，请重新登录！");
+//		window.location = '/manage/index.jsp';
+//	}
+</script>

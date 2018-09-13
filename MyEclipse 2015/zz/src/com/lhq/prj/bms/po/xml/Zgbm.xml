@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Zgbm">
+	<typeAlias alias="zgbm" type="com.lhq.prj.bms.po.Zgbm" />
+	
+	<select id="findAll" resultClass="zgbm">
+		<![CDATA[
+			SELECT * FROM z_zgjg
+		]]>
+	</select>
+	
+	<sql id="findZgbmByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(zgjgmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jgdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="zgbm">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_zgjg 
+					WHERE (zgid >= (SELECT MAX(zgid) FROM (SELECT TOP $start$ zgid FROM z_zgjg  
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZgbmByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY zgid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findZgbmByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY zgid
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_zgjg 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZgbmByPageCondition"/>
+		</dynamic>
+	</select>
+	
+</sqlMap>

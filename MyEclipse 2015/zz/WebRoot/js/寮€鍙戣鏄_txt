@@ -1,0 +1,19 @@
+renderer:function(value, cellmeta, record, rowIndex, columnIndex, store){
+
+} 
+1.value是当前单元格的值
+2.cellmeta里保存的是cellId单元格id，id不知道是干啥的，似乎是列号，css是这个单元格的css样式。
+3.record是这行的所有数据，你想要什么，record.data["id"]这样就获得了。
+4.rowIndex是行号，不是从头往下数的意思，而是计算了分页以后的结果。
+5.columnIndex列号太简单了。
+6.store，这个厉害，实际上这个是你构造表格时候传递的ds，也就是说表格里所有的数据，你都可以随便调用，唉，太厉害了。 
+
+
+----------------
+添加新模块的时候
+1、需要在JS文件夹下新建一个JS文件，如zzWorkOrder.js文件，且新建的JS文件中panel全改为zzWorkOrder_panel；
+2、在manager_index.jsp程序中嵌入上面的zzWorkOrder.js文件；
+3、在tree-data-manager.json的树形节点中增加zzWorkOrder-manage节点；
+4、在main.js的倒数第三行items中增加p_zzWorkOrder值；
+5、工具栏上添加按钮的时候，修改css/index.css对应值
+

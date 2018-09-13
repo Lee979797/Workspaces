@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+	
+<sqlMap namespace="Keylog">
+
+	<typeAlias alias="keylog" type="com.lhq.prj.bms.po.Keylog" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+	
+	<!-- 
+		<parameterMap class="keylog" id="keylogParameterMap">  
+		   <parameter property="PrimaryKey"   javaType="String"  jdbcType="varchar" mode="INOUT" />  
+		   <parameter property="Wordtrack"  mode="IN"/>
+		   <parameter property="PrimaryTableName"  mode="IN"/>
+		</parameterMap>  
+	  
+		<procedure id="createByKey"  parameterMap="keylogParameterMap">  
+		    {call z_MakeKey('my_table','EE')}   
+		</procedure>
+	 --> 
+	
+	<parameterMap id="keylogParameterMap" class="java.util.Map">
+		<parameter property="PrimaryTableName" mode="IN" />
+	    <parameter property="Wordtrack" mode="IN" />
+	    <parameter property="PrimaryKey" jdbcType="VARCHAR" mode="OUT" />
+    </parameterMap>
+    
+    <procedure id="createByKeylog" parameterMap="keylogParameterMap">
+       { call z_MakeKey(?,?,?) }
+    </procedure>
+	 
+	<!--	
+		<sql id="findPrimaryTableNameCondition">
+			<![CDATA[
+				PrimaryTableName=#flag:VARCHAR#
+	    	]]>
+		</sql>
+		
+		<sql id="byWordtrackCondition">
+			<![CDATA[
+			   Wordtrack = #flag2:VARCHAR#
+		    ]]>
+		</sql>
+	
+		<select id="createByKey" parameterClass="page" resultClass="keylog">
+			<![CDATA[
+				SELECT * FROM z_KeyLog
+			]]>
+			<dynamic prepend="WHERE">
+				<include refid="findPrimaryTableNameCondition" />
+			</dynamic>
+			<dynamic prepend="AND">
+				<include refid="byWordtrackCondition" />
+			</dynamic>
+		</select>
+	--> 
+	
+</sqlMap>

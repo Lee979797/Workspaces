@@ -1,0 +1,50 @@
+/*[{
+	text : '业务办理',
+	expanded: true,
+	children : [{
+		text:'网上申办',
+		id:'useCardWizard-manage',
+		leaf:true
+	}]
+},{
+	text : '机构挂靠',
+	expanded: true,
+	children : [{
+		text:'挂靠机构',
+		id:'useJgBerthSet-manage',
+		leaf:true
+	}]
+},{
+	text : '业务信息',
+	expanded: true,
+	children : [{
+		text:'业务信息查询',
+		id:'useJgBerthYw-manage',
+		leaf:true
+	}]
+},{
+	text:'用户信息',
+	children:[{
+	  	text:'用户信息',
+	  	id:'useInfoSet-manage',
+	  	leaf:true
+	},{
+	  	text:'密码修改',
+	  	id:'usePwdSet-manage',
+	  	leaf:true
+	}]
+}]*/
+
+[{
+	text : '业务办理',
+	expanded: true,
+	children : [{
+		text:'网上申办',
+		id:'useCardWizard-manage',
+		leaf:true
+	},{
+		text:'业务状态',
+		id:'useLicenseAudit-manage',
+		leaf:true
+	}]
+}]

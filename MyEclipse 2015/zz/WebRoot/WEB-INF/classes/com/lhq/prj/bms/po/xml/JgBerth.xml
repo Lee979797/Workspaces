@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="JgBerth">
+
+	<typeAlias alias="jgberth" type="com.lhq.prj.bms.po.JgBerth" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="jgberth" id="pm_jgberth_id">
+		<parameter property="jgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgdz" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zch" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="email" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dhhm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="state" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="userid" javaType="integer" jdbcType="NUMBER" />
+	</parameterMap>
+	<sql id="byUserIdCondition">
+		<![CDATA[
+		   userid = #userid:NUMBER#
+	    ]]>
+	</sql>
+	<sql id="byJgIdCondition">
+		<![CDATA[
+		   jgid = #jgid:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_jgberth_id">
+		<![CDATA[
+			INSERT INTO z_jgberth 
+						(jgdm,jgmc,jgdz,pzjgmc,pzjgdm,zch,email,dhhm,state,userid) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteByJgid" parameterClass="jgberth">
+		<![CDATA[
+			delete z_jgberth
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byJgIdCondition" />
+		</dynamic>
+	</delete>
+	
+	<update id="update" parameterClass="jgberth">
+		<![CDATA[
+			UPDATE z_jgberth
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="jgmc" prepend=",">
+				<![CDATA[
+					jgmc = #jgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgdz" prepend=",">
+				<![CDATA[
+					jgdz = #jgdz:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgmc" prepend=",">
+				<![CDATA[
+					pzjgmc = #pzjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgdm" prepend=",">
+				<![CDATA[
+					pzjgdm = #pzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zch" prepend=",">
+				<![CDATA[
+					zch = #zch:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="email" prepend=",">
+				<![CDATA[
+					email = #email:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dhhm" prepend=",">
+				<![CDATA[
+					dhhm = #dhhm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="state" prepend=",">
+				<![CDATA[
+					state = #state:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userid" prepend=",">
+				<![CDATA[
+					userid = #userid:NUMBER#
+				]]>
+			</isNotNull>
+			
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byJgIdCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findJgBerthByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(jgdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(jgmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(zch) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="jgberth">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_jgberth 
+					WHERE (jgid >= (SELECT MAX(jgid) FROM (SELECT TOP $start$ jgid FROM z_jgberth 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findJgBerthByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY jgid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findJgBerthByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY jgid
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_jgberth 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findJgBerthByPageCondition" />
+		</dynamic>
+	</select>
+
+	<sql id="byJgmcCondition">
+		<![CDATA[
+		   jgmc = #jgmc:VARCHAR#
+	    ]]>
+	</sql>
+	<select id="findJgBerthByJgmc" parameterClass="jgberth" resultClass="jgberth">
+		<![CDATA[
+			SELECT * FROM z_jgberth 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byJgmcCondition" />
+		</dynamic>
+	</select>
+</sqlMap>

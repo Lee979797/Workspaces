@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Zuser">
+
+	<typeAlias alias="zuser" type="com.lhq.prj.bms.po.Zuser" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="zuser" id="pm_zuser_without_id">
+		<parameter property="orgZch" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="xzqhName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="xzqhCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgType" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="userName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="userPwd" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="mPhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tel" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="email" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="address" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="postalcode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="name" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="sex" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zjlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="sfzHao" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="msgType" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="note" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byUseridCondition">
+		<![CDATA[
+		   userid = #userid:NUMBER#
+	    ]]>
+	</sql>
+	
+	<sql id="byUserNameCondition">
+		<![CDATA[
+		   userName = #userName:VARCHAR#
+	    ]]>
+	</sql>
+	
+
+	<sql id="byJgmcCondition">
+		<![CDATA[
+		   orgName = #orgName:VARCHAR#
+	    ]]>
+	</sql>
+	
+	<insert id="save" parameterMap="pm_zuser_without_id">
+		<![CDATA[
+			INSERT INTO z_user 
+						(orgZch,xzqhName,xzqhCode,orgName,orgCode,orgType,pzjgmc,pzjgdm,bzjgdm,userName,userPwd,mPhone,tel,email,address,postalcode,name,sex,sfzHao,zjlx,msgType,note) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_user
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUseridCondition" />
+		</dynamic>
+	</delete>
+	
+	<update id="update" parameterClass="zuser">
+		<![CDATA[
+			UPDATE z_user
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="orgid" prepend=",">
+				<![CDATA[
+					orgid = #orgid:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgZch" prepend=",">
+				<![CDATA[
+					orgZch = #orgZch:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="xzqhName" prepend=",">
+				<![CDATA[
+					xzqhName = #xzqhName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="xzqhCode" prepend=",">
+				<![CDATA[
+					xzqhCode = #xzqhCode:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="orgName" prepend=",">
+				<![CDATA[
+					orgName = #orgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgCode" prepend=",">
+				<![CDATA[
+					orgCode = #orgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgType" prepend=",">
+				<![CDATA[
+					orgType = #orgType:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgmc" prepend=",">
+				<![CDATA[
+					pzjgmc = #pzjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgdm" prepend=",">
+				<![CDATA[
+					pzjgdm = #pzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userName" prepend=",">
+				<![CDATA[
+					userName = #userName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userPwd" prepend=",">
+				<![CDATA[
+					userPwd = #userPwd:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mPhone" prepend=",">
+				<![CDATA[
+					mPhone = #mPhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tel" prepend=",">
+				<![CDATA[
+					tel = #tel:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="email" prepend=",">
+				<![CDATA[
+					email = #email:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="address" prepend=",">
+				<![CDATA[
+					address = #address:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="postalcode" prepend=",">
+				<![CDATA[
+					postalcode = #postalcode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="name" prepend=",">
+				<![CDATA[
+					name = #name:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sex" prepend=",">
+				<![CDATA[
+					sex = #sex:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zjlx" prepend=",">
+				<![CDATA[
+					zjlx = #zjlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sfzHao" prepend=",">
+				<![CDATA[
+					sfzHao = #sfzHao:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="msgType" prepend=",">
+				<![CDATA[
+					msgType = #msgType:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="state" prepend=",">
+				<![CDATA[
+					state = #state:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUseridCondition" />
+		</dynamic>
+	</update>
+	
+	<update id="updateByUserName" parameterClass="zuser">
+		<![CDATA[
+			UPDATE z_user
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="orgid" prepend=",">
+				<![CDATA[
+					orgid = #orgid:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgZch" prepend=",">
+				<![CDATA[
+					orgZch = #orgZch:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="xzqhName" prepend=",">
+				<![CDATA[
+					xzqhName = #xzqhName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="xzqhCode" prepend=",">
+				<![CDATA[
+					xzqhCode = #xzqhCode:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="orgName" prepend=",">
+				<![CDATA[
+					orgName = #orgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgCode" prepend=",">
+				<![CDATA[
+					orgCode = #orgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgType" prepend=",">
+				<![CDATA[
+					orgType = #orgType:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgmc" prepend=",">
+				<![CDATA[
+					pzjgmc = #pzjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgdm" prepend=",">
+				<![CDATA[
+					pzjgdm = #pzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userName" prepend=",">
+				<![CDATA[
+					userName = #userName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userPwd" prepend=",">
+				<![CDATA[
+					userPwd = #userPwd:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mPhone" prepend=",">
+				<![CDATA[
+					mPhone = #mPhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tel" prepend=",">
+				<![CDATA[
+					tel = #tel:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="email" prepend=",">
+				<![CDATA[
+					email = #email:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="address" prepend=",">
+				<![CDATA[
+					address = #address:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="postalcode" prepend=",">
+				<![CDATA[
+					postalcode = #postalcode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="name" prepend=",">
+				<![CDATA[
+					name = #name:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sex" prepend=",">
+				<![CDATA[
+					sex = #sex:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zjlx" prepend=",">
+				<![CDATA[
+					zjlx = #zjlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sfzHao" prepend=",">
+				<![CDATA[
+					sfzHao = #sfzHao:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="msgType" prepend=",">
+				<![CDATA[
+					msgType = #msgType:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="state" prepend=",">
+				<![CDATA[
+					state = #state:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findZuserByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(orgName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(orgCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(orgType) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(userName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(mPhone) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(tel) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(email) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(name) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(sex) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+				    OR upper(sfzHao) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'   
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+						
+	<select id="findByPage" parameterClass="page" resultClass="zuser">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_user 
+					WHERE (userid >= (SELECT MAX(userid) FROM (SELECT TOP $start$ userid FROM z_user 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZuserByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY userid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findZuserByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY userid
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_user 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZuserByPageCondition" />
+		</dynamic>
+	</select>
+
+	<select id="zlogin" parameterClass="zuser" resultClass="zuser">
+		<![CDATA[
+			SELECT * FROM z_user 
+					WHERE orgCode = #orgCode:VARCHAR# and (state<>'-1' and state<>'-2')
+		]]>
+	</select>
+						
+	<select id="findByExample" parameterClass="zuser" resultClass="zuser">
+		<![CDATA[
+			SELECT * FROM z_user 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="userid" prepend="AND">
+				userid = #userid:NUMBER#
+			</isNotNull>
+			<isNotNull property="orgid" prepend="AND">
+				orgid LIKE '%' + #orgid:NUMBER# + '%'
+			</isNotNull>
+			<isNotNull property="orgName" prepend="AND">
+				orgName LIKE '%' + #orgName:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="orgCode" prepend="AND">
+				orgCode LIKE '%' + #orgCode:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="orgType" prepend="AND">
+				orgType LIKE '%' + #orgType:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="userName" prepend="AND">
+				userName = #userName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="userPwd" prepend="AND">
+				userPwd = #userPwd:VARCHAR#
+			</isNotNull>
+			<isNotNull property="mPhone" prepend="AND">
+				mPhone = #mPhone:VARCHAR#
+			</isNotNull>
+			<isNotNull property="tel" prepend="AND">
+				tel = #tel:VARCHAR#
+			</isNotNull>
+			<isNotNull property="email" prepend="AND">
+				email = #email:VARCHAR#
+			</isNotNull>
+			<isNotNull property="name" prepend="AND">
+				name LIKE '%' + #companyName:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="sex" prepend="AND">
+				sex = #sex:VARCHAR#
+			</isNotNull>
+			<isNotNull property="sfzHao" prepend="AND">
+				sfzHao LIKE '%' + #sfzHao:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="msgType" prepend="AND">
+				msgType = #msgType:NUMBER#
+			</isNotNull>
+			<isNotNull property="note" prepend="AND">
+				note LIKE '%' + #note:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="state" prepend="AND">
+				state = #state:VARCHAR#
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="findById" parameterClass="int" resultClass="zuser">
+		<![CDATA[
+			SELECT * FROM z_user 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUseridCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="checkByUserName" parameterClass="zuser" resultClass="zuser">
+		<![CDATA[
+			SELECT * FROM z_user 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</select>
+	<select id="checkByJgmc" parameterClass="string">
+		<![CDATA[
+			SELECT * FROM z_user 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byJgmcCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findUserInfo" parameterClass="zuser" resultClass="zuser">
+		<![CDATA[
+			SELECT * FROM z_user 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findUserPwdOld" parameterClass="zuser" resultClass="string">
+		<![CDATA[
+			SELECT userPwd FROM z_user 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUseridCondition" />
+		</dynamic>
+	</select>
+	
+	<update id="updatePwd" parameterClass="zuser">
+		<![CDATA[
+			UPDATE z_user
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="userPwd" prepend=",">
+				<![CDATA[
+					userPwd = #userPwd:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUseridCondition" />
+		</dynamic>
+	</update>
+	
+	<select id="findJgdmByUserid" parameterClass="int" resultClass="string">
+		<![CDATA[
+			SELECT orgCode FROM z_user 	WHERE userid = #userid:NUMBER#
+		]]>
+	</select>
+	
+</sqlMap>

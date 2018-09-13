@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	<bean id="companyDao" class="com.lhq.prj.bms.dao.impl.CompanyDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="deptDao" class="com.lhq.prj.bms.dao.impl.DeptDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="dutyDao" class="com.lhq.prj.bms.dao.impl.DutyDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+
+	<bean id="userDao" class="com.lhq.prj.bms.dao.impl.UserDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="subjectDao" class="com.lhq.prj.bms.dao.impl.SubjectDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="categoryDao" class="com.lhq.prj.bms.dao.impl.CategoryDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="bookDao" class="com.lhq.prj.bms.dao.impl.BookDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="zuserDao" class="com.lhq.prj.bms.dao.impl.ZuserDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="xzqhDao" class="com.lhq.prj.bms.dao.impl.XzqhDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="orgDao" class="com.lhq.prj.bms.dao.impl.OrgDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="orgnewDao" class="com.lhq.prj.bms.dao.impl.OrgnewDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tjgdmDao" class="com.lhq.prj.bms.dao.impl.TjgdmDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+
+	<bean id="loanLogDao" class="com.lhq.prj.bms.dao.impl.LoanLogDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="keylogDao" class="com.lhq.prj.bms.dao.impl.KeylogDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="dictIndexDao" class="com.lhq.prj.bms.dao.impl.DictIndexDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="dictDetailDao" class="com.lhq.prj.bms.dao.impl.DictDetailDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="bzjgDao" class="com.lhq.prj.bms.dao.impl.BzjgDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="pzjgDao" class="com.lhq.prj.bms.dao.impl.PzjgDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="jglxDao" class="com.lhq.prj.bms.dao.impl.JglxDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="jjlxDao" class="com.lhq.prj.bms.dao.impl.JjlxDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="zgbmDao" class="com.lhq.prj.bms.dao.impl.ZgbmDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="hylxDao" class="com.lhq.prj.bms.dao.impl.HylxDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="sysConfigDao" class="com.lhq.prj.bms.dao.impl.SysConfigDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="ywsetDao" class="com.lhq.prj.bms.dao.impl.YwsetDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="jgberthDao" class="com.lhq.prj.bms.dao.impl.JgBerthDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="orgwsrzDao" class="com.lhq.prj.bms.dao.impl.OrgwsrzDao">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+</beans>

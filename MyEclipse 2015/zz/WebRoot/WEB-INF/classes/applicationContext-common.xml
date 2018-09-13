@@ -18,7 +18,7 @@
 			<value>sa</value>
 		</property>
 		<property name="password">
-			<value>zxcvbnm</value>
+			<value>sa</value>
 		</property>
 	</bean>
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">

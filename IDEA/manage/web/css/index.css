@@ -1,0 +1,180 @@
+a {
+	color: #15428B;
+}
+
+a:link,a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#header {
+	background: #7F99BE url(/manage/images/layout-browser-hd-bg.gif) repeat-x
+		center;
+	visibility: hidden;
+}
+
+#header h1 {
+	font-size: 26px;
+	font-weight: bold;
+	color: #fff;
+	padding: 5px 10px;
+}
+
+.start-bg {
+	background-image: url(/manage/images/bg.jpg);
+}
+
+.icon-nav {
+	background-image: url(/manage/images/folder_go.png) !important;
+}
+
+.icon-settings {
+	background-image: url(/manage/images/folder_wrench.png) !important;
+}
+.icon-scan {
+	background-image: url(/manage/images/scan.gif) !important;
+}
+.icon-add {
+	background-image: url(/manage/images/add.gif) !important;
+}
+
+.icon-edit {
+	background-image: url(/manage/images/edit.gif) !important;
+}
+
+.icon-del {
+	background-image: url(/manage/images/del.gif) !important;
+}
+
+.icon-ok {
+	background-image: url(/manage/images/ok.gif) !important;
+}
+
+.icon-print {
+	background-image: url(/manage/images/printer.gif) !important;
+}
+.icon-code {
+	background-image: url(/manage/images/code.gif) !important;
+}
+.icon-save {
+	background-image:url(/manage/images/save.gif) !important;
+}
+.icon-save2 {
+	background-image:url(/manage/images/save2.gif) !important;
+}
+.icon-zoom {
+	background-image:url(/manage/images/zoom.gif) !important;
+}
+.icon-out {
+	background-image:url(/manage/images/out.gif) !important;
+}
+.icon-in {
+	background-image:url(/manage/images/in.gif) !important;
+}
+.icon-put {
+	background-image:url(/manage/images/put.gif) !important;
+}
+.icon-do {
+	background-image:url(/manage/images/do.gif) !important;
+}
+.icon-user {
+	background-image:url(/manage/images/user.gif) !important;
+}
+.icon-datetime {
+	background-image:url(/manage/images/datetime.gif) !important;
+}
+
+.icon-store {
+	background-image:url(/manage/images/store.gif) !important;
+}
+.icon-refresh {
+	background-image:url(/manage/images/refresh.gif) !important;
+}
+.icon-default {
+	background-image:url(/manage/images/default.gif) !important;
+}
+.icon-del-gray {
+	background-image: url(/manage/images/del_gray.gif) !important;
+}
+
+.icon-search {
+	background-image: url(/manage/images/search.gif) !important;
+}
+
+.icon-search2 {
+	background-image: url(/manage/images/search2.gif) !important;
+}
+
+.icon-chaxun {
+	background-image: url(/manage/images/chaxun.gif) !important;
+}
+
+.icon-grid {
+	background-image: url(/manage/images/grid.png) !important;
+}
+
+.icon-plugin {
+	background-image: url(/manage/images/plugin.gif) !important;
+}
+
+.icon-delete {
+	background-image: url(/manage/images/delete.gif) !important;
+}
+
+.icon-info {
+	background-image: url(/manage/images/info.gif) !important;
+}
+
+.icon-veiw {
+	background-image: url(/manage/images/veiw.gif) !important;
+}
+
+.icon-pwd {
+	background-image: url(/manage/images/pwd.gif) !important;
+}
+
+.icon-memo {
+	background-image: url(/manage/images/memo.gif) !important;
+}
+.icon-goto {
+	background-image: url(/manage/images/goto.gif) !important;
+}
+
+.icon-chart {
+	background-image: url(/manage/images/chart.gif) !important;
+}
+
+.icon-del4 {
+	background-image: url(/manage/images/del4.gif) !important;
+}
+
+.upload-icon {
+	background: url('/image_add.png') no-repeat 0 0 !important;
+}
+
+
+
+
+
+
+.txtFieldCss {
+	color:red;
+}
+
+.txtFieldCss2 {
+	color:red;
+}
+/*-----------*/
+.x-grid3-row-body p {
+	margin: 5px 5px 10px 5px !important;
+}
+
+body,td,th {
+	font-family:
+		'Geneva, Arial, Helvetica, sans-serif,lucida grande, tahoma, arial, sans-serif'
+		;
+	font-size: 12px;
+}

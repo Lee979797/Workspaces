@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IcPrintLog">
+
+	<typeAlias alias="icPrintLog" type="com.lhq.prj.bms.po.IcPrintLog" />
+
+	<parameterMap class="icPrintLog" id="pm_icPrintLog_without_id">
+		<parameter property="centerid" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orderId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="printTime" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="ickxlh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="printerName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="flag" javaType="int" jdbcType="NUMBER" />
+	</parameterMap>
+	
+	<select id="findByCondition" parameterClass="string" resultClass="icPrintLog">
+		<![CDATA[
+			SELECT * FROM z_icPrintLog 
+					WHERE ickxlh = #ickxlh:VARCHAR#
+		]]>
+	</select>
+	
+	<insert id="save" parameterMap="pm_icPrintLog_without_id">
+		<![CDATA[
+			INSERT INTO z_icPrintLog 
+						(centerid,orderId,orgName,orgCode,printTime,ickxlh,printerName,flag) 
+				 VALUES (?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int"> 
+			SELECT @@IDENTITY AS ID
+		</selectKey>
+	</insert>
+	
+	<sql id="byOrgCodeCondition">
+		<![CDATA[
+		   orgCode = #orgCode:VARCHAR#
+	    ]]>
+	</sql>
+	<sql id="byIcKxlhCondition">
+		<![CDATA[
+		   ickxlh = #ickxlh:VARCHAR#
+	    ]]>
+	</sql>
+	<update id="update" parameterClass="icPrintLog">
+		<![CDATA[
+			UPDATE z_icPrintLog
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="centerid" prepend=",">
+				<![CDATA[
+					centerid = #centerid:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orderId" prepend=",">
+				<![CDATA[
+					orderId = #orderId:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgName" prepend=",">
+				<![CDATA[
+					orgName = #orgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgCode" prepend=",">
+				<![CDATA[
+					orgCode = #orgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="printTime" prepend=",">
+				<![CDATA[
+					printTime = #printTime:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="ickxlh" prepend=",">
+				<![CDATA[
+					ickxlh = #ickxlh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="printerName" prepend=",">
+				<![CDATA[
+					printerName = #printerName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="flag" prepend=",">
+				<![CDATA[
+					flag = #flag:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byIcKxlhCondition" />
+		</dynamic>
+	</update>
+	
+	<sql id="findIcPrintLogByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(centerid) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(orderId) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(orgName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(orgCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'      
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="icPrintLog">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_icPrintLog 
+					WHERE (klsh >= (SELECT MAX(klsh) FROM (SELECT TOP $start$ klsh FROM z_icPrintLog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findIcPrintLogByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY klsh ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findIcPrintLogByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY klsh
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_icPrintLog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findIcPrintLogByPageCondition"/>
+		</dynamic>
+	</select>
+
+</sqlMap>

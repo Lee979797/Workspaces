@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+	<typeAlias alias="user" type="com.lhq.prj.bms.po.User" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="user" id="pm_user_without_id">
+		<parameter property="emplName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="emplNo" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="mobilePhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="sex" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="age" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="userName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="password" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="centerId" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="centerName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="centerCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgId" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="bzjgName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="bzjgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dutyId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dutyName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="qxCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywqx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="manager" javaType="boolean" jdbcType="BIT" />
+		<parameter property="remark" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<sql id="byUserIdCondition">
+		<![CDATA[
+		   userId = #userId:NUMBER#
+	    ]]>
+	</sql>
+
+
+	<sql id="byUserNameCondition">
+		<![CDATA[
+		   userName = #userName:VARCHAR#
+	    ]]>
+	</sql>
+
+
+    <sql id="findUserByWherestring">
+		<![CDATA[
+			1=1
+		]]>
+	</sql>
+	
+	<insert id="save" parameterMap="pm_user_without_id">
+		<![CDATA[
+			INSERT INTO z_sysuser 
+						(emplName,emplNo,mobilePhone,sex,age,userName,password,centerId,centerName,centerCode,bzjgId,bzjgName,bzjgCode,dutyId,dutyName,qxCode,ywqx,manager,remark) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_sysuser
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+	</delete>
+	
+	<update id="update" parameterClass="user">
+		<![CDATA[
+			UPDATE z_sysuser
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="emplName" prepend=",">
+				<![CDATA[
+					emplName = #emplName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="emplNo" prepend=",">
+				<![CDATA[
+					emplNo = #emplNo:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mobilePhone" prepend=",">
+				<![CDATA[
+					mobilePhone = #mobilePhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sex" prepend=",">
+				<![CDATA[
+					sex = #sex:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="age" prepend=",">
+				<![CDATA[
+					age = #age:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="userName" prepend=",">
+				<![CDATA[
+					userName = #userName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="password" prepend=",">
+				<![CDATA[
+					password = #password:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerId" prepend=",">
+				<![CDATA[
+					centerId = #centerId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerName" prepend=",">
+				<![CDATA[
+					centerName = #centerName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerCode" prepend=",">
+				<![CDATA[
+					centerCode = #centerCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgId" prepend=",">
+				<![CDATA[
+					bzjgId = #bzjgId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgName" prepend=",">
+				<![CDATA[
+					bzjgName = #bzjgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgCode" prepend=",">
+				<![CDATA[
+					bzjgCode = #bzjgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dutyId" prepend=",">
+				<![CDATA[
+					dutyId = #dutyId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="dutyName" prepend=",">
+				<![CDATA[
+					dutyName = #dutyName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="manager" prepend=",">
+				<![CDATA[
+					manager = #manager:BIT#
+				]]>
+			</isNotNull>
+			<isNotNull property="qxCode" prepend=",">
+				<![CDATA[
+					qxCode = #qxCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ywqx" prepend=",">
+				<![CDATA[
+					ywqx = #ywqx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zsbhPre" prepend=",">
+				<![CDATA[
+					zsbhPre = #zsbhPre:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zsbhPre_fb" prepend=",">
+				<![CDATA[
+					zsbhPre_fb = #zsbhPre_fb:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="icPort" prepend=",">
+				<![CDATA[
+					icPort = #icPort:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="useUpPageSize" prepend=",">
+				<![CDATA[
+					useUpPageSize = #useUpPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="useDownPageSize" prepend=",">
+				<![CDATA[
+					useDownPageSize = #useDownPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="useFullPageSize" prepend=",">
+				<![CDATA[
+					useFullPageSize = #useFullPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="luckPwd" prepend=",">
+				<![CDATA[
+					luckPwd = #luckPwd:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="veiwHelpPage" prepend=",">
+				<![CDATA[
+					veiwHelpPage = #veiwHelpPage:BIT#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+	</update>
+
+	<update id="updateSet" parameterClass="user">
+		<![CDATA[
+			UPDATE z_sysuser
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="emplName" prepend=",">
+				<![CDATA[
+					emplName = #emplName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="emplNo" prepend=",">
+				<![CDATA[
+					emplNo = #emplNo:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mobilePhone" prepend=",">
+				<![CDATA[
+					mobilePhone = #mobilePhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sex" prepend=",">
+				<![CDATA[
+					sex = #sex:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="age" prepend=",">
+				<![CDATA[
+					age = #age:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="userName" prepend=",">
+				<![CDATA[
+					userName = #userName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="password" prepend=",">
+				<![CDATA[
+					password = #password:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerId" prepend=",">
+				<![CDATA[
+					centerId = #centerId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerName" prepend=",">
+				<![CDATA[
+					centerName = #centerName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerCode" prepend=",">
+				<![CDATA[
+					centerCode = #centerCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgId" prepend=",">
+				<![CDATA[
+					bzjgId = #bzjgId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgName" prepend=",">
+				<![CDATA[
+					bzjgName = #bzjgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgCode" prepend=",">
+				<![CDATA[
+					bzjgCode = #bzjgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dutyId" prepend=",">
+				<![CDATA[
+					dutyId = #dutyId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="dutyName" prepend=",">
+				<![CDATA[
+					dutyName = #dutyName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zsbhPre" prepend=",">
+				<![CDATA[
+					zsbhPre = #zsbhPre:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zsbhPre_fb" prepend=",">
+				<![CDATA[
+					zsbhPre_fb = #zsbhPre_fb:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="icPort" prepend=",">
+				<![CDATA[
+					icPort = #icPort:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="useUpPageSize" prepend=",">
+				<![CDATA[
+					useUpPageSize = #useUpPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="useDownPageSize" prepend=",">
+				<![CDATA[
+					useDownPageSize = #useDownPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="useFullPageSize" prepend=",">
+				<![CDATA[
+					useFullPageSize = #useFullPageSize:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="luckPwd" prepend=",">
+				<![CDATA[
+					luckPwd = #luckPwd:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="veiwHelpPage" prepend=",">
+				<![CDATA[
+					veiwHelpPage = #veiwHelpPage:BIT#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</update>
+	
+	<select id="findUserPwdOld" parameterClass="user" resultClass="string">
+		<![CDATA[
+			SELECT password FROM z_sysuser 	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</select>
+	
+	<update id="updatePwd" parameterClass="user">
+		<![CDATA[
+			UPDATE z_sysuser 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="password" prepend=",">
+				<![CDATA[
+					password = #password:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUserNameCondition" />
+		</dynamic>
+	</update>
+	
+	<sql id="findUserByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(emplName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+				    OR upper(emplNo) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(mobilePhone) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(sex) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(userName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(centerName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(bzjgName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(dutyName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(remark) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	
+	
+	<select id="findByPage" parameterClass="page" resultClass="user">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_sysuser 
+					WHERE (userId >= (SELECT MAX(userId) FROM (SELECT TOP $start$ userId FROM z_sysuser 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findUserByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findUserByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY userId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findUserByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY userId
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_sysuser 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findUserByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findUserByPageCondition" />
+		</dynamic>
+	</select>
+
+	<select id="login" parameterClass="user" resultClass="user">
+		<![CDATA[
+			SELECT * FROM z_sysuser 
+					WHERE userName = #userName:VARCHAR# and password = #password:VARCHAR#
+		]]>
+	</select>
+	
+	<select id="findByExample" parameterClass="user" resultClass="user">
+		<![CDATA[
+			SELECT * FROM z_sysuser 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="userId" prepend="AND">
+				userId = #userId:NUMBER#
+			</isNotNull>
+			<isNotNull property="emplName" prepend="AND">
+				emplName LIKE '%' + #emplName:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="emplNo" prepend="AND">
+				emplNo LIKE '%' + #emplNo:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="mobilePhone" prepend="AND">
+				mobilePhone LIKE '%' + #mobilePhone:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="sex" prepend="AND">
+				sex = #sex:VARCHAR#
+			</isNotNull>
+			<isNotNull property="age" prepend="AND">
+				age = #sex:NUMBER#
+			</isNotNull>
+			<isNotNull property="userName" prepend="AND">
+				userName = #userName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="password" prepend="AND">
+				password = #password:VARCHAR#
+			</isNotNull>
+			<isNotNull property="centerId" prepend="AND">
+				centerId = #centerId:NUMBER#
+			</isNotNull>
+			<isNotNull property="centerName" prepend="AND">
+				centerName LIKE '%' + #centerName:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="bzjgId" prepend="AND">
+				bzjgId = #bzjgId:NUMBER#
+			</isNotNull>
+			<isNotNull property="bzjgName" prepend="AND">
+				bzjgName LIKE '%' + #bzjgName:VARCHAR# + '%'
+			</isNotNull>
+			<isNotNull property="dutyId" prepend="AND">
+				dutyId = #dutyId:VARCHAR#
+			</isNotNull>
+			<isNotNull property="dutyName" prepend="AND">
+				dutyName LIKE '%' + #dutyName:VARCHAR# + '%'
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="finduserIdByuserName" parameterClass="string" resultClass="int">
+		<![CDATA[
+			SELECT userId FROM z_sysuser 
+					WHERE userName = #username:VARCHAR#
+		]]>
+	</select>
+</sqlMap>

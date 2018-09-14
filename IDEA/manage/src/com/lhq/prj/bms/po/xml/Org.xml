@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Org">
+
+	<typeAlias alias="org" type="com.lhq.prj.bms.po.Org" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="org" id="pm_org_without_id">
+		<parameter property="orderid" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jglx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fddbr" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zjlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zjhm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jyfw" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zcrq" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="xzqhCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="xzqhName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jgdz" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="yzbm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dhhm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="scbzrq" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="zycp1" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zycp2" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zycp3" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zczj" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="wftzgb" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="wftzgbdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zgrs" javaType="integer" jdbcType="LONG" />
+		<parameter property="lry" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zch" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pzwh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="pwrq" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="gk" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="email" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="weburl" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="mobile" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="yjflag" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tbrxm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tbrsfzh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tbrlxfs" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jydz" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jyyb" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jydh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jfly" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="khyh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="khzh" javaType="string" jdbcType="VARCHAR" />
+		
+		<parameter property="zsbfrq" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="zszfrq" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="jjlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jjlxdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="memo" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="memo2" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="hbzl" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="hbzldm" javaType="string" jdbcType="VARCHAR" />
+
+		<parameter property="userid" javaType="integer" jdbcType="LONG" />
+		<parameter property="name" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="imageUrl" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="username" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ywlx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="state" javaType="string" jdbcType="VARCHAR" />
+
+		<parameter property="moveoutAddrss" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="moveoutReason" javaType="integer" jdbcType="LONG" />
+		<parameter property="moveoutNote" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="offPzjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="offPzwh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="offReason" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="offNote" javaType="string" jdbcType="VARCHAR" />
+		
+	</parameterMap>
+	
+	
+	<!--存储过程  -->
+	<parameterMap id="MakeKeyOutProcedureMap" class="java.util.Map">
+    	<parameter property="tableName" mode="IN" />
+    	<parameter property="flag" mode="IN" />
+   	 <parameter property="key" jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="MakeKeyProcedure" parameterMap="MakeKeyOutProcedureMap">
+       {call z_MakeKey(?,?,?)}
+	</procedure> 
+	
+	
+
+
+	<sql id="byOrgIdCondition">
+		<![CDATA[
+		   orgid = #orgid:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_org_without_id">
+		<![CDATA[
+			INSERT INTO z_org 
+						(orderid,jgmc,jgdm,jglx,fddbr,zjlx,zjhm,jyfw,zcrq,xzqhCode,xzqhName,jgdz,yzbm,dhhm,scbzrq,zycp1,zycp2,zycp3,
+					zczj,wftzgb,wftzgbdm,zgrs,lry,zch,zgmc,pzjgmc,pzjgdm,pzwh,pwrq,gk,email,weburl,mobile,yjflag,tbrxm,
+					tbrsfzh,tbrlxfs,jydz,jyyb,jydh,jfly,khyh,khzh,zsbfrq,zszfrq,jjlx,jjlxdm,zgdm,memo,memo2,hbzl,hbzldm,userid,name,imageUrl,username,ywlx,state,moveoutAddrss,moveoutReason,moveoutNote,offPzjgmc,offPzwh,offReason,offNote) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_org
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byOrgIdCondition" />
+		</dynamic>
+	</delete>
+
+
+	<update id="update" parameterClass="org">
+		<![CDATA[
+			UPDATE z_org
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="orderid" prepend=",">
+				<![CDATA[
+					orderid = #orderid:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgdm" prepend=",">
+				<![CDATA[
+					jgdm = #jgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgmc" prepend=",">
+				<![CDATA[
+					jgmc = #jgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jglx" prepend=",">
+				<![CDATA[
+					jglx = #jglx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jglxdm" prepend=",">
+				<![CDATA[
+					jglxdm = #jglxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fddbr" prepend=",">
+				<![CDATA[
+					fddbr = #fddbr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zjlx" prepend=",">
+				<![CDATA[
+					zjlx = #zjlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zjhm" prepend=",">
+				<![CDATA[
+					zjhm = #zjhm:VARCHAR#
+				]]>
+			</isNotNull>			
+			<isNotNull property="jyfw" prepend=",">
+				<![CDATA[
+					jyfw = #jyfw:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jjlxdm" prepend=",">
+				<![CDATA[
+					jjlxdm = #jjlxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jjhydm" prepend=",">
+				<![CDATA[
+					jjhydm = #jjhydm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jjhymc" prepend=",">
+				<![CDATA[
+					jjhymc = #jjhymc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jjlx" prepend=",">
+				<![CDATA[
+					jjlx = #jjlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zcrq" prepend=",">
+				<![CDATA[
+					zcrq = #zcrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="zgdm" prepend=",">
+				<![CDATA[
+					zgdm = #zgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgdm" prepend=",">
+				<![CDATA[
+					pzjgdm = #pzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="xzqhCode" prepend=",">
+				<![CDATA[
+					xzqhCode = #xzqhCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="xzqhName" prepend=",">
+				<![CDATA[
+					xzqhName = #xzqhName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgdz" prepend=",">
+				<![CDATA[
+					jgdz = #jgdz:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="yzbm" prepend=",">
+				<![CDATA[
+					yzbm = #yzbm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dhhm" prepend=",">
+				<![CDATA[
+					dhhm = #dhhm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="scbzrq" prepend=",">
+				<![CDATA[
+					scbzrq = #scbzrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzrq" prepend=",">
+				<![CDATA[
+					bzrq = #bzrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="zfrq" prepend=",">
+				<![CDATA[
+					zfrq = #zfrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zycp1" prepend=",">
+				<![CDATA[
+					zycp1 = #zycp1:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zycp2" prepend=",">
+				<![CDATA[
+					zycp2 = #zycp2:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zycp3" prepend=",">
+				<![CDATA[
+					zycp3 = #zycp3:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zczj" prepend=",">
+				<![CDATA[
+					zczj = #zczj:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="hbzl" prepend=",">
+				<![CDATA[
+					hbzl = #hbzl:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hbzldm" prepend=",">
+				<![CDATA[
+					hbzldm = #hbzldm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="wftzgb" prepend=",">
+				<![CDATA[
+					wftzgb = #wftzgb:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="wftzgbdm" prepend=",">
+				<![CDATA[
+					wftzgbdm = #wftzgbdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zgrs" prepend=",">
+				<![CDATA[
+					zgrs = #zgrs:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="fbsl" prepend=",">
+				<![CDATA[
+					fbsl = #fbsl:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zslsh" prepend=",">
+				<![CDATA[
+					zslsh = #zslsh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bgbj" prepend=",">
+				<![CDATA[
+					bgbj = #bgbj:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="bgrq" prepend=",">
+				<![CDATA[
+					bgrq = #bgrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="lry" prepend=",">
+				<![CDATA[
+					lry = #lry:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="njrq" prepend=",">
+				<![CDATA[
+					njrq = #njrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="njr" prepend=",">
+				<![CDATA[
+					njr = #njr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="njqx" prepend=",">
+				<![CDATA[
+					njqx = #njqx:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="xgr" prepend=",">
+				<![CDATA[
+					xgr = #xgr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zbsl" prepend=",">
+				<![CDATA[
+					zbsl = #zbsl:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="zch" prepend=",">
+				<![CDATA[
+					zch = #zch:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="qzbz" prepend=",">
+				<![CDATA[
+					qzbz = #qzbz:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="qzrq" prepend=",">
+				<![CDATA[
+					qzrq = #qzrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="zgmc" prepend=",">
+				<![CDATA[
+					zgmc = #zgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzjgmc" prepend=",">
+				<![CDATA[
+					pzjgmc = #pzjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="gslsh" prepend=",">
+				<![CDATA[
+					gslsh = #gslsh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="gstbr" prepend=",">
+				<![CDATA[
+					gstbr = #gstbr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="wjwlsh" prepend=",">
+				<![CDATA[
+					wjwlsh = #wjwlsh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pzwh" prepend=",">
+				<![CDATA[
+					pzwh = #pzwh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pwrq" prepend=",">
+				<![CDATA[
+					pwrq = #pwrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="wjwtbr" prepend=",">
+				<![CDATA[
+					wjwtbr = #wjwtbr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="gk" prepend=",">
+				<![CDATA[
+					gk = #gk:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fkbz" prepend=",">
+				<![CDATA[
+					fkbz = #fkbz:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fksl" prepend=",">
+				<![CDATA[
+					fksl = #fksl:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="dybz" prepend=",">
+				<![CDATA[
+					dybz = #dybz:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="email" prepend=",">
+				<![CDATA[
+					email = #email:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="weburl" prepend=",">
+				<![CDATA[
+					weburl = #weburl:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mobile" prepend=",">
+				<![CDATA[
+					mobile = #mobile:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="djblx" prepend=",">
+				<![CDATA[
+					djblx = #djblx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="lastdate" prepend=",">
+				<![CDATA[
+					lastdate = #lastdate:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="czflag" prepend=",">
+				<![CDATA[
+					czflag = #czflag:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="yjflag" prepend=",">
+				<![CDATA[
+					yjflag = #yjflag:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="sjzt" prepend=",">
+				<![CDATA[
+					sjzt = #sjzt:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="jyjg" prepend=",">
+				<![CDATA[
+					jyjg = #jyjg:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fz" prepend=",">
+				<![CDATA[
+					fz = #fz:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="njjhy" prepend=",">
+				<![CDATA[
+					njjhy = #njjhy:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="memo" prepend=",">
+				<![CDATA[
+					memo = #memo:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="njjlx" prepend=",">
+				<![CDATA[
+					njjlx = #njjlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="memo2" prepend=",">
+				<![CDATA[
+					memo2 = #memo2:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="memo3" prepend=",">
+				<![CDATA[
+					memo3 = #memo3:VARCHAR#
+				]]>
+			</isNotNull>			
+			<isNotNull property="memo4" prepend=",">
+				<![CDATA[
+					memo4 = #memo4:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tbrxm" prepend=",">
+				<![CDATA[
+					tbrxm = #tbrxm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tbrsfzh" prepend=",">
+				<![CDATA[
+					tbrsfzh = #tbrsfzh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="isca" prepend=",">
+				<![CDATA[
+					isca = #isca:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tbrlxfs" prepend=",">
+				<![CDATA[
+					tbrlxfs = #tbrlxfs:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="gsfzrq" prepend=",">
+				<![CDATA[
+					gsfzrq = #gsfzrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="jydz" prepend=",">
+				<![CDATA[
+					jydz = #jydz:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jyyb" prepend=",">
+				<![CDATA[
+					jyyb = #jyyb:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jydh" prepend=",">
+				<![CDATA[
+					jydh = #jydh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jfly" prepend=",">
+				<![CDATA[
+					jfly = #jfly:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="khyh" prepend=",">
+				<![CDATA[
+					khyh = #khyh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="khzh" prepend=",">
+				<![CDATA[
+					khzh = #khzh:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="zsbfrq" prepend=",">
+				<![CDATA[
+					zsbfrq = #zsbfrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="zszfrq" prepend=",">
+				<![CDATA[
+					zszfrq = #zszfrq:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="qyzclx" prepend=",">
+				<![CDATA[
+					qyzclx = #qyzclx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ywlx" prepend=",">
+				<![CDATA[
+					ywlx = #ywlx:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="userid" prepend=",">
+				<![CDATA[
+					userid = #userid:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="imageUrl" prepend=",">
+				<![CDATA[
+					imageUrl = #imageUrl:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="username" prepend=",">
+				<![CDATA[
+					username = #username:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="name" prepend=",">
+				<![CDATA[
+					name = #name:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="handle_userid" prepend=",">
+				<![CDATA[
+					handle_userid = #handle_userid:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="handle_username" prepend=",">
+				<![CDATA[
+					handle_username = #handle_username:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="handle_name" prepend=",">
+				<![CDATA[
+					handle_name = #handle_name:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="handle_date" prepend=",">
+				<![CDATA[
+					handle_date = #handle_date:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="handle_note" prepend=",">
+				<![CDATA[
+					handle_note = #handle_note:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pageTypeStr" prepend=",">
+				<![CDATA[
+					pageTypeStr = #pageTypeStr:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="state" prepend=",">
+				<![CDATA[
+					state = #state:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="imageData" prepend=",">
+				<![CDATA[
+					imageData = #imageData#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="moveoutAddrss" prepend=",">
+				<![CDATA[
+					moveoutAddrss = #moveoutAddrss#
+				]]>
+			</isNotNull>
+			<isNotNull property="moveoutReason" prepend=",">
+				<![CDATA[
+					moveoutReason = #moveoutReason#
+				]]>
+			</isNotNull>
+			<isNotNull property="moveoutNote" prepend=",">
+				<![CDATA[
+					moveoutNote = #moveoutNote#
+				]]>
+			</isNotNull>
+			<isNotNull property="offPzjgmc" prepend=",">
+				<![CDATA[
+					offPzjgmc = #offPzjgmc#
+				]]>
+			</isNotNull>
+			<isNotNull property="offPzwh" prepend=",">
+				<![CDATA[
+					offPzwh = #offPzwh#
+				]]>
+			</isNotNull>
+			<isNotNull property="offReason" prepend=",">
+				<![CDATA[
+					offReason = #offReason#
+				]]>
+			</isNotNull>
+			<isNotNull property="offNote" prepend=",">
+				<![CDATA[
+					offNote = #offNote#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byOrgIdCondition" />
+		</dynamic>
+	</update>
+	
+	<sql id="byOrgUserNameCondition">
+		<![CDATA[
+		  username = '$username$'
+	    ]]>
+	</sql>
+	
+	<sql id="findOrgByWherestring">
+		<![CDATA[
+			1=1
+		]]>
+	</sql>
+	
+	<sql id="findOrgByStateCondition">
+		<isNotEmpty property="stateConditions">
+			<iterate property="stateConditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(state)=upper(#stateConditions[]:VARCHAR#)
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<sql id="findOrgByPzjgdmCondition">
+		<isNotEmpty property="pzjgdmConditions">
+			<iterate property="pzjgdmConditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(pzjgdm)=upper(#pzjgdmConditions[]:VARCHAR#)
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<sql id="findOrgByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(jgdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(orderid) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jgmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(fddbr) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(zjhm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jyfw) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jgdz) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(dhhm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(tbrxm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jydz) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="org">
+		<![CDATA[
+			SELECT TOP $limit$ orderid,orgid,centerid,jgdm,jgmc,jjhydm,jjhymc,jglx,fddbr,zjlx,zjhm,jyfw,zcrq,xzqhCode,xzqhName,jgdz,yzbm,dhhm,scbzrq,zycp1,zycp2,zycp3,
+					zczj,wftzgb,wftzgbdm,zgrs,lry,zch,zgmc,pzjgmc,pzjgdm,pzwh,pwrq,gk,email,weburl,mobile,yjflag,tbrxm,
+					tbrsfzh,tbrlxfs,jydz,jyyb,jydh,jfly,dybz,khyh,khzh,zsbfrq,zszfrq,jjlx,jjlxdm,zgdm,memo,memo2,hbzl,hbzldm,userid,name,imageUrl,username,ywlx,state,
+					handle_name,handle_date,handle_note,moveoutAddrss,moveoutReason,moveoutNote,offPzjgmc,offPzwh,offReason,offNote FROM z_org  
+					WHERE (orgid >= (SELECT MAX(orgid) FROM (SELECT TOP $start$ orgid FROM z_org 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findOrgByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByStateCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPzjgdmCondition" />
+		</dynamic>	
+		<![CDATA[
+			ORDER BY orgid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByStateCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPzjgdmCondition" />
+		</dynamic>	
+		<![CDATA[
+			ORDER BY orgid
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_org 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findOrgByWherestring" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByStateCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPageCondition" />
+		</dynamic>
+		<dynamic prepend="AND">
+			<include refid="findOrgByPzjgdmCondition" />
+		</dynamic>	
+	</select>
+	
+     <select id="findById" parameterClass="int" resultClass="org">
+		<![CDATA[
+			SELECT orderid,orgid,centerid,jgdm,jgmc,jglx,jjhydm,jjhymc,fddbr,zjlx,zjhm,jyfw,zcrq,xzqhCode,xzqhName,jgdz,yzbm,dhhm,scbzrq,zycp1,zycp2,zycp3,
+					zczj,wftzgb,wftzgbdm,zgrs,lry,zch,zgmc,pzjgmc,pzjgdm,pzwh,pwrq,gk,email,weburl,mobile,yjflag,tbrxm,
+					tbrsfzh,tbrlxfs,jydz,jyyb,jydh,jfly,khyh,khzh,zsbfrq,zszfrq,jjlx,jjlxdm,zgdm,memo,memo2,hbzl,hbzldm,userid,name,imageUrl,imageData,username,ywlx,state,
+					handle_name,handle_date,handle_note,moveoutAddrss,moveoutReason,moveoutNote,offPzjgmc,offPzwh,offReason,offNote FROM z_org	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byOrgIdCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findByIdViewImg" parameterClass="int" resultClass="org">
+		<![CDATA[
+			SELECT orgid,imageData,pageTypeStr,state FROM z_org	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byOrgIdCondition" />
+		</dynamic>
+	</select>
+	
+</sqlMap>

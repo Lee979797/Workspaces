@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Jjlx">
+	<typeAlias alias="jjlx" type="com.lhq.prj.bms.po.Jjlx" />
+	<insert id="save" parameterClass="jjlx">
+		<![CDATA[
+			INSERT INTO z_jjlx (jjlxdm,jjlxmc,pjjlxdm,pjjlxmc,ojjlxdm,ojjlxmc,note) VALUES (#jjlxdm:VARCHAR#,#jjlxmc:VARCHAR#,#pjjlxdm:VARCHAR#,#pjjlxmc:VARCHAR#,#ojjlxdm:VARCHAR#,#ojjlxmc:VARCHAR#,#note:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_jjlx WHERE jjlxid = #jjlxid:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="jjlx">
+		<![CDATA[
+			UPDATE z_jjlx 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="jjlxdm" prepend=",">
+				<![CDATA[
+					jjlxdm = #jjlxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jjlxmc" prepend=",">
+				<![CDATA[
+					jjlxmc = #jjlxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pjjlxdm" prepend=",">
+				<![CDATA[
+					pjjlxdm = #pjjlxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pjjlxmc" prepend=",">
+				<![CDATA[
+					pjjlxmc = #pjjlxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ojjlxdm" prepend=",">
+				<![CDATA[
+					ojjlxdm = #ojjlxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ojjlxmc" prepend=",">
+				<![CDATA[
+					ojjlxmc = #ojjlxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE jjlxid = #jjlxid:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="jjlx">
+		<![CDATA[
+			SELECT * FROM z_jjlx
+		]]>
+	</select>
+	
+	<sql id="findJjlxByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(jjlxmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jjlxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(pjjlxmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(pjjlxmc2) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(pjjlxmc3) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(ojjlxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(ojjlxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'      
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="jjlx">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_jjlx 
+					WHERE (jjlxid >= (SELECT MAX(jjlxid) FROM (SELECT TOP $start$ jjlxid FROM z_jjlx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findJjlxByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY jjlxid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findJjlxByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY jjlxid
+		]]>
+	</select>
+	
+	<select id="findByPjjlxdm" parameterClass="string" resultClass="jjlx">
+		<![CDATA[
+			SELECT jjlxdm from z_jjlx  WHERE pjjlxdm = #pjjlxdm:VARCHAR# ORDER BY jjlxid
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_jjlx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findJjlxByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	<select id="findMcByDm" parameterClass="string" resultClass="jjlx">
+		<![CDATA[
+			SELECT * from z_jjlx  WHERE jjlxdm = #jjlxdm:VARCHAR#
+		]]>
+	</select>
+	
+</sqlMap>

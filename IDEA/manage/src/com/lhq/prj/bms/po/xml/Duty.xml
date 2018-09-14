@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Duty">
+	<typeAlias alias="duty" type="com.lhq.prj.bms.po.Duty" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+	
+	<insert id="save" parameterClass="duty">
+		<![CDATA[
+			INSERT INTO z_duty (dutyName,funcCode,funcName,remark) VALUES (#dutyName:VARCHAR#,#funcCode:VARCHAR#,#funcName:VARCHAR#,#remark:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_duty WHERE dutyId = #dutyId:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="duty">
+		<![CDATA[
+			UPDATE z_duty 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="dutyName" prepend=",">
+					dutyName = #dutyName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="funcCode" prepend=",">
+					funcCode = #funcCode:VARCHAR#
+			</isNotNull>
+			<isNotNull property="funcName" prepend=",">
+					funcName = #funcName:VARCHAR#
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE dutyId = #dutyId:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="duty">
+		<![CDATA[
+			SELECT * FROM z_duty
+		]]>
+	</select>
+	 
+	<sql id="findDutyNameByDutyCondition">
+		<isNotEmpty property="dutyConditions">
+			<iterate property="dutyConditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					dutyName=#dutyConditions[]:VARCHAR#
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+    <select id="findByDutyName" parameterClass="page" resultClass="duty">
+		<![CDATA[
+			SELECT funcCode FROM z_duty  
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findDutyNameByDutyCondition" />
+		</dynamic>
+	</select>
+
+</sqlMap>

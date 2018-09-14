@@ -1,0 +1,211 @@
+[{
+    text:'业务受理',
+    id:'zzSmlr-manage',
+    expanded: true,
+    children:[{text:'扫描录入',id:'zzArchiveScan-manage',leaf:true}]
+},{
+    text:'业务办理',
+    expanded: true,
+    id:'zzYwbl-manage',
+    children:[{
+	        text:'新办',
+	        id:'zzXinban-manage',
+	        leaf:true
+	    },{
+	        text:'年检',
+	        id:'zzNianjian-manage',
+	        leaf:true
+	    },{
+	        text:'变更',
+	        id:'zzBiangen-manage',
+	        leaf:true
+	    },{
+	        text:'换证',
+	        id:'zzHuanzheng-manage',
+	        leaf:true
+	    },{
+	        text:'补证',
+	        id:'zzBuzheng-manage',
+	        leaf:true
+	    },{
+	        text:'迁入',
+	        id:'zzQianru-manage',
+	        leaf:true
+	    },{
+	        text:'迁出',
+	        id:'zzQianchu-manage',
+	        leaf:true
+	    },{
+	        text:'预赋码',
+	        id:'zzYufuma-manage',
+	        leaf:true
+	    },{
+	        text:'注销',
+	        id:'zzFeizhi-manage',
+	        leaf:true
+	    },{
+	        text:'批量注销',
+	        id:'zzPiliangfeizhi-manage',
+	        leaf:true
+	    },{text:'现场待办查询',id:'zzWorkQuery-manage',leaf:true}]
+},{
+    text:'中心审批',
+    expanded: true,
+    children:[{text:'现场业务审批',id:'zzWorkShenhe-manage',leaf:true}]
+},{
+    text:'网上业务',
+    id:'zzWsyw-manage',
+    expanded: true,
+    children:[{text:'现场办理',id:'zzArchivesDo-manage',leaf:true},{text:'网上办证审批',id:'zzWorkOrder-manage',leaf:true},{text:'自助待办查询',id:'zzArchives-manage',leaf:true}]
+},{
+    text:'单据打印',
+    expanded: false,
+    children:[{
+        text:'证书打印',
+        id:'zzLP-manage',
+        expanded: true,
+        children:[{text:'证书打印',id:'zzLicensePrint-manage',leaf:true},{text:'加打证书副本',id:'zzLicensePrintFuben-manage',leaf:true},{text:'证书特殊打印',id:'zzLicensePrintTeshu-manage',leaf:true}]
+    },{
+        text:'申请单打印',
+        id:'zzOrgPrtSqd-manage',
+        leaf:true
+    },{
+        text:'迁址单打印',
+        id:'zzOrgPrtQzd-manage',
+        leaf:true
+    },{
+        text:'注销单打印',
+        id:'zzOrgPrtZxd-manage',
+        leaf:true
+    },{
+        text:'预赋码通知单打印',
+        id:'zzOrgPrtYfm-manage',
+        leaf:true
+    }]
+},{
+    text:'IC卡管理',
+    expanded: false,
+    children:[{
+        text:'卡日常业务',
+        id:'zzCardManage-manage',
+        expanded: true,
+        children:[{text:'年检',id:'zzCardAudit-manage',leaf:true},{text:'补卡',id:'zzCardAgain-manage',leaf:true}]  
+    },{
+        text:'卡操作',
+        id:'zzCardDo-manage',
+        expanded: true,
+        children:[{text:'读卡',id:'zzCardRead-manage',leaf:true},{text:'写卡',id:'zzCardWrite-manage',leaf:true},{text:'打卡',id:'zzDCardPrint-manage',leaf:true},{text:'打卡记录查询',id:'zzICPrintLog-manage',leaf:true}]  
+    },{
+        text:'卡参数设置',
+        id:'zzCardSet-manage',
+        children:[{text:'校验密码设置',id:'zzCardPwd-manage',leaf:true},{text:'打卡机参数设置',id:'zzCardPrintSet-manage',leaf:true}]  
+    }]
+},{
+    text:'业务管理',
+    expanded: true,
+    children:[{
+        text:'数据清整',
+        id:'zzDataModify-manage',
+        leaf:true
+    },{
+        text:'扫描归档',
+        id:'zzGoDfile-manage',
+        leaf:true
+    },{
+        text:'特殊赋码',
+        id:'zzTsfmManage-manage',
+        leaf:true
+    }]
+},{
+    text:'档案管理',
+    expanded: false,
+    children:[{
+        text:'全库查询',
+        id:'zzDfileQueryAll-manage',
+        leaf:true
+    },{
+        text:'临时库管理',
+        id:'zzDfileArchiveManage-manage',
+        leaf:true
+    },{
+        text:'问题库管理',
+        id:'zzDfileManage-manage',
+        leaf:true
+    },{
+        text:'合格库查询',
+        id:'zzDfileQueryArchive-manage',
+        leaf:true
+    }]
+},{
+    text:'综合查询',
+    expanded: false,
+    children:[{
+        text:'办证记录查询',
+        id:'zzLicenseLog-manage',
+        leaf:true
+    },{
+        text:'机构档案查询',
+        id:'zzLicenseArchive-manage',
+        leaf:true
+    }]
+},{
+    text:'系统维护',
+    expanded: false,
+    children:[{
+        text:'系统用户管理',
+        id:'user-manage',
+        leaf:true
+    },{
+        text:'用户岗位管理',
+        id:'duty-manage',
+        leaf:true
+    },{
+        text:'业务审核设置',
+        id:'zzYwset-manage',
+        children:[{text:'网上业务',id:'zzYwnetSet-manage',leaf:true},{text:'现场业务',id:'zzQXSet-manage',leaf:true}]  
+    },{
+        text:'机构类型管理',
+        id:'zzJglxManage-manage',
+        leaf:true
+    },{
+        text:'企业注册类型管理',
+        id:'zzJjlxManage-manage',
+        leaf:true
+    },{
+        text:'经济行业管理',
+        id:'zzHylxManage-manage',
+        leaf:true
+    },{
+        text:'行政区划管理',
+        id:'zzXzqhManage-manage',
+        leaf:true
+    },{
+        text:'数据字典管理',
+        id:'zzDict-manage',
+        children:[{text:'字典管理',id:'zzDictIndex-manage',leaf:true},{text:'字典类别管理',id:'zzDictDetail-manage',leaf:true}]  
+    },{
+        text:'办证组织机构管理',
+        id:'zzCenterManage-manage',
+        children:[{text:'分中心管理',id:'zzCenter-manage',leaf:true},{text:'办证机构管理',id:'zzBzjg-manage',leaf:true},{text:'全国办证机构管理',id:'zzBzjgallManage-manage',leaf:true}]  
+    },{
+        text:'批准机构管理',
+        id:'zzPzjgManage-manage',
+        leaf:true
+    },{
+        text:'注册用户管理',
+        id:'zzRegisterManage-manage',
+        leaf:true
+    },{
+        text:'证书资源管理',
+        id:'zzZssc-manage',
+        children:[{text:'证书资源管理',id:'zzZsscManage-manage',leaf:true}]  
+    },{
+        text:'系统参数设置',
+        id:'zzSysConfigManage-manage',
+        leaf:true
+    },{
+        text:'日志维护',
+        id:'',
+        leaf:true
+    }]
+}]

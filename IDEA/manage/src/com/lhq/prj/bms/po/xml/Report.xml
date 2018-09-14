@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Report">
+
+	<typeAlias alias="report" type="com.lhq.prj.bms.po.Report" />
+
+	<select id="findByHandleDate" parameterClass="report" resultClass="report">
+		<![CDATA[
+			SELECT bzjgdm, COUNT(*) AS num
+			FROM z_org_all
+			WHERE (handleDate BETWEEN #hd1:DATETIME# AND #hd2:DATETIME#)
+			GROUP BY bzjgdm
+		]]>
+	</select>
+	
+	<select id="findXzqhByBzjgdm" parameterClass="report" resultClass="report">
+		<![CDATA[
+			SELECT xzqhCode, xzqhName
+			FROM ( SELECT bzjgdm, xzqhCode, xzqhName, ywlx
+				   FROM z_org_all
+				   WHERE ( bzjgdm = #bzjgdm:VARCHAR#) 
+				   AND ( handleDate BETWEEN #hd1:DATETIME# AND #hd2:DATETIME#)) C
+			GROUP BY xzqhCode, xzqhName
+		]]>
+	</select>
+	
+	<select id="findNumByXzqh" parameterClass="report" resultClass="report">
+		<![CDATA[
+			SELECT ywlx, COUNT(*) AS num
+			FROM ( SELECT *
+				   FROM ( SELECT bzjgdm, xzqhCode, xzqhName, ywlx
+			    	      FROM z_org_all
+			              WHERE ( bzjgdm = #bzjgdm:VARCHAR#)
+			              AND ( handleDate BETWEEN #hd1:DATETIME# AND #hd2:DATETIME#))A
+				   WHERE ( xzqhCode = #xzqhCode:VARCHAR#))B
+			GROUP BY ywlx
+		]]>
+	</select>
+</sqlMap>

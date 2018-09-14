@@ -1,0 +1,11 @@
+ <!-- 要实现此效果需要 1 个步骤： -->
+
+<!-- 第 1 步： -->
+<!-- 把下面的代码加到<BODY></BODY>区域中： -->
+
+<input id=test value=webasp> 
+<input type=button value=md5 onclick="alert(hex_md5(test.value))"> 
+
+<script type="text/javascript" >
+  hash = hex_md5("input string");
+</script>

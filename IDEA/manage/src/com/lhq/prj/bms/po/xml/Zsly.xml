@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Zsly">
+
+	<typeAlias alias="zsly" type="com.lhq.prj.bms.po.Zsly" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="zsly" id="pm_zsly_without_id">
+		<parameter property="zsbh" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="zslx" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ssds" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="ssbzjg" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fpsj" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="flag" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<insert id="save" parameterMap="pm_zsly_without_id">
+		<![CDATA[
+			INSERT INTO z_zsly (zsbh,zslx,ssds,ssbzjg,fpsj,flag) VALUES (?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+	
+	<sql id="byZslyIdCondition">
+		<![CDATA[
+		   id = #id:NUMBER#
+	    ]]>
+	</sql>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_zsly
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byZslyIdCondition" />
+		</dynamic>
+	</delete>
+	
+	<update id="update" parameterClass="zsly">
+		<![CDATA[
+			UPDATE z_zsly
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="jgmc" prepend=",">
+				<![CDATA[
+					jgmc = #jgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jgdm" prepend=",">
+				<![CDATA[
+					jgdm = #jgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="flag" prepend=",">
+				<![CDATA[
+					flag = #flag:VARCHAR#
+				]]>
+			</isNotNull>
+			
+			<isNotNull property="dysj" prepend=",">
+				<![CDATA[
+					dysj = #dysj:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="czy" prepend=",">
+				<![CDATA[
+					czy = #czy:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="djh" prepend=",">
+				<![CDATA[
+					djh = #djh:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<![CDATA[
+				zsbh = #zsbh:VARCHAR# and zslx = #zslx:VARCHAR# and	ssbzjg = #ssbzjg:VARCHAR# and flag=0 
+			]]>
+		</dynamic>
+	</update>
+	
+	
+	<sql id="findZslyByPageCondition">
+		<isNotNull property="qsbh" prepend="AND">
+			<![CDATA[
+			  	zsbh >= #qsbh:VARCHAR#
+			]]>
+		</isNotNull>
+		<isNotNull property="jzbh" prepend="AND">
+			<![CDATA[
+			  	zsbh <= #jzbh:VARCHAR# 
+			]]>
+		</isNotNull>
+		<isNotNull property="zstype" prepend="AND">
+			<![CDATA[
+			  	zslx = #zstype:VARCHAR# 
+			]]>
+		</isNotNull>
+		<isNotNull property="jgdm" prepend="AND">
+			<![CDATA[
+			  	jgdm = #jgdm:VARCHAR# 
+			]]>
+		</isNotNull>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="zsly">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_zsly 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_zsly 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZslyByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findZslyByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_zsly 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findZslyByPageCondition" />
+		</dynamic>
+	</select>
+	
+	
+	<select id="findByZsbh" parameterClass="zsly" resultClass="int">
+		<![CDATA[
+			SELECT count(*) FROM z_zsly where zsbh = #zsbh:VARCHAR# and flag=0
+		]]>
+	</select>
+</sqlMap>

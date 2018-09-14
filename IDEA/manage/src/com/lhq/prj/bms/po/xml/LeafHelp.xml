@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LeafHelp">
+
+	<typeAlias alias="lh" type="com.lhq.prj.bms.po.LeafHelp" />
+
+	<parameterMap class="lh" id="lh_id">
+		<parameter property="title" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="leafId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="keyWs" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="content" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byLeafIdCondition">
+		<![CDATA[
+		   leafId = #leafId:VARCHAR#
+	    ]]>
+	</sql>
+	<insert id="save" parameterMap="lh_id">
+		<![CDATA[
+			INSERT INTO z_help (title,leafId,keyWs,content) VALUES (?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+	<select id="findByLeafId" parameterClass="string" resultClass="int">
+		<![CDATA[
+			SELECT count(*) FROM z_help
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byLeafIdCondition" />
+		</dynamic>
+	</select>
+	<update id="update" parameterClass="lh">
+		<![CDATA[
+			UPDATE z_help
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="title" prepend=",">
+				<![CDATA[
+					title = #title:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="leafId" prepend=",">
+				<![CDATA[
+					leafId = #leafId:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="keyWs" prepend=",">
+				<![CDATA[
+					keyWs = #keyWs:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="content" prepend=",">
+				<![CDATA[
+					content = #content:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byLeafIdCondition" />
+		</dynamic>
+	</update>
+		
+</sqlMap>

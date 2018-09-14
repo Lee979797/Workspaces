@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="KeyLog">
+
+	<typeAlias alias="center" type="com.lhq.prj.bms.po.Center" />
+	<typeAlias alias="keyLog" type="com.lhq.prj.bms.po.KeyLog" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	
+	<sql id="byKeyLogIdCondition">
+		<![CDATA[
+		   logId = #logId:NUMBER#
+	    ]]>
+	</sql>
+
+
+	<select id="findAll" resultClass="keyLog">
+		<![CDATA[
+			SELECT * FROM z_keyLog
+		]]>
+	</select>
+
+	<update id="update" parameterClass="keyLog">
+		<![CDATA[
+			UPDATE z_keyLog
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="qsbh" prepend=",">
+				<![CDATA[
+					PrimaryKeyNumber = #PrimaryKeyNumber:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byKeyLogIdCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findKeyLogByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(qsbh) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jzbh) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="keyLog">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_keyLog 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_keyLog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findKeyLogByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findKeyLogByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_keyLog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findKeyLogByPageCondition" />
+		</dynamic>
+	</select>
+
+	<select id="findKeyLogByCenter" parameterClass="center" resultClass="keyLog">
+		<![CDATA[
+			SELECT * FROM z_keyLog 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="fpbzjg" prepend="OR">
+				<![CDATA[
+					fpbzjg = #fpbzjg:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+	</select>
+</sqlMap>

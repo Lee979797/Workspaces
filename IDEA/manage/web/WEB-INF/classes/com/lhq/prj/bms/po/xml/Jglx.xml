@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Jglx">
+	<typeAlias alias="jglx" type="com.lhq.prj.bms.po.Jglx" />
+	<insert id="save" parameterClass="jglx">
+		<![CDATA[
+			INSERT INTO z_jglx (jglxdm,jglxmc,pjglxdm,pjglxmc,ojglxdm,ojglxmc,shbz,note) VALUES (#jglxdm:VARCHAR#,#jglxmc:VARCHAR#,#pjglxdm:VARCHAR#,#pjglxmc:VARCHAR#,#ojglxdm:VARCHAR#,#ojglxmc:VARCHAR#,#shbz:NUMBER#,#note:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_jglx WHERE jglxid = #jglxid:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="jglx">
+		<![CDATA[
+			UPDATE z_jglx 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="jglxdm" prepend=",">
+				<![CDATA[
+					jglxdm = #jglxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jglxmc" prepend=",">
+				<![CDATA[
+					jglxmc = #jglxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pjglxdm" prepend=",">
+				<![CDATA[
+					pjglxdm = #pjglxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="pjglxmc" prepend=",">
+				<![CDATA[
+					pjglxmc = #pjglxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ojglxdm" prepend=",">
+				<![CDATA[
+					ojglxdm = #ojglxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="ojglxmc" prepend=",">
+				<![CDATA[
+					ojglxmc = #ojglxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="shbz" prepend=",">
+				<![CDATA[
+					shbz = #shbz:BIT#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE jglxid = #jglxid:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="jglx">
+		<![CDATA[
+			SELECT * FROM z_jglx
+		]]>
+	</select>
+	
+	<select id="findAllByFlag" resultClass="jglx">
+		<![CDATA[
+			SELECT jglxdm FROM z_jglx where shbz=1
+		]]>
+	</select>
+	
+	
+	<sql id="findJglxByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(jglxmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(jglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(jglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(pjglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(pjglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(ojglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(ojglxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'      
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="jglx">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_jglx 
+					WHERE (jglxid >= (SELECT MAX(jglxid) FROM (SELECT TOP $start$ jglxid FROM z_jglx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findJglxByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY jglxid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findJglxByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY jglxid
+		]]>
+	</select>
+	
+	<select id="findByPjglxdm" parameterClass="string" resultClass="jglx">
+		<![CDATA[
+			SELECT jglxdm from z_jglx  WHERE pjglxdm = #pjglxdm:VARCHAR# ORDER BY jglxid
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_jglx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findJglxByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	<select id="findMcByDm" parameterClass="string" resultClass="jglx">
+		<![CDATA[
+			SELECT * from z_jglx  WHERE jglxdm = #jglxdm:VARCHAR#
+		]]>
+	</select>
+	
+</sqlMap>

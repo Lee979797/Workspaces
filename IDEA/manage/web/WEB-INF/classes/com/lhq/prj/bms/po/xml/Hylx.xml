@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Hylx">
+	<typeAlias alias="hylx" type="com.lhq.prj.bms.po.Hylx" />
+	<insert id="save" parameterClass="hylx">
+		<![CDATA[
+			INSERT INTO z_hylx (hylxdm,hylxmc,hylxdmOld,hylxmcOld,hylxdm1,hylxmc1,hylxmc2,hylxdm2,hylxmc3,hylxdm3,note) VALUES (#hylxdm:VARCHAR#,#hylxmc:VARCHAR#,#hylxdm1:VARCHAR#,#hylxmc1:VARCHAR#,#hylxmc2:VARCHAR#,#hylxdm2:VARCHAR#,#hylxmc3:VARCHAR#,#hylxdm3:VARCHAR#,#note:VARCHAR#)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_hylx WHERE hylxid = #hylxid:NUMBER#
+		]]>
+	</delete>
+
+	<update id="update" parameterClass="hylx">
+		<![CDATA[
+			UPDATE z_hylx 
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="hylxdm" prepend=",">
+				<![CDATA[
+					hylxdm = #hylxdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxmc" prepend=",">
+				<![CDATA[
+					hylxmc = #hylxmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxdmOld" prepend=",">
+				<![CDATA[
+					hylxdmOld = #hylxdmOld:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxmcOld" prepend=",">
+				<![CDATA[
+					hylxmcOld = #hylxmcOld:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxdm1" prepend=",">
+				<![CDATA[
+					hylxdm1 = #hylxdm1:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxmc1" prepend=",">
+				<![CDATA[
+					hylxmc1 = #hylxmc1:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxmc2" prepend=",">
+				<![CDATA[
+					hylxmc2 = #hylxmc2:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxdm2" prepend=",">
+				<![CDATA[
+					hylxdm2 = #hylxdm2:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxmc3" prepend=",">
+				<![CDATA[
+					hylxmc3 = #hylxmc3:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="hylxdm3" prepend=",">
+				<![CDATA[
+					hylxdm3 = #hylxdm3:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<![CDATA[
+			WHERE hylxid = #hylxid:NUMBER#
+		]]>
+	</update>
+
+	<select id="findAll" resultClass="hylx">
+		<![CDATA[
+			SELECT * FROM z_hylx
+		]]>
+	</select>
+	
+	<sql id="findHylxByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(hylxmc) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(hylxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxdm) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(hylxdmOld) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxdmOld) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'  
+					OR upper(hylxdm1) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxdm1) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxmc2) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxdm2) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(hylxmc3) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(hylxdm3) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'         
+				    OR upper(note) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	
+	<select id="findByPage" parameterClass="page" resultClass="hylx">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_hylx 
+					WHERE (hylxid >= (SELECT MAX(hylxid) FROM (SELECT TOP $start$ hylxid FROM z_hylx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findHylxByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY hylxid ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findHylxByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY hylxid
+		]]>
+	</select>
+	
+	<select id="findByHylxdm" parameterClass="string" resultClass="hylx">
+		<![CDATA[
+			SELECT hylxdm from z_hylx  WHERE hylxdm1 = #hylxdm1:VARCHAR# ORDER BY hylxid
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_hylx 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findHylxByPageCondition"/>
+		</dynamic>
+	</select>
+	
+	<select id="findMcByDm" parameterClass="string" resultClass="hylx">
+		<![CDATA[
+			SELECT * from z_hylx  WHERE hylxdm = #hylxdm:VARCHAR#
+		]]>
+	</select>
+	
+</sqlMap>

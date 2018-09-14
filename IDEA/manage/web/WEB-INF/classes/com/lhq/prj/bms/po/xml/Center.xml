@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Center">
+
+	<typeAlias alias="center" type="com.lhq.prj.bms.po.Center" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page"/> 
+	
+	<parameterMap class="center" id="pm_center_without_id">
+		<parameter property="centerName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="centerCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="address" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="tellPhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="leader" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="mobilePhone" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="remark" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byCenterIdCondition">
+		<![CDATA[
+		   centerId = #centerId:NUMBER#
+	    ]]>
+	</sql>
+	
+	<insert id="save" parameterMap="pm_center_without_id">
+		<![CDATA[
+			INSERT INTO z_center 
+						(centerName,centerCode,address,tellPhone,leader,mobilePhone,remark) 
+				 VALUES (?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+	
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_center
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byCenterIdCondition"/>
+		</dynamic>
+	</delete>
+	
+	<select id="findAll" resultClass="center">
+		<![CDATA[
+			SELECT * FROM z_center
+		]]>
+	</select>
+	
+	<update id="update" parameterClass="center">
+		<![CDATA[
+			UPDATE z_center
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="centerName" prepend=",">
+				<![CDATA[
+					centerName = #centerName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="centerCode" prepend=",">
+				<![CDATA[
+					centerCode = #centerCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="address" prepend=",">
+				<![CDATA[
+					address = #address:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="tellPhone" prepend=",">
+				<![CDATA[
+					tellPhone = #tellPhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="leader" prepend=",">
+				<![CDATA[
+					leader = #leader:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="mobilePhone" prepend=",">
+				<![CDATA[
+					mobilePhone = #mobilePhone:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="remark" prepend=",">
+				<![CDATA[
+					remark = #remark:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byCenterIdCondition"/>
+		</dynamic>
+	</update>
+	
+	<sql id="findCenterByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR" >
+				<![CDATA[
+					upper(centerName) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'
+					OR upper(centerCode) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+					OR upper(address) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(tellPhone) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(leader) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(mobilePhone) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%'    
+				    OR upper(remark) LIKE '%' + upper(#conditions[]:VARCHAR#) + '%' 
+		    	]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+	<select id="findByPage" parameterClass="page" resultClass="center">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_center  
+					WHERE (centerId >= (SELECT MAX(centerId) FROM (SELECT TOP $start$ centerId FROM z_center 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCenterByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY centerId ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findCenterByPageCondition"/>
+		</dynamic>
+		<![CDATA[
+			ORDER BY centerId
+		]]>
+	</select>
+	
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_center 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findCenterByPageCondition"/>
+		</dynamic>
+	</select>
+	
+</sqlMap>

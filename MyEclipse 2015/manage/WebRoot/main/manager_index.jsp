@@ -371,7 +371,7 @@
 	</div>
 </body>
 <script type="text/javascript">
-	Ext.onReady
+	Ext.onReady.invoke
 </script>
 </html>
 <script type="text/javascript">

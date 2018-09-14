@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PrintSet">
+
+	<typeAlias alias="printset" type="com.lhq.prj.bms.po.PrintSet" />
+
+	<parameterMap class="printset" id="pm_printset_without_id">
+		<parameter property="userid" javaType="int" jdbcType="NUMBER" />
+		<parameter property="bzjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="printPort" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="communicationPort" javaType="int" jdbcType="NUMBER" />
+		<parameter property="baudRate" javaType="int" jdbcType="NUMBER" />
+		<parameter property="printerType" javaType="int" jdbcType="NUMBER" />
+	</parameterMap>
+	
+	<select id="findByCondition" parameterClass="string" resultClass="printset">
+		<![CDATA[
+			SELECT * FROM z_printset 
+					WHERE (userid = (SELECT userid FROM z_sysuser WHERE userName = #username:VARCHAR# ))
+		]]>
+	</select>
+	
+	<insert id="save" parameterMap="pm_printset_without_id">
+		<![CDATA[
+			INSERT INTO z_printset 
+						(userid,bzjgdm,printPort,communicationPort,baudRate,printerType) 
+				 VALUES (?,?,?,?,?,?)
+		]]>
+	</insert>
+	
+	<sql id="byUserIdCondition">
+		<![CDATA[
+		   userid = #userid:NUMBER#
+	    ]]>
+	</sql>
+	
+	<update id="update" parameterClass="printset">
+		<![CDATA[
+			UPDATE z_printset
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="userid" prepend=",">
+				<![CDATA[
+					userid = #userid:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="bzjgdm" prepend=",">
+				<![CDATA[
+					bzjgdm = #bzjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="printPort" prepend=",">
+				<![CDATA[
+					printPort = #printPort:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="communicationPort" prepend=",">
+				<![CDATA[
+					communicationPort = #communicationPort:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="baudRate" prepend=",">
+				<![CDATA[
+					baudRate = #baudRate:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="printerType" prepend=",">
+				<![CDATA[
+					printerType = #printerType:NUMBER#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byUserIdCondition" />
+		</dynamic>
+	</update>
+
+</sqlMap>

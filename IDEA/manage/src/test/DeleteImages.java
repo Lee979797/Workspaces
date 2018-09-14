@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Create on 2008-12-15 ÏÂÎç11:16:49
+ * Create on 2008-12-15 ä¸‹åˆ11:16:49
  * 
- * É¾³ıÍ¼Æ¬
+ * åˆ é™¤å›¾ç‰‡
  * 
- * @author ÁÎå«Çä
+ * @author å»–ç€šå¿
  * @version
  */
 @SuppressWarnings("serial")

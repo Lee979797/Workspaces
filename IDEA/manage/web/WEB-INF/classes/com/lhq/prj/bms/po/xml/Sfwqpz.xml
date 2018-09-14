@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Sfwqpz">
+
+	<typeAlias alias="sfwqpz" type="com.lhq.prj.bms.po.Sfwqpz" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	
+	<sql id="byPznameCondition">
+		<![CDATA[
+		   pzname = #pzname:VARCHAR#
+	    ]]>
+	</sql>	
+
+    <select id="findByPzname" parameterClass="string" resultClass="sfwqpz">
+		<![CDATA[
+			SELECT * FROM S_FWQPZ	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byPznameCondition" />
+		</dynamic>
+	</select>
+</sqlMap>

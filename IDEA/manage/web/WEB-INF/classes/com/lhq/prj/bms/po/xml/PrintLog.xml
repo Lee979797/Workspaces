@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PrintLog">
+
+	<typeAlias alias="printlog" type="com.lhq.prj.bms.po.PrintLog" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="printlog" id="pm_printlog_without_id">
+		<parameter property="centerId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orderId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgId" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="orgName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="orgCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="printTime" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="printNum" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="printCode" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="giveTime" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="printerId" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="printerName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="note" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<!--存储过程-->
+	<parameterMap id="MakeKeyOutProcedureMap" class="java.util.Map">
+		<parameter property="xzqhCode" jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="tableName" jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="strKey" jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="strFlag" jdbcType="NUMBER" mode="IN" />
+   	 	<parameter property="key" jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="MakeKeyProcedure" parameterMap="MakeKeyOutProcedureMap">
+       {call z_MakeKey(?,?,?,?,?)}
+	</procedure>   
+	
+	<sql id="byLogIdCondition">
+		<![CDATA[
+		   logId = #logId:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_printlog_without_id">
+		<![CDATA[
+			INSERT INTO z_printlog
+						(centerId,orderId,orgId,orgName,orgCode,printTime,printNum,printCode,giveTime,printerId,printerName,note) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_printlog
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byLogIdCondition" />
+		</dynamic>
+	</delete>
+
+	<update id="update" parameterClass="printlog">
+		<![CDATA[
+			UPDATE z_printlog
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="centerId" prepend=",">
+				<![CDATA[
+					centerId = #centerId:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orderId" prepend=",">
+				<![CDATA[
+					orderId = #orderId:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgId" prepend=",">
+				<![CDATA[
+					orgId = #orgId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgName" prepend=",">
+				<![CDATA[
+					orgName = #orgName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="orgCode" prepend=",">
+				<![CDATA[
+					orgCode = #orgCode:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="printTime" prepend=",">
+				<![CDATA[
+					printTime = #printTime:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="printDays" prepend=",">
+				<![CDATA[
+					printNum = #printNum:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="giveTime" prepend=",">
+				<![CDATA[
+					giveTime = #giveTime:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="printUserId" prepend=",">
+				<![CDATA[
+					printUserId = #printUserId:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="printUserName" prepend=",">
+				<![CDATA[
+					printUserName = #printUserName:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byLogIdCondition" />
+		</dynamic>
+	</update>
+	<sql id="findPrintLogByPageCondition">
+		<isNotNull property="objCondition">
+			<![CDATA[
+				orgId = #objCondition.orgid:NUMBER#
+		    ]]>
+		</isNotNull>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="printlog">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_printlog 
+					WHERE (logId >= (SELECT MAX(logId) FROM (SELECT TOP $start$ logId FROM z_printlog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findPrintLogByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY logId) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findPrintLogByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY logId
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_printlog 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findPrintLogByPageCondition" />
+		</dynamic>
+	</select>
+
+	<select id="findById" parameterClass="int" resultClass="printlog">
+		<![CDATA[
+			SELECT * FROM z_printlog	
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byLogIdCondition" />
+		</dynamic>
+	</select>
+</sqlMap>

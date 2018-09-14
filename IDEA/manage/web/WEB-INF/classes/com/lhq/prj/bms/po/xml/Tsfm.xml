@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Tsfm">
+
+	<typeAlias alias="center" type="com.lhq.prj.bms.po.Center" />
+	<typeAlias alias="tsfm" type="com.lhq.prj.bms.po.Tsfm" />
+	<typeAlias alias="page" type="com.lhq.prj.bms.core.Page" />
+
+	<parameterMap class="tsfm" id="pm_tsfm_without_id">
+		<parameter property="qsdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="jzdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="dmsl" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="fmtype" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fmjgmc" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fmjgdm" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="fpbzjg" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="flag" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="lrsj" javaType="java.util.Date" jdbcType="DATETIME" />
+		<parameter property="userid" javaType="integer" jdbcType="NUMBER" />
+		<parameter property="username" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="name" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="note" javaType="string" jdbcType="VARCHAR" />
+	</parameterMap>
+	<sql id="byTsfmIdCondition">
+		<![CDATA[
+		   id = #id:NUMBER#
+	    ]]>
+	</sql>
+
+	<insert id="save" parameterMap="pm_tsfm_without_id">
+		<![CDATA[
+			INSERT INTO z_tsfm 
+						(qsdm,jzdm,dmsl,fmtype,fmjgmc,fmjgdm,fpbzjg,flag,lrsj,userid,username,name,note) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<delete id="deleteById" parameterClass="integer">
+		<![CDATA[
+			delete z_tsfm
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="byTsfmIdCondition" />
+		</dynamic>
+	</delete>
+
+	<select id="findAll" resultClass="tsfm">
+		<![CDATA[
+			SELECT * FROM z_tsfm
+		]]>
+	</select>
+
+	<update id="update" parameterClass="tsfm">
+		<![CDATA[
+			UPDATE z_tsfm
+		]]>
+		<dynamic prepend="SET">
+			<isNotNull property="qsdm" prepend=",">
+				<![CDATA[
+					qsdm = #qsdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="jzdm" prepend=",">
+				<![CDATA[
+					jzdm = #jzdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="dmsl" prepend=",">
+				<![CDATA[
+					dmsl = #dmsl:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="fmtype" prepend=",">
+				<![CDATA[
+					fmtype = #fmtype:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fmjgmc" prepend=",">
+				<![CDATA[
+					fmjgmc = #fmjgmc:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fmjgdm" prepend=",">
+				<![CDATA[
+					fmjgdm = #fmjgdm:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="fpbzjg" prepend=",">
+				<![CDATA[
+					fpbzjg = #fpbzjg:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="flag" prepend=",">
+				<![CDATA[
+					flag = #flag:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="lrsj" prepend=",">
+				<![CDATA[
+					lrsj = #lrsj:DATETIME#
+				]]>
+			</isNotNull>
+			<isNotNull property="userid" prepend=",">
+				<![CDATA[
+					userid = #userid:NUMBER#
+				]]>
+			</isNotNull>
+			<isNotNull property="username" prepend=",">
+				<![CDATA[
+					username = #username:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="name" prepend=",">
+				<![CDATA[
+					name = #name:VARCHAR#
+				]]>
+			</isNotNull>
+			<isNotNull property="note" prepend=",">
+				<![CDATA[
+					note = #note:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="WHERE">
+			<include refid="byTsfmIdCondition" />
+		</dynamic>
+	</update>
+
+	<sql id="findTsfmByPageCondition">
+		<isNotEmpty property="conditions">
+			<iterate property="conditions" open="(" close=")" conjunction="OR">
+				<![CDATA[
+					upper(qsdm)<=upper(#conditions[]:VARCHAR#)
+					and upper(jzdm)>=upper(#conditions[]:VARCHAR#)
+			    ]]>
+			</iterate>
+		</isNotEmpty>
+	</sql>
+
+	<select id="findByPage" parameterClass="page" resultClass="tsfm">
+		<![CDATA[
+			SELECT TOP $limit$ * FROM z_tsfm 
+					WHERE (id >= (SELECT MAX(id) FROM (SELECT TOP $start$ id FROM z_tsfm 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findTsfmByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id ) AS T)) 
+		]]>
+		<dynamic prepend="AND">
+			<include refid="findTsfmByPageCondition" />
+		</dynamic>
+		<![CDATA[
+			ORDER BY id
+		]]>
+	</select>
+
+	<select id="findByCount" parameterClass="page" resultClass="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM z_tsfm 
+		]]>
+		<dynamic prepend="WHERE">
+			<include refid="findTsfmByPageCondition" />
+		</dynamic>
+	</select>
+	
+	<select id="findTsfmByCenter" parameterClass="center" resultClass="tsfm">
+		<![CDATA[
+			SELECT * FROM z_tsfm 
+		]]>
+		<dynamic prepend="WHERE">
+			<isNotNull property="fpbzjg" prepend="OR">
+				<![CDATA[
+					fpbzjg = #fpbzjg:VARCHAR#
+				]]>
+			</isNotNull>
+		</dynamic>
+	</select>
+</sqlMap>

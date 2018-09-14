@@ -12,13 +12,13 @@ import com.lhq.prj.bms.po.Book;
 import com.lhq.prj.bms.service.IBookService;
 
 /**
- * BookAction.java Create on 2008-9-24 ����09:18:34
+ * BookAction.java Create on 2008-9-24 ????09:18:34
  * 
- * ͼ�����
+ * ??????
  * 
  * Copyright (c) 2012 by YQ.
  * 
- * @author �����
+ * @author ?????
  * @version 1.0
  */
 @SuppressWarnings("serial")
@@ -33,19 +33,19 @@ public class BookAction extends BaseAction {
 	
 	private Integer bookId;
 
-	private File upload;// �ϴ����ļ�
+	private File upload;// ????????
 
-	private String uploadContentType;// �ϴ����ļ�����
+	private String uploadContentType;// ????????????
 
-	private String uploadFileName; // �ϴ��ļ���
+	private String uploadFileName; // ????????
 
-	private String allowedTypes;// �����ϴ����ļ������б�
+	private String allowedTypes;// ?????????????????б?
 
-	private String savePath;// �ļ�����·��,ͨ��iocע��
+	private String savePath;// ???????·??,???ioc???
 
-	private float maxHeightSize;// ����ͼ���߶�
+	private float maxHeightSize;// ??????????
 	
-	private float maxWidthSize;//����ͼ�����
+	private float maxWidthSize;//??????????
 	
 	private String bookName;
 
@@ -88,7 +88,7 @@ public class BookAction extends BaseAction {
 	private String note;
 
 	/**
-	 * ���ͼ��
+	 * ??????
 	 * 
 	 * @return
 	 */
@@ -106,7 +106,7 @@ public class BookAction extends BaseAction {
 	}
 
 	/**
-	 * ����ͼ����Ϣ
+	 * ??????????
 	 * 
 	 * @return
 	 */
@@ -125,7 +125,7 @@ public class BookAction extends BaseAction {
 	}
 
 	/**
-	 * ɾ��ͼ��
+	 * ??????
 	 * 
 	 * @return
 	 */
@@ -138,7 +138,7 @@ public class BookAction extends BaseAction {
 	}
 	
 	/**
-	 * �޸�ͼ����Ϣ
+	 * ?????????
 	 *
 	 * @return
 	 * @throws Exception
@@ -166,8 +166,8 @@ public class BookAction extends BaseAction {
 		book.setPaper(paper);
 		book.setNote(note);
 		book = this.upload(book);
-		/*1.���ͼ�鱾��û��ͼƬ����ɾ��ԭ��ͼƬ
-		 *2.���ԭ����ͼƬ�����޸ĺ��ͼƬ��һ����ɾ��ԭ��ͼƬ
+		/*1.?????鱾???????????????????
+		 *2.????????????????????????????????????
 		 */
 		if(imageUrl != null && null != book.getImageUrl() && !imageUrl.equals(book.getImageUrl())){
 			MyUtils.delFile(getSession().getServletContext().getRealPath("/")+ imageUrl);
@@ -205,7 +205,7 @@ public class BookAction extends BaseAction {
 	}
 
 	/**
-	 * ����
+	 * ????
 	 * 
 	 * @return
 	 * @throws Exception

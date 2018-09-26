@@ -48,6 +48,7 @@ import sun.jdbc.rowset.CachedRowSet;
 import com.ninemax.jdbc.dao.DataAccess;
 import com.ninemax.jdbc.dao.tjgdm.clsTjgdmDAO;
 import com.ninemax.jpa.code.bus.AjaxBus;
+import com.ninemax.jpa.code.bus.TFzdmBus;
 import com.ninemax.jpa.code.bus.TJgdmSaveBus;
 import com.ninemax.jpa.code.bus.TZrxzqhBus;
 import com.ninemax.jpa.code.bus.TjgdmBus;
@@ -606,6 +607,37 @@ public class StatisticsAction extends ActionSupport implements SessionAware {
 	}
 	public void setXlsContentType(String xlsContentType) {
 		this.xlsContentType = xlsContentType;
+	}
+	/**
+	 * 删除注销表中的机构
+	 * @return
+	 */
+	public String dm_delete(){
+		return new ActionUtils() {
+			
+			@Override
+			protected void excute() throws Exception {
+				TFzdmBus tfzbus = new TFzdmBus();
+				clsTjgdmDAO tjDao = new clsTjgdmDAO();
+				/*TjgdmBus tbus = new TjgdmBus();
+				clsTjgdmDAO tjDao = new clsTjgdmDAO();*/
+				TFzdm tfzdm = tfzbus.findById(tyshxydm.trim());
+				if(tfzdm == null){
+					ServletActionContext.getRequest().setAttribute("mes", "查无此18位码的机构");
+					currentPath = "/product/jsp/commonTools/standard_update_manage.jsp";
+					return;
+				}
+				boolean del = tjDao.deleteByDm(tyshxydm);
+				String mes = new String();
+				if(del){
+					mes = "删除成功";
+				}else{
+					mes = "删除失败";
+				}
+				ServletActionContext.getRequest().setAttribute("mes", mes);
+				currentPath = "/product/jsp/commonTools/standard_update_manage.jsp";
+			}
+		}.nSyTemplate();
 	}
     
 	

@@ -17,7 +17,7 @@ var arrPfuncList = [];
 /**
  * 2018.09.14
  * 项目启动不了
- * 原因：p_zzNianBao未定义
+ * 原因：strPfuncList中p_zzNianBao未定义
  * 将z_duty表中系统超级管理员的funcCode字段中的zzNianBao删除后可以启动
  *
  */

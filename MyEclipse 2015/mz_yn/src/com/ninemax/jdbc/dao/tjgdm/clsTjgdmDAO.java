@@ -108,4 +108,25 @@ public class clsTjgdmDAO {
         }
         return userName;
     }
+    
+    
+  // 删除注销表中的机构
+      public static boolean deleteByDm(String tyshxydm){
+      	DataAccess dataAccessObject = new DataAccess();
+      	CachedRowSet crs = null;
+          String sql = "delete from t_fzdm where tyshxydm = '" + tyshxydm + "'";
+          boolean result = false;
+          try{
+  			if(dataAccessObject.execute(sql)==1){
+  				result = true;
+  			}else{
+  				result = false;
+  			}
+  		}catch(Exception e){
+  			log.error("error", e);
+  			throw new RuntimeException(e.getMessage(),e);
+  		}
+  		return result ;       
+      }
+    
 }

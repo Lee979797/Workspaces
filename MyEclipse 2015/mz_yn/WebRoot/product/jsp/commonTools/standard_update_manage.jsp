@@ -88,6 +88,18 @@
 					<input type="submit" id="dm_update_button"  value="确认替换"/>
 			</TR>			
 		</form>	
+	</div><br />
+	<br />
+	<div >
+		<h1>删除</h1>
+		<br/>
+		<form  id="dm_delete" action="/bsweb/statistics_dm_delete">
+			<TR>
+					请输入需要删除机构的统一社会信用代码:
+					<input type="text" id="tyshxydm" name="tyshxydm"/>					
+					<input type="submit" id="dm_delete_button"  value="确认删除"/>
+			</TR>			
+		</form>	
 	</div>
 	<input type="hidden" id="mes" value="${mes }"/>
 </body>

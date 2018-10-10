@@ -627,9 +627,8 @@ public class StatisticsAction extends ActionSupport implements SessionAware {
 					currentPath = "/product/jsp/commonTools/standard_update_manage.jsp";
 					return;
 				}
-				boolean del = tjDao.deleteByDm(tyshxydm);
 				String mes = new String();
-				if(del){
+				if(tjDao.deleteByDm(tyshxydm)){
 					mes = "É¾³ý³É¹¦";
 				}else{
 					mes = "É¾³ýÊ§°Ü";

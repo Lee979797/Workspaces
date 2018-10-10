@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reimburse.com.my.sys.dao.SysExpenseTypeDao">
+    <select id="findAllType" resultType="sysExpenseType">
+        select *
+        from sys_expensetype
+        order by 'expenseType' desc
+        limit #{startIndex},#{pageSize}
+    </select>
+    <select id="getRowCount" resultType="int">
+        select count(*) from sys_expensetype
+    </select>
+    <insert id="createdType">
+        insert into sys_expensetype values (null, #{type})
+    </insert>
+    <delete id="deleteType">
+        delete from sys_expensetype
+        where id = #{id}
+    </delete>
+</mapper>

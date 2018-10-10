@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.reimburse.com.my.sys.dao.SysProjectExpenseTypeDao">
+    <insert id="insertObject">
+        insert into sys_project_expensetype
+        (project_id,expenseType_id)
+        values
+        <foreach collection="roleIds" separator="," item="item">
+            (#{userId},#{item})
+        </foreach>
+    </insert>
+    <delete id="deleteObject">
+        delete from sys_project_expensetype
+        <if test="projectId!=null">
+            where project_id=#{projectId}
+        </if>
+        <if test="expenseTypeId!=null">
+            where expenseType_id=#{expenseTypeId}
+        </if>
+    </delete>
+    <select id="findTypeByProject" resultType="int">
+        select expenseType_id
+        from sys_project_expensetype
+        where project_id = #{projectId}
+    </select>
+    <select id="findTypeById" resultType="string">
+        select e.expenseType
+        from sys_project_expensetype pe
+            join sys_expensetype e on pe.expenseType_id = e.id
+        where pe.project_id = #{id}
+    </select>
+</mapper>

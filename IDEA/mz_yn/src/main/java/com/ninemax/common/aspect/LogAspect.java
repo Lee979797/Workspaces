@@ -1,7 +1,7 @@
-package com.reimburse.common.aspect;
+package com.ninemax.common.aspect;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reimburse.common.util.ShiroUtils;
+import com.ninemax.common.util.ShiroUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Aspect
 @Service
 public class LogAspect {
-    @Pointcut("execution(* com.reimburse.sys.service..*.*(..))")
+    @Pointcut("execution(* com.ninemax.sys.service..*.*(..))")
     public void doLog() {
     }
     @Around("doLog()")

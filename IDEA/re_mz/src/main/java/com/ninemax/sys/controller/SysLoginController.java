@@ -18,6 +18,11 @@ public class SysLoginController {
         return "login";
     }
 
+    @RequestMapping("/signUp")
+    public String signUp() {
+        return "signUp";
+    }
+
     /**
      * 登录操作
      */
@@ -28,4 +33,5 @@ public class SysLoginController {
         loginService.login(username, password);
         return new JsonResult("doLogin ok!");
     }
+
 }

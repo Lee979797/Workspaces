@@ -26,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--js-->
     <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery/dist/jquery.min.js"></script>
     <!--icons-css-->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!--Google Fonts-->
@@ -40,35 +41,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <h1>Login</h1>
         </div>
         <div class="login-block">
-            <form>
-                <input type="text" name="email" placeholder="Email" required="">
-                <input type="password" name="password" class="lock" placeholder="Password">
-                <div class="forgot-top-grids">
-                    <div class="forgot-grid">
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="brand1" value="">
-                                <label for="brand1"><span></span>Remember me</label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="forgot">
-                        <a href="#">Forgot password?</a>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <input type="submit" name="Sign In" value="Login">
-                <h3>Not a member?<a href="signUp"> Sign up now</a></h3>
-                <h2>or login with</h2>
-                <div class="login-icons">
+            <input id="username" type="text" name="email" placeholder="username" required="">
+            <input id="password" type="password" name="password" class="lock" placeholder="Password">
+            <div class="forgot-top-grids">
+                <div class="forgot-grid">
                     <ul>
-                        <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                        <li>
+                            <input type="checkbox" id="brand1" value="">
+                            <label for="brand1"><span></span>Remember me</label>
+                        </li>
                     </ul>
                 </div>
-            </form>
-            <h5><a href="index.html">Go Back to Home</a></h5>
+                <div class="forgot">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <input type="submit" name="Sign In" value="Login" onclick="doLogin()">
+            <h3>Not a member?<a href="signUp"> Sign up now</a></h3>
+            <h2>or login with</h2>
+            <div class="login-icons">
+                <ul>
+                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" class="google"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
@@ -88,4 +86,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/bootstrap.js"></script>
 <!-- mother grid end here-->
 </body>
+<script type="text/javascript">
+    function doLogin() {
+        var params = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        };
+        var url = "doLogin";
+        $.post(url, params, function (result) {
+            if (result.state === 1) {
+                location.href = "indexUI";
+            } else {
+                $("#msg").html(result.message);
+            }
+            return false;
+        });
+    }
+</script>
 </html>

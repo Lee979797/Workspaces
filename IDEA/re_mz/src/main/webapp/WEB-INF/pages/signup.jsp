@@ -26,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!--js-->
     <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jquery/dist/jquery.min.js"></script>
     <!--icons-css-->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!--Google Fonts-->
@@ -55,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                 <div class="clearfix"></div>
             </div>--%>
-            <input type="button" name="Sign In" value="Sign up" onclick="doSignUp()">
+            <input type="submit" name="Sign In" value="Sign up" onclick="doSignUp()">
             <div class="sign-down">
                 <h4>Already have an account? <a href="${pageContext.request.contextPath}/loginUI"> Login here.</a></h4>
             </div>
@@ -75,10 +76,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/scripts.js"></script>
 <!--//scrolling js-->
 <script src="js/bootstrap.js"></script>
-<script src="js/jquery.min.js"></script>
 <!-- mother grid end here-->
 </body>
-<script type="text/javascript">
+<script>
     function doSignUp() {
         var params = {
             username: $("#username").val(),
@@ -87,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         var url = "doSignUp";
         $.post(url, params, function (result) {
             if (result.state === 1) {
-                location.href = "indexUI";
+                location.href = "loginUI";
             } else {
                 $("#msg").html(result.message);
             }

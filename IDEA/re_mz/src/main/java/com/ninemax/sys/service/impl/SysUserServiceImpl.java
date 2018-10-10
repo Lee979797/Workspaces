@@ -7,18 +7,20 @@ import com.ninemax.sys.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.UUID;
 
 @Service
 public class SysUserServiceImpl implements SysUserService {
 
     @Resource
-    private SysUserDao sysUserDao;
+    private SysUserDao userDao;
 
     @Override
     public void login(String username, String password) {
@@ -52,7 +54,29 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public SysUser findUserByUserName(String username) {
-        return sysUserDao.findUserByUserName(username);
+    public int doSignUp(SysUser user) {
+        int rows = 0;
+        //1.对数据进行合法验证
+        if (user == null)
+            throw new ServiceException("保存对象不能为空");
+        if (StringUtils.isEmpty(user.getUsername()))
+            throw new ServiceException("用户名不能为空");
+        if (StringUtils.isEmpty(user.getPassword()))
+            throw new ServiceException("用户密码不能为空");
+        //2.保存用户数据
+        //2.1对密码进行加密(后续会采用md5加密算法)
+        String salt = UUID.randomUUID().toString();
+        String pwd = user.getPassword();
+        SimpleHash sHash = new SimpleHash("MD5", pwd, salt);//Shiro中的一个类
+        String newPwd = sHash.toString();
+        user.setSalt(salt);
+        user.setPassword(newPwd);
+        try {
+            rows = userDao.insertUser(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rows;
     }
+
 }

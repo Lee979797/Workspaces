@@ -8,4 +8,6 @@ public interface SysUserDao {
      */
     SysUser findUserByUserName(String username);
 
+    int insertUser(SysUser user);
+
 }

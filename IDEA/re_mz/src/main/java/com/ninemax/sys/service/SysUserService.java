@@ -8,5 +8,5 @@ public interface SysUserService {
      */
     void login(String username, String password);
 
-    SysUser findUserByUserName(String username);
+    int doSignUp(SysUser user);
 }

@@ -89,6 +89,7 @@
                 /js/** = anon
                 /doLogin = anon
                 /signUp = anon
+                /doSignUp = anon
                 <!-- 退出 -->
                 /doLogout = logout  <!-- 会调用Subject的logout方法,此方法会将session清空 -->
                 <!-- 剩余其他路径，必须认证通过才可以访问 -->

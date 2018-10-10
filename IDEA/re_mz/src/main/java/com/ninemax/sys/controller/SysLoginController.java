@@ -1,6 +1,7 @@
 package com.ninemax.sys.controller;
 
 import com.ninemax.common.vo.JsonResult;
+import com.ninemax.sys.entity.SysUser;
 import com.ninemax.sys.service.SysUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,11 @@ public class SysLoginController {
         return "signUp";
     }
 
+    @RequestMapping("/indexUI")
+    public String indexUI() {
+        return "index";
+    }
+
     /**
      * 登录操作
      */
@@ -34,4 +40,13 @@ public class SysLoginController {
         return new JsonResult("doLogin ok!");
     }
 
+    /**
+     * 注册操作
+     */
+    @RequestMapping("/doSignUp")
+    @ResponseBody
+    public JsonResult doSignUp(SysUser user) {
+        loginService.doSignUp(user);
+        return new JsonResult("doSignUp ok!");
+    }
 }

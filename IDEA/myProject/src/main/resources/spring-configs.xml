@@ -4,17 +4,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 自动扫描该包 -->
-    <context:component-scan base-package="com.ninemax"/>
+    <context:component-scan base-package="com.mp"/>
     <!-- 启用mvc注解 -->
     <mvc:annotation-driven/>
     <!--配置静态资源（不被过滤）-->
     <mvc:resources mapping="css/**" location="css/"/>
     <mvc:resources mapping="fonts/**" location="fonts/"/>
-    <mvc:resources mapping="images/**" location="images/"/>
+    <mvc:resources mapping="images/**" location="img/"/>
     <mvc:resources mapping="js/**" location="js/"/>
-    <mvc:resources mapping="favicon.ico" location="images/"/>
+    <mvc:resources mapping="favicon.png" location="img/"/>
     <!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <!-- 自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
@@ -44,11 +44,11 @@
     </bean>
     <!--  扫描DAO接口所在包，Spring会自动查找其下的dao接口，然后为接口创建代理对象-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ninemax.**.dao"/>
+        <property name="basePackage" value="com.mp.**.dao"/>
     </bean>
 
     <!--配置realm对象-->
-    <bean id="userRealm" class="com.ninemax.sys.service.realm.ShiroUserRealm">
+    <bean id="userRealm" class="com.mp.sys.service.realm.ShiroUserRealm">
         <!-- 配置凭证算法匹配器 -->
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
@@ -84,10 +84,10 @@
         <property name="filterChainDefinitions">
             <value>
                 <!-- 对静态资源设置允许匿名访问 -->
-                /favicon.ico = anon
+                /favicon.png = anon
                 /css/** = anon
                 /fonts/** = anon
-                /images/** = anon
+                /img/** = anon
                 /js/** = anon
                 /doLogin = anon
                 /signUp = anon

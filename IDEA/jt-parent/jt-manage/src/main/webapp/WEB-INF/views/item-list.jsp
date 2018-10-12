@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<table class="easyui-datagrid" id="itemList" title="商品列表" 
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/query',method:'get',pageSize:20,toolbar:toolbar">
+<table class="easyui-datagrid" id="itemList" title="商品列表"
+       data-options="singleSelect:false,fitColumns:true,collapsible:true,pagination:true,url:'/item/query',method:'get',pageSize:20,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
@@ -60,7 +60,7 @@
         			data.priceView = KindEditorUtil.formatPrice(data.price);
         			$("#itemeEditForm").form("load",data);
         			
-        			// 加载商品描述
+        			// 加载商品描述   $.getJSON 用法???  3.解析JSON串的js对象
         			$.getJSON('/item/query/item/desc/'+data.id,function(_data){
         				if(_data.status == 200){
         					//UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);

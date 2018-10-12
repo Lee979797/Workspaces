@@ -76,6 +76,8 @@
 			$.messager.alert('提示','表单还未填写完成!');
 			return ;
 		}
+		//eval() js中的函数   将字符串转化为js对象    100 * 100          var user =   JSON.parse(JSON串)   \
+																 
 		$("#itemeEditForm [name=price]").val(eval($("#itemeEditForm [name=priceView]").val()) * 100);
 		itemEditEditor.sync();
 		
@@ -99,7 +101,7 @@
 		paramJson = JSON.stringify(paramJson);
 		
 		$("#itemeEditForm [name=itemParams]").val(paramJson);
-		
+		alert($("#itemeEditForm").serialize());
 		$.post("/item/update",$("#itemeEditForm").serialize(), function(data){
 			if(data.status == 200){
 				$.messager.alert('提示','修改商品成功!','info',function(){

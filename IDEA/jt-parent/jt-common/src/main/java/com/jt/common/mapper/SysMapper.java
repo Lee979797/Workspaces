@@ -8,7 +8,14 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.apache.ibatis.annotations.UpdateProvider;
 
-public interface SysMapper<T> {
+public interface SysMapper<T>{
+	
+	/**
+	 * 根据表名查询记录总数
+	 */
+	@SelectProvider(type = SysMapperProvider.class, 
+			method = "dynamicSQL")
+	int TestfindCount();
 
     /**
      * 根据主键ID批量删除

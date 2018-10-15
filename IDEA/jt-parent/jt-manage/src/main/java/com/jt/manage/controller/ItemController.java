@@ -1,18 +1,13 @@
 package com.jt.manage.controller;
 
-import java.nio.charset.Charset;
-import java.util.List;
-
-import org.apache.ibatis.builder.MapperBuilderAssistant;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.jt.common.vo.EasyUIResult;
 import com.jt.common.vo.SysResult;
 import com.jt.manage.pojo.Item;
 import com.jt.manage.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/item")

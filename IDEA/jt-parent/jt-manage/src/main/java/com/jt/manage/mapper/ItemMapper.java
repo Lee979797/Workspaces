@@ -35,6 +35,14 @@ public interface ItemMapper extends SysMapper<Item>{
 	//查询商品分类的名称
 	String findItemCatById(Long itemCatId);
 	
+	/*原因:
+	 * 	Mybatis中不支持多值传参, id name age   minAge 18> maxAge<100
+		1.封装为对象 ,2.Map集合<k,v>  3.List/array
+	 */
+	void updateStatus(@Param("ids") Long[] ids, @Param("status") int status);
+	
+	
+	
 	
 	
 	

@@ -18,6 +18,7 @@
         <property name="locations">
             <list>
                 <value>classpath:/properties/jdbc.properties</value>
+                <value>classpath:/properties/image.properties</value>
             </list>
         </property>
     </bean>
@@ -108,7 +109,6 @@
         表达式的写法:
             1.within(包名.类名)
             控制方式是类级别的,全部的方法都需要添加事务控制
-
             2.execution(返回值类型 包名.类名.方法名(参数列表))
      -->
     <aop:config>

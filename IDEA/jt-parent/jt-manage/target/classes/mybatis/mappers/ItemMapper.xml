@@ -21,15 +21,23 @@
 	</select>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<!--
+		规则
+		collection:
+			List集合数据   list
+			Array数组         array
+			Map集合		 map中的key
+		separator:循环的分隔符
+		item:表示循环遍历的参数:形参
+	  -->
+	<!--批量实现数据的更新  -->
+	<update id="updateStatus">
+		update tb_item set status = #{status},updated = now()
+		
+		where id in (
+			<foreach collection="ids" item="id" separator=",">
+				#{id}
+			</foreach>
+		)
+	</update>
 </mapper>

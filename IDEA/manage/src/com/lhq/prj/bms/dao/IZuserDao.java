@@ -9,7 +9,7 @@ import com.lhq.prj.bms.po.Zuser;
 /**    
  * IZuserDao.java Create on 2012-5-5
  *
- * �û�����־ò�ӿ�
+ * ????????ò???
  *
  * Copyright (c) 2008 by YQ.
  * @author
@@ -17,35 +17,35 @@ import com.lhq.prj.bms.po.Zuser;
  */
 public interface IZuserDao {
 	/**
-	 * ����һ���û�ʵ�嵽��ݿ�
+	 * ????????????嵽????
 	 * 
 	 * @param zuser
-	 *            �û�ʵ��
-	 * @return ����id
+	 *            ??????
+	 * @return ????id
 	 */
 	public Object saveZuser(Zuser zuser);
 
 
 	/**
-	 * ��ҳ����
+	 * ???????
 	 * 
 	 * @param page
-	 *            ����
+	 *            ????
 	 * @return
 	 */
 	public List findByPage(Page page);
 
 	/**
-	 * ҳ���ҵ��ܼ�¼
+	 * ??????????
 	 * 
 	 * @param page
-	 *            ����
+	 *            ????
 	 * @return
 	 */
 	public int findByCount(Page page);
 
 	/**
-	 * �޸��û���Ϣ
+	 * ?????????
 	 * 
 	 * @param zuser
 	 * @return
@@ -54,7 +54,7 @@ public interface IZuserDao {
 	public Integer update(Zuser zuser) throws Exception;
 
 	/**
-	 * ���idɾ���û�
+	 * ???id??????
 	 * 
 	 * @param zuserId
 	 * @return
@@ -63,7 +63,7 @@ public interface IZuserDao {
 
 
 	/**
-	 * �û���¼����
+	 * ??????????
 	 * 
 	 * @param zuser
 	 * @return
@@ -72,7 +72,7 @@ public interface IZuserDao {
 
 
 	/**
-	 * ����û�ʾ������û�
+	 * ???????????????
 	 *
 	 * @param zuser
 	 * @return

@@ -99,4 +99,4 @@ var p_zzUserPwdSet = {
 		tbar : [btn_save_pwdSet,btn_reset_pwdSet],
 		items: [userPwdViewForm]
 	}]
-}
+};

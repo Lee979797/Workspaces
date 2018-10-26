@@ -144,7 +144,7 @@ public class ZuserAction extends BaseAction {
 	 */
 	public String zlogin() {
 		/*String jgdm = (String) getSession().getAttribute("jgdm");*/
-		String jgdm = "010818199";
+		String jgdm = "010883003";
 		if (jgdm != null && !jgdm.equals("")) {
 			userName2 = jgdm;
 			getSession().removeAttribute("jgdm");

@@ -9,13 +9,13 @@ import com.lhq.prj.bms.po.Dept;
 import com.lhq.prj.bms.service.IDeptService;
 
 /**    
- * DeptService.java Create on 2008-9-16 ÏÂÎç10:40:48   
+ * DeptService.java Create on 2008-9-16 ïž­ïž ïž¬×—10:40:48   
  *
  *
  *
  * Copyright (c) 2008 by MTA.
  *
- * @author ÁÎå«Çä
+ * @author ïžŸïž¬×•Â«ïž¥×”
  * @version 1.0  
  */
 public class DeptService implements IDeptService {

@@ -8,8 +8,7 @@
 <%@ page import="com.lhq.prj.bms.po.Qx" %>
 <%@ page import="com.lhq.prj.bms.core.MyUtils" %>
 
-<html xmlns:v="urn:schemas-microsoft-com:vml"
-      xmlns:o="urn:schemas-microsoft-com:office:office">
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title><%=application.getAttribute("sysAppName")%>--网上办公</title>
